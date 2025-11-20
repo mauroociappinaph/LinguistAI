@@ -1,0 +1,7 @@
+{
+  "name": "LinguistAI - Next Gen English Learning",
+  "description": "A comprehensive A1-C2 English learning platform powered by Gemini 2.5. Features AI tutoring, real-time image editing for visual learning, and grounded cultural exploration.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
