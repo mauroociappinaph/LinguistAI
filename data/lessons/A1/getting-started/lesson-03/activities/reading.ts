@@ -1,5 +1,5 @@
 
-import { ReadingActivity } from '../../../../../types';
+import { ReadingActivity } from '../../../../../../types';
 
 export const readingActivity: ReadingActivity = {
   title: "Reading: Team Schedule",

@@ -1,5 +1,5 @@
 
-import { ListeningActivity } from '../../../../../types';
+import { ListeningActivity } from '../../../../../../types';
 
 export const listeningActivity: ListeningActivity = {
   title: "Listening: Scheduling Sync",

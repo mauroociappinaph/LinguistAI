@@ -1,5 +1,5 @@
 
-import { RolePlayScenario } from '../../../../../types';
+import { RolePlayScenario } from '../../../../../../types';
 
 export const rolePlay: RolePlayScenario = {
   title: "Scheduling a Sync",

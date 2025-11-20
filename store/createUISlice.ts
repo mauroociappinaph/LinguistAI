@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 import { View, Lesson, ChatMessage } from '../types';
-import { LESSONS } from '../data';
+import { ALL_LESSONS as LESSONS } from '../data';
 
 export interface UISlice {
   currentView: View;

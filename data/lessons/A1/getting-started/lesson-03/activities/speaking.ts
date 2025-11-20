@@ -1,5 +1,5 @@
 
-import { AccentSample } from '../../../../../types';
+import { AccentSample } from '../../../../../../types';
 
 export const scenario = "Planificar la agenda de un sprint.";
 export const speaking = "The deadline for task number 45 is on Wednesday at 5 PM.";
