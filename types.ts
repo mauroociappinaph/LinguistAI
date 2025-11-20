@@ -17,11 +17,20 @@ export interface UserState {
   completedLessons: string[];
 }
 
+export interface Module {
+  id: string;
+  title: string;
+  description: string;
+  level: Difficulty;
+  lessons: Lesson[];
+}
+
 export enum View {
   DASHBOARD = 'DASHBOARD',
   LESSON = 'LESSON',
   CHAT = 'CHAT',
-  EXPLORER = 'EXPLORER'
+  EXPLORER = 'EXPLORER',
+  CURRICULUM = 'CURRICULUM'
 }
 
 // --- Rich Content Interfaces ---
@@ -109,7 +118,7 @@ export interface Lesson {
   title: string;
   description?: string; // Optional summary
   level: Difficulty;   // Mapped from "difficulty" string in JSON
-  
+
   // Rich Content Sections
   grammar: GrammarSection;
   didYouKnow: string;
