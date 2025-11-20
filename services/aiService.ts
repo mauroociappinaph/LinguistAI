@@ -1,5 +1,6 @@
 import { sendChatMessage as sendChatToGemini } from './gemini';
 import { sendChatToGroq } from './groqClient';
+import { logger } from '../utils/logger';
 
 type AIProvider = 'gemini' | 'groq';
 
@@ -16,8 +17,7 @@ function isRateLimitError(error: any): boolean {
 }
 
 function logProviderUsage(provider: AIProvider, action: string) {
-  const timestamp = new Date().toISOString();
-  console.log(`[AI Service ${timestamp}] Using provider: ${provider} - ${action}`);
+  logger.info(`Using provider: ${provider} - ${action}`);
 }
 
 export async function sendChatMessage(
