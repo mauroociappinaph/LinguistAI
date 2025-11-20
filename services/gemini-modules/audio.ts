@@ -1,7 +1,6 @@
-import { getClient } from './core';
+import { proxyFetch } from './core';
 import { getCachedAudio, cacheAudio, generateCacheKey } from "../../utils/audioStorage";
 import { logger } from '../../utils/logger';
-import { Modality } from '@google/genai';
 
 // 5. Pronunciation & Fluency Analysis (Gemini 2.5 Flash)
 export interface PronunciationResult {
@@ -15,24 +14,13 @@ export interface PronunciationResult {
 }
 
 export const analyzePronunciation = async (transcript: string, context: string): Promise<PronunciationResult> => {
-    const ai = getClient();
     try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: `Analyze this spoken response: "${transcript}". The context/prompt was: "${context}".
-        Provide a JSON response with:
-        - "score" (number 1-10 overall)
-        - "feedback" (string, brief encouraging advice under 40 words)
-        - "breakdown" (object with keys "grammar", "clarity", "relevance", each a number 1-10).`,
-        config: {
-          responseMimeType: 'application/json',
-        }
+      const result = await proxyFetch('/api/gemini/pronunciation', {
+        transcript,
+        context
       });
 
-      const text = response.text;
-      if (!text) throw new Error("No response text");
-
-      return JSON.parse(text) as PronunciationResult;
+      return result as PronunciationResult;
     } catch (error) {
       console.error("Pronunciation analysis failed", error);
       return {
@@ -54,25 +42,17 @@ export const generateSpeech = async (text: string, voiceName: string = 'Kore'): 
     return URL.createObjectURL(cachedBlob);
   }
 
-  const ai = getClient();
   try {
-    logger.info("Generating audio from Gemini API...");
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-tts",
-      contents: [{ parts: [{ text: text }] }],
-      config: {
-        responseModalities: [Modality.AUDIO],
-        speechConfig: {
-            voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: voiceName },
-            },
-        },
-      },
+    logger.info("Generating audio from Gemini API via proxy...");
+    const response = await proxyFetch('/api/gemini/tts', {
+      text,
+      voiceName
     });
 
-    const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+    const base64Audio = response.audio;
     if (!base64Audio) return null;
 
+    // Convertir base64 a Blob
     const binaryString = atob(base64Audio);
     const len = binaryString.length;
     const bytes = new Uint8Array(len);
