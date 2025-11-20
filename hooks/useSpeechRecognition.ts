@@ -15,7 +15,7 @@ export const useSpeechRecognition = (): UseSpeechRecognitionReturn => {
   const [transcript, setTranscript] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isSupported, setIsSupported] = useState(false);
-  
+
   const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
@@ -75,7 +75,6 @@ export const useSpeechRecognition = (): UseSpeechRecognitionReturn => {
   const reset = useCallback(() => {
     setTranscript(null);
     setError(null);
-    setResult(null); // Note: This hook is purely for speech, result handling is external, but keeping reset clean.
   }, []);
 
   return {
@@ -88,7 +87,3 @@ export const useSpeechRecognition = (): UseSpeechRecognitionReturn => {
     isSupported
   };
 };
-
-function setResult(arg0: null) {
-    // Helper placeholder if needed, but logic moved out.
-}

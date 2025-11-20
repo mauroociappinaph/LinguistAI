@@ -1,5 +1,59 @@
-# Logs
-logs
+# ==========================================
+# LinguistAI - .gitignore Optimizado
+# Stack: React 19 + Vite + TypeScript + Zustand + Gemini AI
+# ==========================================
+
+# ==========================================
+# 1. DATOS SENSIBLES Y CREDENCIALES (CRÍTICO)
+# ==========================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+*.pem
+*.key
+*.cert
+secrets/
+credentials/
+
+# API Keys y tokens
+**/*secret*
+**/*password*
+**/*token*
+
+# ==========================================
+# 2. DEPENDENCIAS
+# ==========================================
+node_modules/
+.pnp
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ==========================================
+# 3. BUILDS Y CACHE
+# ==========================================
+dist/
+dist-ssr/
+build/
+.next/
+out/
+.cache/
+.parcel-cache/
+.vite/
+
+# TypeScript cache
+*.tsbuildinfo
+.tsbuildinfo
+
+# ==========================================
+# 4. LOGS
+# ==========================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +61,149 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ==========================================
+# 5. TESTING
+# ==========================================
+coverage/
+.nyc_output/
+*.lcov
+.vitest/
+test-results/
+playwright-report/
+playwright/.cache/
 
-# Editor directories and files
+# ==========================================
+# 6. EDITOR Y SISTEMA OPERATIVO
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# VSCode
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+.fleet/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# ==========================================
+# 7. NAVEGADOR Y CACHE LOCAL
+# ==========================================
+*.local
+.temp/
+.tmp/
+
+# IndexedDB (usado por el proyecto para audio cache)
+# NO incluir en .gitignore, es manejado por el navegador
+
+# Service Workers
+sw.js.map
+
+# ==========================================
+# 8. ANTIGRAVITY Y HERRAMIENTAS DE IA
+# ==========================================
+.gemini/
+.agent/state/
+.antigravity/
+*.brain/
+
+# Evitar subir análisis y reportes temporales
+**/brain/
+**/*-report.md
+**/*-analysis.md
+
+# ==========================================
+# 9. MISCELÁNEOS
+# ==========================================
+# Lock files (mantener solo uno)
+# package-lock.json  # Si usas npm
+# yarn.lock          # Si usas yarn
+# Mantener pnpm-lock.yaml ya que el proyecto usa pnpm
+
+# Sourcemaps de producción (opcionales, descomentar si no quieres subirlos)
+# *.map
+
+# Archivos temporales
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Bundle analyzer
+stats.html
+bundle-stats.json
+
+# Sentry
+.sentryclirc
+
+# Vercel
+.vercel
+
+# Terraform (si se usa para infraestructura)
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# ==========================================
+# 10. DATOS Y BASES DE DATOS
+# ==========================================
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# Prisma (si se agrega en el futuro)
+prisma/*.db
+prisma/migrations/migration_lock.toml
+
+# ==========================================
+# 11. ARCHIVOS DE PROYECTO ESPECÍFICOS
+# ==========================================
+# Datos de prueba con información sensible
+data/test-users.json
+
+# Backups
+backup/
+*.backup
+
+# ==========================================
+# IMPORTANTE: Archivos que SÍ deben subirse
+# ==========================================
+# .env.example (plantilla sin valores reales)
+# package.json
+# pnpm-lock.yaml
+# tsconfig.json
+# vite.config.ts
+# README.md
+# src/ (todo el código fuente)

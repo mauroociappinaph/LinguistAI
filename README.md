@@ -20,8 +20,9 @@
 11. [Scripts Útiles](#11-scripts-útiles)
 12. [Seguridad y Privacidad](#12-seguridad-y-privacidad)
 13. [Troubleshooting](#13-troubleshooting)
-14. [Cómo Contribuir](#14-cómo-contribuir)
-15. [Apéndices](#15-apéndices)
+14. [Workflows de Automatización](#14-workflows-de-automatización)
+15. [Cómo Contribuir](#15-cómo-contribuir)
+16. [Apéndices](#16-apéndices)
 
 ---
 
@@ -35,14 +36,14 @@ LinguistAI sigue una arquitectura basada en **Features** (características) con 
 graph TD
     User[Usuario / Browser] -->|HTTPS| CDN[CDN / Edge Layer]
     CDN -->|Serve Assets| Client[React Client (LinguistAI)]
-    
+
     subgraph "Client Layer (Antigravity Dev Env)"
         Store[Zustand Store (User & UI Slices)]
         Nav[Lesson Router]
         Hooks[Custom Hooks (Speech, Nav)]
         AudioEngine[PCM to WAV Converter]
         IndexedDB[Audio Storage Layer]
-        
+
         Client --> Store
         Client --> Nav
         Client --> Hooks
@@ -76,6 +77,67 @@ graph TD
 *   **AI Integration Service:** Capa de abstracción (`services/gemini.ts`) que normaliza las llamadas a los diferentes modelos de Google GenAI.
 *   **Dynamic Audio Engine:** Sistema capaz de sintetizar voz en tiempo real (`generateSpeech`) convirtiendo streams PCM crudos de la API de Gemini a formato WAV reproducible en el navegador, con soporte para Caching en IndexedDB.
 *   **Lesson Registry:** Sistema de datos distribuido (`data/lessons/...`) que actúa como CMS estático para el contenido educativo, cargando módulos bajo demanda.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisitos
+
+- Node.js 18+
+- pnpm 8+
+- Cuenta de Google AI Studio
+
+### Instalación
+
+1. **Clonar el repositorio:**
+```bash
+git clone https://github.com/tu-usuario/LinguistAI.git
+cd LinguistAI
+```
+
+2. **Instalar dependencias:**
+```bash
+pnpm install
+```
+
+3. **Configurar variables de entorno:**
+```bash
+cp .env.example .env
+```
+
+4. **Obtener API key de Gemini:**
+- Ve a: https://aistudio.google.com/app/apikey
+- Crea una nueva API key
+- Copia la key
+
+5. **Editar `.env` con tu API key:**
+```env
+GEMINI_API_KEY=AIzaSy_tu_key_aqui
+```
+
+6. **Iniciar servidor de desarrollo:**
+```bash
+pnpm dev
+```
+
+7. **Abrir en navegador:**
+```
+http://localhost:3000
+```
+
+### ⚠️ Importante: Seguridad
+
+Este proyecto actualmente **expone la API key en el cliente** durante desarrollo.
+
+**Para producción**, debes implementar un backend proxy siguiendo el workflow:
+```
+/security-fix-backend-proxy
+```
+
+Ver [Workflows de Automatización](#14-workflows-de-automatización) para más detalles.
+
+---
 
 ---
 
@@ -192,7 +254,108 @@ Definidos en `package.json`:
 
 ---
 
-## 14. Cómo Contribuir
+## 14. Workflows de Automatización
+
+LinguistAI incluye workflows automatizados en `.agent/workflows/` para facilitar tareas de refactorización, testing y optimización.
+
+### Workflows Disponibles
+
+#### 🔧 `/refactor-gemini-service`
+Divide el archivo `services/gemini.ts` (284 líneas) en módulos especializados.
+
+**Resultado:**
+```
+services/gemini/
+├── chat.ts          # Funciones de chat
+├── tts.ts           # Text-to-Speech
+├── grammar.ts       # Corrección gramatical
+├── image.ts         # Edición de imágenes
+├── pronunciation.ts # Análisis de pronunciación
+└── search.ts        # Búsqueda cultural
+```
+
+**Tiempo estimado:** 4 horas
+**Prioridad:** Media
+
+---
+
+#### 🧪 `/setup-testing`
+Configura suite de testing completa con Vitest + React Testing Library.
+
+**Incluye:**
+- Configuración de Vitest en `vite.config.ts`
+- Tests unitarios para store y services
+- Tests de integración para componentes
+- Scripts npm (`test`, `test:ui`, `test:coverage`)
+
+**Objetivo:** 70% cobertura en 4 semanas
+**Tiempo estimado:** 16 horas
+**Prioridad:** Crítica
+
+---
+
+#### 🔒 `/security-fix-backend-proxy`
+Implementa backend proxy para proteger API key de Gemini.
+
+**Solución:**
+- Backend Express con rate limiting
+- Endpoints proxy para servicios Gemini
+- Variables de entorno seguras
+- CORS configurado
+
+**⚠️ CRÍTICO:** Resuelve vulnerabilidad de API key expuesta en cliente.
+
+**Tiempo estimado:** 8 horas
+**Prioridad:** Crítica
+
+---
+
+#### ⚡ `/optimize-performance`
+Optimiza performance con memoización, bundle optimization y lazy loading.
+
+**Incluye:**
+- Memoización de componentes pesados
+- Debouncing en speech recognition
+- Manual chunks en Vite
+- Bundle analyzer
+- Eliminación de console.logs en producción
+
+**Objetivo:** Reducir bundle de ~450KB a <350KB
+**Tiempo estimado:** 6-10 horas
+**Prioridad:** Importante
+
+---
+
+### Cómo Usar los Workflows
+
+1. **Desde Antigravity:**
+   ```
+   /refactor-gemini-service
+   /setup-testing
+   /security-fix-backend-proxy
+   /optimize-performance
+   ```
+
+2. **Manualmente:**
+   Abrir el archivo `.agent/workflows/[nombre-workflow].md` y seguir los pasos.
+
+### Análisis Técnico Completo
+
+Para un análisis exhaustivo del proyecto, consultar:
+```
+/Users/mauroociappina/.gemini/antigravity/brain/[session-id]/analysis-report.md
+```
+
+El análisis incluye:
+- Evaluación de arquitectura y calidad de código
+- Auditoría de seguridad
+- Recomendaciones priorizadas (16 items)
+- Propuesta de reestructuración
+- Roadmap de 4 semanas
+
+---
+
+## 15. Cómo Contribuir
 
 1.  Fork del repositorio.
 2.  Crear rama `feature/nueva-funcionalidad`.
@@ -201,7 +364,7 @@ Definidos en `package.json`:
 
 ---
 
-## 15. Apéndices
+## 16. Apéndices
 
 ### .env.example
 ```bash
