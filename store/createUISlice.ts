@@ -21,7 +21,14 @@ export const createUISlice: StateCreator<UISlice> = (set) => ({
     { id: 'init', role: 'model', text: 'Hello! I am your AI English tutor. How can I help you today?', timestamp: Date.now() }
   ],
   setView: (view) => set({ currentView: view }),
-  startLesson: (id) => set({ activeLessonId: id, currentView: View.LESSON }),
+  startLesson: (id) => {
+    const lessonExists = LESSONS.some(l => l.id === id);
+    if (!lessonExists) {
+      console.error(`[UISlice] Attempted to start non-existent lesson: ${id}`);
+      return;
+    }
+    set({ activeLessonId: id, currentView: View.LESSON });
+  },
   exitLesson: () => set({ activeLessonId: null, currentView: View.DASHBOARD }),
   addChatMessage: (msg) => set((state) => ({
     chatHistory: [...state.chatHistory, { ...msg, id: Date.now().toString(), timestamp: Date.now() }]
