@@ -1,4 +1,5 @@
 import Groq from 'groq-sdk';
+import { SYSTEM_INSTRUCTION } from './prompts';
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
@@ -11,10 +12,13 @@ export async function sendChatToGroq(
 ): Promise<{ text: string }> {
   try {
     // Convertir formato Gemini → Groq
-    const groqMessages = history.map(msg => ({
-      role: (msg.role === 'model' ? 'assistant' : msg.role) as 'user' | 'assistant' | 'system',
-      content: msg.parts[0].text
-    }));
+    const groqMessages = [
+      { role: 'system' as const, content: SYSTEM_INSTRUCTION },
+      ...history.map(msg => ({
+        role: (msg.role === 'model' ? 'assistant' : msg.role) as 'user' | 'assistant' | 'system',
+        content: msg.parts[0].text
+      }))
+    ];
 
     // Agregar nuevo mensaje
     groqMessages.push({

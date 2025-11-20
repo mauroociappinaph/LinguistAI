@@ -1,6 +1,7 @@
 
 import { GoogleGenAI, Modality } from "@google/genai";
 import { getCachedAudio, cacheAudio, generateCacheKey } from "../utils/audioStorage";
+import { SYSTEM_INSTRUCTION } from './prompts';
 
 const getClient = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
 
