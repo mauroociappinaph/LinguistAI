@@ -1,0 +1,22 @@
+import { VocabularyItem } from '../../../../../types';
+
+export const vocabulary: VocabularyItem[] = [
+  { item: "context", explanation: "The situation where a word is used. It helps you understand the meaning.", example: "Learning words in context is more effective than just memorizing lists.", pronunciation: "/ˈkɒntɛkst/" },
+  { item: "pattern", explanation: "A thing that happens in a regular and repeated way.", example: "Your brain is a powerful pattern-detection machine.", pronunciation: "/ˈpætərn/" },
+  { item: "intuition", explanation: "The ability to understand something instinctively, without the need for conscious reasoning.", example: "After years of experience, a senior developer develops a strong intuition for finding bugs.", pronunciation: "/ˌɪntjuˈɪʃən/" },
+  { item: "fluency", explanation: "The ability to speak or write a language easily, smoothly, and accurately.", example: "The goal is not just to know grammar rules, but to achieve fluency.", pronunciation: "/ˈfluːənsi/" },
+  { item: "taught", explanation: "(Past tense of 'teach') To be given knowledge or instruction.", example: "In school, I was taught the basic rules of grammar.", pronunciation: "/tɔːt/" },
+  { item: "conscious", explanation: "(Adjective) Aware of and responding to one's surroundings; awake.", example: "He made a conscious decision to improve his code.", pronunciation: "/ˈkɒnʃəs/" },
+  { item: "realize", explanation: "(Verb) To become fully aware of (something) as a fact; understand clearly.", example: "I didn't realize the server was down.", pronunciation: "/ˈriːəlaɪz/" },
+  { item: "instinctively", explanation: "(Adverb) Without conscious thought; by natural instinct.", example: "A senior developer instinctively knows where to look for the bug.", pronunciation: "/ɪnˈstɪŋktɪvli/" },
+  { item: "smoothly / accurately", explanation: "(Adverbs) 'Smoothly' means without interruptions or problems. 'Accurately' means correctly, without any mistakes.", example: "The deployment went smoothly and the calculations were accurately reported.", pronunciation: "/ˈsmuːðli/ /ˈækjərətli/" },
+  { item: "effortful", explanation: "(Adjective) Requiring a lot of physical or mental effort.", example: "Speaking a new language can be effortful at first.", pronunciation: "/ˈɛfərtfəl/" },
+  { item: "spot", explanation: "(Verb) To see, notice, or recognize someone or something that is difficult to detect.", example: "Can you spot the error in this line of code?", pronunciation: "/spɒt/" },
+];
+
+export const phrasalVerbs: VocabularyItem[] = [];
+
+export const compoundWords: VocabularyItem[] = [
+  { item: "top-down", explanation: "Proceeding from the general to the specific.", example: "Learning the theory before practice is a top-down approach.", pronunciation: "/ˌtɒpˈdaʊn/" },
+  { item: "bottom-up", explanation: "Proceeding from the specific to the general.", example: "Learning from examples to understand a theory is a bottom-up approach.", pronunciation: "/ˌbɒtəmˈʌp/" }
+];
