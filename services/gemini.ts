@@ -33,12 +33,13 @@ export const sendChatMessage = async (
         systemInstruction: "You are an expert English tutor. Correct the user gently if they make mistakes, but keep the conversation flowing naturally. Adjust your vocabulary to the user's level.",
       }
     });
-    
+
     const response = await chat.sendMessage({ message: newMessage });
     return { text: response.text || "" };
   } catch (error) {
     console.error("Chat failed", error);
-    return { text: "Sorry, I'm having trouble connecting right now." };
+    // Lanzar el error para que aiService.ts pueda activar fallback
+    throw error;
   }
 };
 
@@ -56,10 +57,10 @@ export const sendRolePlayMessage = async (
       history: history,
       config: {
         systemInstruction: `You are participating in an English learning role-play.
-        
+
         YOUR CHARACTER: ${aiPersona}
         SCENARIO: ${scenarioContext}
-        
+
         INSTRUCTIONS:
         1. Stay 100% in character. Do NOT act as an AI assistant. Do NOT break the fourth wall.
         2. Keep responses concise (1-3 sentences) and conversational.
@@ -69,7 +70,7 @@ export const sendRolePlayMessage = async (
         `,
       }
     });
-    
+
     const response = await chat.sendMessage({ message: newMessage });
     return { text: response.text || "" };
   } catch (error) {
@@ -161,7 +162,7 @@ export const analyzePronunciation = async (transcript: string, context: string):
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: `Analyze this spoken response: "${transcript}". The context/prompt was: "${context}". 
+      contents: `Analyze this spoken response: "${transcript}". The context/prompt was: "${context}".
       Provide a JSON response with:
       - "score" (number 1-10 overall)
       - "feedback" (string, brief encouraging advice under 40 words)
@@ -170,10 +171,10 @@ export const analyzePronunciation = async (transcript: string, context: string):
         responseMimeType: 'application/json',
       }
     });
-    
+
     const text = response.text;
     if (!text) throw new Error("No response text");
-    
+
     return JSON.parse(text) as PronunciationResult;
   } catch (error) {
     console.error("Pronunciation analysis failed", error);
