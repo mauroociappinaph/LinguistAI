@@ -9,24 +9,11 @@ interface LearningPathProps {
 }
 
 export const LearningPath: React.FC<LearningPathProps> = ({ lessons, user, onStartLesson }) => {
-  
-  const handleViewCurriculum = () => {
-    const element = document.getElementById('curriculum-list');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className="mt-10" id="curriculum-list">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Your Learning Path</h2>
-        <button 
-          onClick={handleViewCurriculum}
-          className="text-indigo-600 dark:text-indigo-400 text-sm font-medium hover:text-indigo-800 dark:hover:text-indigo-300 cursor-pointer transition-colors"
-        >
-          View Curriculum →
-        </button>
       </div>
 
       <div className="space-y-4">

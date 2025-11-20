@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../../store/useStore';
 import { View } from '../../types';
+import { CURRICULUM } from '../../data/curriculum';
 
 export const Sidebar: React.FC = () => {
   const { currentView, setView, darkMode, toggleDarkMode } = useStore();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<View | null>(null);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [isCurriculumExpanded, setIsCurriculumExpanded] = useState(true);
+  const [expandedModules, setExpandedModules] = useState<string[]>(['getting-started']);
 
   // User progress data (esto vendría de tu store)
   const userProgress = {
@@ -18,23 +21,23 @@ export const Sidebar: React.FC = () => {
   };
 
   const navItems = [
-    { 
-      id: View.DASHBOARD, 
-      label: 'Dashboard', 
+    {
+      id: View.DASHBOARD,
+      label: 'Dashboard',
       icon: '📊',
       badge: null,
       gradient: 'from-blue-500 to-cyan-500'
     },
-    { 
-      id: View.CHAT, 
-      label: 'AI Tutor', 
+    {
+      id: View.CHAT,
+      label: 'AI Tutor',
       icon: '💬',
       badge: 3, // Mensajes nuevos
       gradient: 'from-indigo-500 to-purple-500'
     },
-    { 
-      id: View.EXPLORER, 
-      label: 'Explore', 
+    {
+      id: View.EXPLORER,
+      label: 'Explore',
       icon: '🌍',
       badge: null,
       gradient: 'from-emerald-500 to-teal-500'
@@ -51,12 +54,12 @@ export const Sidebar: React.FC = () => {
   }, [showProfileMenu]);
 
   return (
-    <aside 
+    <aside
       className={`
-        ${isCollapsed ? 'w-20' : 'w-80'} 
+        ${isCollapsed ? 'w-20' : 'w-80'}
         bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950
-        border-r border-slate-200/50 dark:border-slate-800/50 
-        hidden md:flex flex-col z-20 
+        border-r border-slate-200/50 dark:border-slate-800/50
+        hidden md:flex flex-col z-20
         transition-all duration-500 ease-out
         shadow-xl relative
       `}
@@ -65,7 +68,7 @@ export const Sidebar: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 pointer-events-none" />
 
       {/* Toggle Sidebar Button */}
-      <button 
+      <button
         onClick={() => setIsCollapsed(!isCollapsed)}
         className="absolute -right-4 top-10 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 p-2 rounded-full shadow-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:shadow-xl hover:scale-110 transition-all duration-300 z-50 group"
         title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
@@ -95,7 +98,7 @@ export const Sidebar: React.FC = () => {
                 </svg>
               </div>
             </div>
-            
+
             <div className="animate-in slide-in-from-left-4 fade-in duration-300">
               <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
                 LinguistAI
@@ -120,7 +123,7 @@ export const Sidebar: React.FC = () => {
         {navItems.map((item, index) => {
           const isActive = currentView === item.id;
           const isHovered = hoveredItem === item.id;
-          
+
           return (
             <button
               key={item.id}
@@ -128,11 +131,11 @@ export const Sidebar: React.FC = () => {
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
               className={`
-                relative w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl 
+                relative w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl
                 transition-all duration-300 group overflow-hidden
                 ${isCollapsed ? 'justify-center' : ''}
-                ${isActive 
-                  ? 'bg-white dark:bg-slate-800 shadow-lg scale-105' 
+                ${isActive
+                  ? 'bg-white dark:bg-slate-800 shadow-lg scale-105'
                   : 'hover:bg-white/50 dark:hover:bg-slate-800/50 hover:scale-102'
                 }
               `}
@@ -144,23 +147,23 @@ export const Sidebar: React.FC = () => {
               {isActive && (
                 <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-10 rounded-2xl`} />
               )}
-              
+
               {/* Hover glow effect */}
               {(isActive || isHovered) && (
                 <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-5 blur-xl`} />
               )}
-              
+
               {/* Side indicator for active item */}
               {isActive && !isCollapsed && (
                 <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b ${item.gradient} rounded-r-full`} />
               )}
-              
+
               {/* Icon container */}
               <div className={`
                 relative flex items-center justify-center
                 w-10 h-10 rounded-xl
-                ${isActive 
-                  ? `bg-gradient-to-br ${item.gradient} shadow-lg` 
+                ${isActive
+                  ? `bg-gradient-to-br ${item.gradient} shadow-lg`
                   : 'bg-slate-100 dark:bg-slate-800'
                 }
                 transition-all duration-300
@@ -169,7 +172,7 @@ export const Sidebar: React.FC = () => {
                 <span className={`text-xl ${isActive ? 'filter brightness-0 invert' : ''}`}>
                   {item.icon}
                 </span>
-                
+
                 {/* Badge */}
                 {item.badge && (
                   <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">
@@ -177,14 +180,14 @@ export const Sidebar: React.FC = () => {
                   </div>
                 )}
               </div>
-              
+
               {/* Label */}
               {!isCollapsed && (
                 <div className="flex-1 text-left animate-in slide-in-from-left-2 fade-in">
                   <span className={`
                     font-semibold text-sm
-                    ${isActive 
-                      ? 'bg-gradient-to-r ' + item.gradient + ' bg-clip-text text-transparent' 
+                    ${isActive
+                      ? 'bg-gradient-to-r ' + item.gradient + ' bg-clip-text text-transparent'
                       : 'text-slate-700 dark:text-slate-300'
                     }
                   `}>
@@ -192,7 +195,7 @@ export const Sidebar: React.FC = () => {
                   </span>
                 </div>
               )}
-              
+
               {/* Arrow indicator for active */}
               {isActive && !isCollapsed && (
                 <svg className="w-4 h-4 text-slate-400 dark:text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -217,24 +220,146 @@ export const Sidebar: React.FC = () => {
             </button>
           );
         })}
+
+        {/* Curriculum Section */}
+        {!isCollapsed && (
+          <div className="mt-6 space-y-2">
+            {/* Curriculum Header */}
+            <button
+              onClick={() => setIsCurriculumExpanded(!isCurriculumExpanded)}
+              className="w-full flex items-center justify-between px-4 py-2 rounded-xl hover:bg-white/50 dark:hover:bg-slate-800/50 transition-all group"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-lg">📚</span>
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                  My Curriculum
+                </span>
+              </div>
+              <svg
+                className={`w-4 h-4 text-slate-400 transition-transform ${isCurriculumExpanded ? 'rotate-180' : ''}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {/* Curriculum Content */}
+            {isCurriculumExpanded && (
+              <div className="space-y-2 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
+                {CURRICULUM.map((module) => {
+                  const isModuleExpanded = expandedModules.includes(module.id);
+                  const completedLessons = useStore.getState().user.completedLessons;
+                  const completedCount = module.lessons.filter(l => completedLessons.includes(l.id)).length;
+                  const progressPercent = Math.round((completedCount / module.lessons.length) * 100);
+
+                  return (
+                    <div key={module.id} className="space-y-1">
+                      {/* Module Header */}
+                      <button
+                        onClick={() => {
+                          if (isModuleExpanded) {
+                            setExpandedModules(prev => prev.filter(id => id !== module.id));
+                          } else {
+                            setExpandedModules(prev => [...prev, module.id]);
+                          }
+                        }}
+                        className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 dark:hover:from-indigo-950/30 dark:hover:to-purple-950/30 transition-all group"
+                      >
+                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                          <span className="text-xs">{isModuleExpanded ? '▼' : '▶'}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 truncate text-left">
+                              {module.title}
+                            </p>
+                            <div className="flex items-center gap-1 mt-0.5">
+                              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+                                {module.level}
+                              </span>
+                              <span className="text-[10px] text-slate-500 dark:text-slate-400">
+                                {completedCount}/{module.lessons.length}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Mini progress bar */}
+                        <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
+                            style={{ width: `${progressPercent}%` }}
+                          />
+                        </div>
+                      </button>
+
+                      {/* Lessons List */}
+                      {isModuleExpanded && (
+                        <div className="ml-3 pl-3 border-l-2 border-slate-200 dark:border-slate-700 space-y-1">
+                          {module.lessons.map((lesson, index) => {
+                            const isCompleted = completedLessons.includes(lesson.id);
+                            const isActive = useStore.getState().activeLessonId === lesson.id;
+
+                            return (
+                              <button
+                                key={lesson.id}
+                                onClick={() => useStore.getState().startLesson(lesson.id)}
+                                className={`
+                                  w-full flex items-center gap-2 px-2 py-1.5 rounded-lg
+                                  transition-all text-left group
+                                  ${isActive
+                                    ? 'bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30'
+                                    : 'hover:bg-slate-100 dark:hover:bg-slate-800'
+                                  }
+                                `}
+                              >
+                                <div className={`
+                                  w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold
+                                  ${isCompleted
+                                    ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white'
+                                    : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400'
+                                  }
+                                `}>
+                                  {isCompleted ? '✓' : index + 1}
+                                </div>
+                                <p className={`
+                                  text-[11px] font-medium flex-1 truncate
+                                  ${isActive
+                                    ? 'text-indigo-700 dark:text-indigo-300'
+                                    : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-200'
+                                  }
+                                `}>
+                                  {lesson.title}
+                                </p>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
       </nav>
 
       {/* Bottom Section */}
       <div className="relative p-4 border-t border-slate-200/50 dark:border-slate-800/50 space-y-3">
         {/* Dark Mode Toggle */}
-        <button 
+        <button
           onClick={toggleDarkMode}
           className={`
-            relative w-full flex items-center gap-4 px-4 py-3 rounded-2xl 
-            text-slate-600 dark:text-slate-400 
-            hover:bg-white dark:hover:bg-slate-800 
+            relative w-full flex items-center gap-4 px-4 py-3 rounded-2xl
+            text-slate-600 dark:text-slate-400
+            hover:bg-white dark:hover:bg-slate-800
             transition-all duration-300 group overflow-hidden
             ${isCollapsed ? 'justify-center' : ''}
           `}
           title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-          
+
           <div className="relative w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform">
             {darkMode ? (
               <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +371,7 @@ export const Sidebar: React.FC = () => {
               </svg>
             )}
           </div>
-          
+
           {!isCollapsed && (
             <span className="relative font-medium text-sm">
               {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -255,7 +380,7 @@ export const Sidebar: React.FC = () => {
         </button>
 
         {/* User Profile */}
-        <div 
+        <div
           className={`
             relative bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900
             rounded-2xl p-4 border border-slate-200 dark:border-slate-700
@@ -269,7 +394,7 @@ export const Sidebar: React.FC = () => {
         >
           {/* Decorative gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl" />
-          
+
           {!isCollapsed ? (
             <div className="relative space-y-3">
               {/* User Info */}
@@ -282,7 +407,7 @@ export const Sidebar: React.FC = () => {
                   {/* Online indicator */}
                   <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" />
                 </div>
-                
+
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
                     {userProgress.name}
@@ -296,12 +421,12 @@ export const Sidebar: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 <svg className="w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
-              
+
               {/* Progress Bar */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs">
@@ -309,7 +434,7 @@ export const Sidebar: React.FC = () => {
                   <span className="text-indigo-600 dark:text-indigo-400 font-bold">{userProgress.levelProgress}%</span>
                 </div>
                 <div className="relative h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${userProgress.levelProgress}%` }}
                   >
@@ -317,7 +442,7 @@ export const Sidebar: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Streak indicator */}
               <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 rounded-xl border border-orange-200 dark:border-orange-900/50">
                 <span className="text-lg">🔥</span>
