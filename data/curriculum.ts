@@ -1,12 +1,14 @@
 import { Module, Difficulty } from '../types';
 import {
-  lesson01,
-  lesson02,
-  lesson03,
-  lesson04,
-  lesson05,
-  lesson06
-} from './lessons/A1/getting-started/index';
+  gettingStartedLesson01,
+  gettingStartedLesson02,
+  gettingStartedLesson03,
+  gettingStartedLesson04,
+  gettingStartedLesson05,
+  gettingStartedLesson06,
+  everyDayWorkLifeLesson01
+} from './lessons/A1/index';
+
 
 /**
  * Main curriculum structure that organizes all lessons into modules.
@@ -19,12 +21,21 @@ export const CURRICULUM: Module[] = [
     description: 'Begin your English learning journey with basic introductions and essential communication skills for the tech industry.',
     level: Difficulty.A1,
     lessons: [
-      lesson01,
-      lesson02,
-      lesson03,
-      lesson04,
-      lesson05,
-      lesson06
+      gettingStartedLesson01,
+      gettingStartedLesson02,
+      gettingStartedLesson03,
+      gettingStartedLesson04,
+      gettingStartedLesson05,
+      gettingStartedLesson06
+    ]
+  },
+  {
+    id: 'every-day-work-life',
+    title: 'Every Day Work Life',
+    description: 'Master daily routines, workplace communication, and professional vocabulary used in everyday tech environments.',
+    level: Difficulty.A1,
+    lessons: [
+      everyDayWorkLifeLesson01
     ]
   }
   // Future modules can be added here as the curriculum expands

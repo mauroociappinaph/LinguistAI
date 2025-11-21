@@ -3,7 +3,7 @@ import { asyncHandler } from '../middleware/errorHandler.js';
 import { getGeminiClient } from '../clients.js';
 import { Modality } from '@google/genai';
 
-const router = Router();
+const router: Router = Router();
 
 /**
  * POST /api/gemini/chat

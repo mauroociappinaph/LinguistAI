@@ -1,10 +1,19 @@
-import { lesson01, lesson02, lesson03, lesson04, lesson05, lesson06 } from './A1';
+import {
+    gettingStartedLesson01,
+    gettingStartedLesson02,
+    gettingStartedLesson03,
+    gettingStartedLesson04,
+    gettingStartedLesson05,
+    gettingStartedLesson06,
+    everyDayWorkLifeLesson01
+} from './A1';
 
 export const ALL_LESSONS = [
-    lesson01,
-    lesson02,
-    lesson03,
-    lesson04,
-    lesson05,
-    lesson06
+    gettingStartedLesson01,
+    gettingStartedLesson02,
+    gettingStartedLesson03,
+    gettingStartedLesson04,
+    gettingStartedLesson05,
+    gettingStartedLesson06,
+    everyDayWorkLifeLesson01
 ];
