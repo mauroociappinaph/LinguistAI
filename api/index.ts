@@ -2,8 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { generalLimiter, ttsLimiter } from './middleware/rateLimiter.js';
-import { errorHandler } from './middleware/errorHandler.js';
+import { generalLimiter, ttsLimiter, errorHandler } from './middleware/index.js';
 import geminiRoutes from './routes/gemini.js';
 
 // Cargar variables de entorno

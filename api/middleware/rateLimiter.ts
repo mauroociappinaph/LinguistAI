@@ -12,11 +12,11 @@ export const generalLimiter = rateLimit({
   },
   standardHeaders: true, // Retorna info de rate limit en headers `RateLimit-*`
   legacyHeaders: false, // Deshabilita headers `X-RateLimit-*`
-  handler: (req, res) => {
+  handler: (req: any, res) => {
     res.status(429).json({
       error: 'Too many requests',
       message: 'You have exceeded the maximum number of requests. Please try again later.',
-      retryAfter: Math.ceil(req.rateLimit.resetTime! / 1000)
+      retryAfter: Math.ceil((req.rateLimit?.resetTime || Date.now()) / 1000)
     });
   }
 });
@@ -33,11 +33,11 @@ export const ttsLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (req, res) => {
+  handler: (req: any, res) => {
     res.status(429).json({
       error: 'Too many TTS requests',
       message: 'TTS generation is resource-intensive. Please try again later.',
-      retryAfter: Math.ceil(req.rateLimit.resetTime! / 1000)
+      retryAfter: Math.ceil((req.rateLimit?.resetTime || Date.now()) / 1000)
     });
   }
 });
