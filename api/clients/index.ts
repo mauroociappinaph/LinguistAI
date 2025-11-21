@@ -5,3 +5,4 @@
 
 export * from './gemini.client.js';
 export * from './groq.client.js';
+export * from './perplexity.client.js';
