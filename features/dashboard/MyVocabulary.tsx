@@ -107,8 +107,8 @@ export const MyVocabulary: React.FC = () => {
           >
             {getMasteryLabel(level)}
           </button>
-        ))}{
-        </div>
+        ))}
+      </div>
 
       {/* Vocabulary List */}
       {filteredVocabulary.length === 0 ? (
