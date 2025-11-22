@@ -30,6 +30,13 @@ export const Sidebar: React.FC = () => {
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
+      id: View.MY_VOCABULARY,
+      label: 'My Vocabulary',
+      icon: '📚',
+      badge: null,
+      gradient: 'from-purple-500 to-pink-500'
+    },
+    {
       id: View.CHAT,
       label: 'AI Tutor',
       icon: '💬',

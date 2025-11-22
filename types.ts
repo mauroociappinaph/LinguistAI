@@ -30,7 +30,8 @@ export enum View {
   LESSON = 'LESSON',
   CHAT = 'CHAT',
   EXPLORER = 'EXPLORER',
-  CURRICULUM = 'CURRICULUM'
+  CURRICULUM = 'CURRICULUM',
+  MY_VOCABULARY = 'my-vocabulary',
 }
 
 // --- Rich Content Interfaces ---

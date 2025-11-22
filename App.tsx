@@ -9,6 +9,7 @@ const Dashboard = React.lazy(() => import('./features/dashboard/Dashboard').then
 const LessonRunner = React.lazy(() => import('./features/learn/LessonRunner').then(module => ({ default: module.LessonRunner })));
 const AiTutor = React.lazy(() => import('./features/chat/AiTutor').then(module => ({ default: module.AiTutor })));
 const CulturalExplorer = React.lazy(() => import('./features/explore/CulturalExplorer').then(module => ({ default: module.CulturalExplorer })));
+const MyVocabulary = React.lazy(() => import('./features/dashboard/MyVocabulary').then(module => ({ default: module.MyVocabulary })));
 
 const App: React.FC = () => {
   const { currentView, isAuthenticated, isLoading, initializeAuth } = useStore();
@@ -29,6 +30,8 @@ const App: React.FC = () => {
         return <AiTutor />;
       case View.EXPLORER:
         return <CulturalExplorer />;
+      case View.MY_VOCABULARY:
+        return <MyVocabulary />;
       default:
         return <Dashboard />;
     }
