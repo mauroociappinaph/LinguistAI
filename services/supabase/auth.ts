@@ -179,16 +179,21 @@ const createUserProfile = async (
   name: string,
   email: string
 ) => {
-  const { error } = await supabase.from('profiles').insert({
-    id: userId,
-    name,
-    email,
-    role: 'user', // Rol por defecto
-    current_level: 'A1',
-    xp: 0,
-    streak: 0,
-    badges: [],
-  });
+  const { error } = await supabase.from('profiles').upsert(
+    {
+      id: userId,
+      name,
+      email,
+      role: 'user', // Rol por defecto
+      current_level: 'A1',
+      xp: 0,
+      streak: 0,
+      badges: [],
+    },
+    {
+      onConflict: 'id', // Si ya existe un perfil con este id, actualizarlo
+    }
+  );
 
   if (error) throw handleSupabaseError(error);
 };
