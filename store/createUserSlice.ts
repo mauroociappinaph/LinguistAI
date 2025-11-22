@@ -19,7 +19,7 @@ export interface UserSlice {
   // Auth methods
   loadUserProfile: () => Promise<void>;
   signOut: () => Promise<void>;
-  initializeAuth: () => void;
+  initializeAuth: () => Promise<void>;
   // User actions
   toggleDarkMode: () => void;
   completeLesson: (id: string, xp: number) => Promise<void>;
@@ -35,10 +35,13 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
    * Inicializa el listener de cambios de autenticación
    * Se llama una vez al inicio de la app
    */
-  initializeAuth: () => {
-    // Listener de cambios de autenticación
-    supabase.auth.onAuthStateChange(async (event, session) => {
+  initializeAuth: async () => {
+    try {
+      // 1. Verificar sesión actual PRIMERO
+      const { data: { session } } = await supabase.auth.getSession();
+
       if (session?.user) {
+        // Hay sesión activa, cargar perfil
         try {
           const profile = await getUserProfile(session.user.id);
           const completedLessons = await getCompletedLessonIds();
@@ -52,18 +55,33 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
           set({ user: null, isAuthenticated: false, isLoading: false });
         }
       } else {
+        // No hay sesión, mostrar login
         set({ user: null, isAuthenticated: false, isLoading: false });
       }
-    });
 
-    // Verificar sesión actual inmediatamente
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) {
-        // No hay sesión, detener loading
-        set({ isLoading: false });
-      }
-      // Si hay sesión, el listener onAuthStateChange lo manejará
-    });
+      // 2. Configurar listener para cambios futuros
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        if (event === 'SIGNED_IN' && session?.user) {
+          try {
+            const profile = await getUserProfile(session.user.id);
+            const completedLessons = await getCompletedLessonIds();
+            set({
+              user: { ...profile, completedLessons },
+              isAuthenticated: true,
+              isLoading: false,
+            });
+          } catch (error) {
+            console.error('Error loading user profile:', error);
+            set({ user: null, isAuthenticated: false, isLoading: false });
+          }
+        } else if (event === 'SIGNED_OUT') {
+          set({ user: null, isAuthenticated: false, isLoading: false });
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing auth:', error);
+      set({ user: null, isAuthenticated: false, isLoading: false });
+    }
   },
 
   /**
