@@ -1,4 +1,4 @@
-// Lesson 4 Template - Onboarding New Team Members
+// Lesson 4 - Complete Content: Onboarding New Team Members
 import { Lesson, Difficulty } from '../../../../../types';
 
 export const lesson04: Lesson = {

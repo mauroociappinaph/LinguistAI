@@ -1,8 +1,8 @@
-import { ChatRequest, RolePlayRequest } from '../types/requests.js';
-import { validateString, validateOptionalString, validateOptionalArray } from './common.validator.js';
+import { ChatRequestSchema, RolePlayRequestSchema, ChatRequest, RolePlayRequest } from './zod.schemas.js';
+import { ValidationError } from './common.validator.js';
 
 /**
- * Validadores para endpoints de chat
+ * Validadores para endpoints de chat usando Zod
  */
 
 /**
@@ -10,11 +10,15 @@ import { validateString, validateOptionalString, validateOptionalArray } from '.
  * @throws {ValidationError} Si la validación falla
  */
 export function validateChatRequest(body: any): ChatRequest {
-  return {
-    history: validateOptionalArray(body.history, 'history') || [],
-    newMessage: validateString(body.newMessage, 'newMessage'),
-    systemInstruction: validateOptionalString(body.systemInstruction, 'systemInstruction'),
-  };
+  const result = ChatRequestSchema.safeParse(body);
+
+  if (!result.success) {
+    // Format Zod errors into a readable string
+    const errorMessage = result.error.issues.map((e: any) => `${e.path.join('.')}: ${e.message}`).join(', ');
+    throw new ValidationError(errorMessage);
+  }
+
+  return result.data;
 }
 
 /**
@@ -22,10 +26,12 @@ export function validateChatRequest(body: any): ChatRequest {
  * @throws {ValidationError} Si la validación falla
  */
 export function validateRolePlayRequest(body: any): RolePlayRequest {
-  return {
-    history: validateOptionalArray(body.history, 'history') || [],
-    newMessage: validateString(body.newMessage, 'newMessage'),
-    scenarioContext: validateString(body.scenarioContext, 'scenarioContext'),
-    aiPersona: validateString(body.aiPersona, 'aiPersona'),
-  };
+  const result = RolePlayRequestSchema.safeParse(body);
+
+  if (!result.success) {
+    const errorMessage = result.error.issues.map((e: any) => `${e.path.join('.')}: ${e.message}`).join(', ');
+    throw new ValidationError(errorMessage);
+  }
+
+  return result.data;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface GrammarContextProps {
   examples: string[];
@@ -12,56 +13,78 @@ interface GrammarContextProps {
 export const GrammarContext: React.FC<GrammarContextProps> = ({ examples, usage }) => {
   const [showAllExamples, setShowAllExamples] = useState(false);
 
-  const formatExample = (text: string) => {
-    // Replaces **text** with styled spans
-    return text.replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded">$1</span>');
+  // Custom components for ReactMarkdown in Examples
+  const ExampleMarkdownComponents = {
+    strong: ({ children }: any) => (
+      <span className="font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded">
+        {children}
+      </span>
+    ),
+    p: ({ children }: any) => <span className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{children}</span>
   };
 
-  const formatUsage = (text: string) => {
-    return text
-      .split('\n\n')
-      .map((section, idx) => {
-        // Detectar secciones con emojis
-        if (section.match(/^🕒|^🧱/)) {
-          const lines = section.split('\n');
-          const header = lines[0];
-          const items = lines.slice(1);
+  // Custom components for ReactMarkdown in Usage
+  const UsageMarkdownComponents = {
+    strong: ({ children }: any) => <strong className="text-indigo-600 dark:text-indigo-400">{children}</strong>,
+    em: ({ children }: any) => <em className="text-slate-600 dark:text-slate-400 italic">{children}</em>,
+    h5: ({ children }: any) => (
+      <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+        {children}
+      </h5>
+    ),
+    ul: ({ children }: any) => <ul className="space-y-2 mb-6 last:mb-0">{children}</ul>,
+    li: ({ children }: any) => (
+      <li className="flex gap-3 items-start">
+        <span className="flex-shrink-0 w-1.5 h-1.5 bg-indigo-400 rounded-full mt-2"></span>
+        <span className="text-slate-700 dark:text-slate-300 leading-relaxed flex-1">
+          {children}
+        </span>
+      </li>
+    ),
+    p: ({ children }: any) => (
+      <p className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
+        {children}
+      </p>
+    )
+  };
 
-          return (
-            <div key={idx} className="mb-6 last:mb-0">
-              <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
-                {header}
-              </h5>
-              <ul className="space-y-2">
-                {items.map((item, itemIdx) => {
-                  if (item.trim().startsWith('-')) {
-                    const cleanItem = item.replace(/^-\s*/, '');
-                    const formatted = cleanItem.replace(/\*\*(.*?)\*\*/g, '<strong class="text-indigo-600 dark:text-indigo-400">$1</strong>');
-                    const italicFormatted = formatted.replace(/\*(.*?)\*/g, '<em class="text-slate-600 dark:text-slate-400 italic">$1</em>');
+  // Helper to pre-process usage text to make it more markdown-friendly if needed
+  // Currently the input format seems to be custom text with some markdown-like features
+  // We might need to adapt the content or the renderer.
+  // For now, let's assume the content is close enough to markdown or we render it block by block.
 
-                    return (
-                      <li key={itemIdx} className="flex gap-3 items-start">
-                        <span className="flex-shrink-0 w-1.5 h-1.5 bg-indigo-400 rounded-full mt-2"></span>
-                        <span
-                          className="text-slate-700 dark:text-slate-300 leading-relaxed flex-1"
-                          dangerouslySetInnerHTML={{ __html: italicFormatted }}
-                        />
-                      </li>
-                    );
-                  }
-                  return null;
-                })}
-              </ul>
-            </div>
-          );
-        }
+  // Since the original code split by double newline and handled specific prefixes like emojis,
+  // we can replicate that structure but render the *content* of those blocks with ReactMarkdown.
 
-        return (
-          <p key={idx} className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
-            {section}
-          </p>
-        );
-      });
+  const renderUsageSection = (text: string) => {
+    return text.split('\n\n').map((section, idx) => {
+       // Detect sections with emojis (headers)
+       if (section.match(/^🕒|^🧱/)) {
+         const lines = section.split('\n');
+         const header = lines[0];
+         const items = lines.slice(1).map(line => line.replace(/^-\s*/, '- ')); // Ensure standard markdown list
+         const content = items.join('\n');
+
+         return (
+           <div key={idx} className="mb-6 last:mb-0">
+             <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+               {header}
+             </h5>
+             <ReactMarkdown components={UsageMarkdownComponents}>
+               {content}
+             </ReactMarkdown>
+           </div>
+         );
+       }
+
+       return (
+         <div key={idx}>
+            <ReactMarkdown components={UsageMarkdownComponents}>
+              {section}
+            </ReactMarkdown>
+         </div>
+       );
+    });
   };
 
   const displayedExamples = showAllExamples ? examples : examples.slice(0, 4);
@@ -94,10 +117,11 @@ export const GrammarContext: React.FC<GrammarContextProps> = ({ examples, usage 
               {idx + 1}
             </div>
 
-            <p
-              className="text-base text-slate-700 dark:text-slate-300 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: formatExample(ex) }}
-            />
+            <div className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <ReactMarkdown components={ExampleMarkdownComponents}>
+                {ex}
+              </ReactMarkdown>
+            </div>
           </div>
         ))}
       </div>
@@ -139,7 +163,7 @@ export const GrammarContext: React.FC<GrammarContextProps> = ({ examples, usage 
           </h4>
         </div>
         <div className="text-sm">
-          {formatUsage(usage)}
+          {renderUsageSection(usage)}
         </div>
       </div>
     </div>

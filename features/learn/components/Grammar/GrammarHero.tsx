@@ -1,5 +1,6 @@
 import React from 'react';
 import { GrammarSection } from '../../../../types';
+import ReactMarkdown from 'react-markdown';
 
 interface GrammarHeroProps {
   title: string;
@@ -12,50 +13,32 @@ interface GrammarHeroProps {
  */
 export const GrammarHero: React.FC<GrammarHeroProps> = ({ title, explanation }) => {
 
-  // Función para formatear el texto con markdown básico
-  const formatText = (text: string) => {
-    // Handle undefined or non-string explanation
-    if (typeof text !== 'string' || !text) {
-      return (
-        <p className="mb-4 text-indigo-50 leading-relaxed">
-          Content coming soon...
-        </p>
-      );
-    }
+  // Custom components for ReactMarkdown to match existing styles
+  const MarkdownComponents = {
+    strong: ({ children }: any) => <strong className="text-white font-semibold">{children}</strong>,
+    em: ({ children }: any) => <em className="text-indigo-200 italic">{children}</em>,
+    p: ({ children }: any) => {
+      // Check if paragraph starts with the bullet point marker
+      const text = Array.isArray(children) ? children.join('') : String(children);
 
-    return text
-      .split('\n\n')
-      .map((paragraph, idx) => {
-        // Detectar si es un título o bullet point
-        if (paragraph.startsWith('🔹')) {
-          const parts = paragraph.split('—');
-          const bulletTitle = parts[0].replace('🔹 **', '').replace('**', '').trim();
-          const bulletContent = parts[1]?.trim() || '';
-
-          return (
-            <div key={idx} className="flex gap-3 items-start mb-4">
-              <span className="flex-shrink-0 w-2 h-2 bg-indigo-300 rounded-full mt-2"></span>
-              <div>
-                <span className="font-bold text-white">{bulletTitle}</span>
-                <span className="text-indigo-100"> — {bulletContent}</span>
-              </div>
-            </div>
-          );
-        }
-
-        // Formatear texto con **bold**
-        const formattedParagraph = paragraph
-          .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em class="text-indigo-200 italic">$1</em>');
+      if (text.startsWith('🔹')) {
+        const parts = text.split('—');
+        const bulletTitle = parts[0].replace('🔹', '').trim();
+        const bulletContent = parts[1]?.trim() || '';
 
         return (
-          <p
-            key={idx}
-            className="mb-4 text-indigo-50 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: formattedParagraph }}
-          />
+          <div className="flex gap-3 items-start mb-4">
+            <span className="flex-shrink-0 w-2 h-2 bg-indigo-300 rounded-full mt-2"></span>
+            <div>
+              <span className="font-bold text-white">{bulletTitle}</span>
+              <span className="text-indigo-100"> — {bulletContent}</span>
+            </div>
+          </div>
         );
-      });
+      }
+
+      return <p className="mb-4 text-indigo-50 leading-relaxed">{children}</p>;
+    }
   };
 
   return (
@@ -92,8 +75,16 @@ export const GrammarHero: React.FC<GrammarHeroProps> = ({ title, explanation }) 
 
         {/* Explanation content */}
         <div className="max-w-4xl">
-          <div className="text-base md:text-lg">
-            {formatText(explanation)}
+          <div className="text-base md:text-lg text-indigo-50">
+             {explanation ? (
+              <ReactMarkdown components={MarkdownComponents}>
+                {explanation}
+              </ReactMarkdown>
+            ) : (
+              <p className="mb-4 text-indigo-50 leading-relaxed">
+                Content coming soon...
+              </p>
+            )}
           </div>
         </div>
 
