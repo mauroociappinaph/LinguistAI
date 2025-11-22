@@ -7,7 +7,8 @@ import {
   gettingStartedLesson05,
   gettingStartedLesson06,
   everyDayWorkLifeLesson01,
-  everyDayWorkLifeLesson02
+  everyDayWorkLifeLesson02,
+  everyDayWorkLifeLesson03
 } from './lessons/A1/index';
 
 
@@ -37,7 +38,8 @@ export const CURRICULUM: Module[] = [
     level: Difficulty.A1,
     lessons: [
       everyDayWorkLifeLesson01,
-      everyDayWorkLifeLesson02
+      everyDayWorkLifeLesson02,
+      everyDayWorkLifeLesson03
     ]
   }
   // Future modules can be added here as the curriculum expands
