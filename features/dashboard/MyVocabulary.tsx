@@ -13,20 +13,21 @@ interface SavedWord {
 }
 
 export const MyVocabulary: React.FC = () => {
-  const [vocabulary, setVocabulary] = useState<SavedWord[]>([]);
+  const [allVocabulary, setAllVocabulary] = useState<SavedWord[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | number>('all');
 
+  // Cargar datos solo una vez al montar
   useEffect(() => {
     loadVocabulary();
-  }, [filter]);
+  }, []);
 
   const loadVocabulary = async () => {
     setLoading(true);
     try {
-      const filters = filter !== 'all' ? { masteryLevel: filter } : undefined;
-      const data = await getUserVocabulary(filters) as SavedWord[];
-      setVocabulary(data);
+      // Cargar TODOS los datos una sola vez
+      const data = await getUserVocabulary() as SavedWord[];
+      setAllVocabulary(data);
     } catch (error) {
       console.error('Error loading vocabulary:', error);
     } finally {
@@ -34,10 +35,15 @@ export const MyVocabulary: React.FC = () => {
     }
   };
 
+  // Filtrar localmente (sin hacer queries a Supabase)
+  const filteredVocabulary = filter === 'all'
+    ? allVocabulary
+    : allVocabulary.filter(v => v.mastery_level === filter);
+
   const handleDelete = async (id: string) => {
     try {
       await deleteVocabularyItem(id);
-      setVocabulary(vocabulary.filter(v => v.id !== id));
+      setAllVocabulary(allVocabulary.filter(v => v.id !== id));
     } catch (error) {
       console.error('Error deleting word:', error);
     }
@@ -46,7 +52,7 @@ export const MyVocabulary: React.FC = () => {
   const handleUpdateMastery = async (id: string, level: number) => {
     try {
       await updateMasteryLevel(id, level);
-      setVocabulary(vocabulary.map(v =>
+      setAllVocabulary(allVocabulary.map(v =>
         v.id === id ? { ...v, mastery_level: level } : v
       ));
     } catch (error) {
@@ -91,7 +97,8 @@ export const MyVocabulary: React.FC = () => {
           My Vocabulary
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          {vocabulary.length} {vocabulary.length === 1 ? 'word' : 'words'} saved
+          {filteredVocabulary.length} {filteredVocabulary.length === 1 ? 'word' : 'words'}
+          {filter !== 'all' && ` (${allVocabulary.length} total)`}
         </p>
       </div>
 
@@ -123,19 +130,23 @@ export const MyVocabulary: React.FC = () => {
       </div>
 
       {/* Vocabulary List */}
-      {vocabulary.length === 0 ? (
+      {filteredVocabulary.length === 0 ? (
         <div className="text-center py-16">
           <BookOpen className="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
-            No words saved yet
+            {filter === 'all'
+              ? 'No words saved yet'
+              : `No ${getMasteryLabel(filter as number)} words`}
           </h3>
           <p className="text-gray-500 dark:text-gray-500">
-            Start saving words from your lessons to build your personal vocabulary
+            {filter === 'all'
+              ? 'Start saving words from your lessons to build your personal vocabulary'
+              : 'Try a different mastery level filter'}
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {vocabulary.map((item) => (
+          {filteredVocabulary.map((item) => (
             <div
               key={item.id}
               className="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all group"
