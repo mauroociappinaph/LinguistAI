@@ -179,30 +179,26 @@ const createUserProfile = async (
   name: string,
   email: string
 ) => {
-  const { error } = await supabase.from('profiles').upsert(
-    {
-      id: userId,
-      name,
-      email,
-      role: 'user', // Rol por defecto
-      current_level: 'A1',
-      xp: 0,
-      streak: 0,
-      badges: [],
-    },
-    {
-      onConflict: 'id', // Si ya existe un perfil con este id, actualizarlo
-    }
-  );
+  const { error } = await supabase.from('profiles').insert({
+    id: userId,
+    name,
+    email,
+    role: 'user', // Rol por defecto
+    current_level: 'A1',
+    xp: 0,
+    streak: 0,
+    badges: [],
+  });
 
   if (error) throw handleSupabaseError(error);
 };
 
 /**
  * Obtiene el perfil completo del usuario
- * Helper privado usado solo internamente
+ * @param userId - ID del usuario
+ * @returns Perfil completo del usuario
  */
-const getUserProfile = async (userId: string): Promise<UserState> => {
+export const getUserProfile = async (userId: string): Promise<UserState> => {
   const { data, error } = await supabase
     .from('profiles')
     .select('*')

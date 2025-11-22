@@ -3,12 +3,13 @@ import { UserState, Difficulty } from '../types';
 import {
   getCurrentUser,
   signOut as supabaseSignOut,
-  onAuthStateChange,
+  getUserProfile,
 } from '../services/supabase/auth';
 import {
   markLessonComplete,
   getCompletedLessonIds,
 } from '../services/supabase/progress';
+import { supabase } from '../services/supabase/client';
 
 export interface UserSlice {
   user: UserState | null;
@@ -35,19 +36,34 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
    * Se llama una vez al inicio de la app
    */
   initializeAuth: () => {
-    const { loadUserProfile } = get();
-
     // Listener de cambios de autenticación
-    onAuthStateChange(async (user) => {
-      if (user) {
-        set({ user, isAuthenticated: true, isLoading: false });
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session?.user) {
+        try {
+          const profile = await getUserProfile(session.user.id);
+          const completedLessons = await getCompletedLessonIds();
+          set({
+            user: { ...profile, completedLessons },
+            isAuthenticated: true,
+            isLoading: false,
+          });
+        } catch (error) {
+          console.error('Error loading user profile:', error);
+          set({ user: null, isAuthenticated: false, isLoading: false });
+        }
       } else {
         set({ user: null, isAuthenticated: false, isLoading: false });
       }
     });
 
-    // Cargar usuario actual al iniciar
-    loadUserProfile();
+    // Verificar sesión actual inmediatamente
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        // No hay sesión, detener loading
+        set({ isLoading: false });
+      }
+      // Si hay sesión, el listener onAuthStateChange lo manejará
+    });
   },
 
   /**
