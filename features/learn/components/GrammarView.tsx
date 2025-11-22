@@ -35,12 +35,12 @@ export const GrammarView: React.FC<GrammarViewProps> = ({ grammar }) => {
         <GrammarContext examples={grammar.examples} usage={grammar.usage} />
       </div>
 
-      {/* 3. Common Mistakes */}
+      {/* 4. Common Mistakes */}
       <div className="animate-in slide-in-from-bottom-4 fade-in duration-500 delay-300">
         <GrammarMistakes mistakes={grammar.commonMistakes} />
       </div>
 
-      {/* 4. Quick Check (Interactive Exercise) */}
+      {/* 5. Quick Check (Interactive Exercise) */}
       {grammar.interactiveExercise && (
         <div className="animate-in slide-in-from-bottom-4 fade-in duration-500 delay-450">
           <GrammarQuiz exercise={grammar.interactiveExercise} />

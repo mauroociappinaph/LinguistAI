@@ -1,31 +1,185 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReadingActivity } from '../../../types';
+import { ChevronDown, BookOpen, HelpCircle, CheckCircle } from 'lucide-react';
 
 interface ReadingViewProps {
   activity: ReadingActivity;
 }
 
+interface ComprehensionQuestionProps {
+  question: string;
+  answer: string;
+  index: number;
+}
+
+/**
+ * Componente individual para cada pregunta de comprensión
+ * Implementa un acordeón expandible con animaciones suaves
+ */
+const ComprehensionQuestion: React.FC<ComprehensionQuestionProps> = ({
+  question,
+  answer,
+  index
+}) => {
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  return (
+    <div
+      className="group border-b border-indigo-800/30 last:border-0 pb-5 last:pb-0 transition-all duration-300"
+    >
+      {/* Pregunta */}
+      <div className="flex items-start gap-3 mb-3">
+        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-800/40 flex items-center justify-center text-indigo-200 font-semibold text-sm mt-0.5">
+          {index + 1}
+        </div>
+        <div className="flex-1">
+          <div className="flex items-start gap-2">
+            <HelpCircle className="w-5 h-5 text-indigo-300 flex-shrink-0 mt-0.5" />
+            <p className="font-medium text-white leading-relaxed">
+              {question}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Botón para revelar respuesta */}
+      <button
+        onClick={() => setIsRevealed(!isRevealed)}
+        className="ml-11 flex items-center gap-2 text-sm font-medium text-indigo-300 hover:text-indigo-200 transition-colors duration-200 group/btn"
+        aria-expanded={isRevealed}
+        aria-label={isRevealed ? "Ocultar respuesta" : "Mostrar respuesta"}
+      >
+        <ChevronDown
+          className={`w-4 h-4 transition-transform duration-300 ${
+            isRevealed ? 'rotate-180' : ''
+          }`}
+        />
+        <span>{isRevealed ? 'Ocultar respuesta' : 'Mostrar respuesta'}</span>
+      </button>
+
+      {/* Respuesta con animación */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isRevealed ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="ml-11 flex items-start gap-2 bg-indigo-900/40 rounded-lg p-4 border border-indigo-700/30">
+          <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+          <p className="text-indigo-100 leading-relaxed">
+            {answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Vista principal de Reading optimizada para una experiencia de lectura superior
+ *
+ * Mejoras implementadas:
+ * - Tipografía optimizada para lectura digital (serif, line-height 1.8)
+ * - Ancho máximo de 65-75 caracteres por línea para legibilidad óptima
+ * - Jerarquía visual clara con separadores y espaciado generoso
+ * - Preguntas de comprensión interactivas con acordeón
+ * - Microanimaciones suaves y estados hover
+ * - Diseño responsive y accesible
+ */
 export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
   return (
-      <div className="space-y-6 animate-in slide-in-from-right-8 duration-300">
-           <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
-               <h3 className="font-bold text-xl text-slate-800 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">{activity.title}</h3>
-               <div className="prose prose-lg dark:prose-invert text-slate-700 dark:text-slate-300 whitespace-pre-wrap leading-relaxed font-serif">
-                   {activity.text}
-               </div>
-           </div>
-           
-           <div className="bg-indigo-900 dark:bg-indigo-950 text-white p-6 rounded-2xl border border-indigo-800">
-               <h4 className="font-bold mb-4">Comprehension Check</h4>
-               <div className="space-y-4">
-                   {activity.comprehensionQuestions.map((q, i) => (
-                       <div key={i} className="border-b border-indigo-800 pb-4 last:border-0">
-                           <p className="font-medium mb-2">Q: {q.question}</p>
-                           <p className="text-indigo-300 text-sm">A: {q.answer}</p>
-                       </div>
-                   ))}
-               </div>
-           </div>
+    <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
+      {/* Header Section */}
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+          <BookOpen className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            Actividad de Lectura
+          </p>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            {activity.title}
+          </h2>
+        </div>
       </div>
+
+      {/* Reading Content - Optimizado para lectura */}
+      <article className="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="px-8 py-10 md:px-12 md:py-14">
+          {/* Contenedor con ancho máximo optimizado para lectura */}
+          <div className="max-w-3xl mx-auto">
+            <div
+              className="
+                prose prose-lg dark:prose-invert
+                prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
+                prose-p:text-slate-700 dark:prose-p:text-slate-300
+                prose-p:leading-[1.85] prose-p:mb-6
+                prose-strong:text-slate-900 dark:prose-strong:text-white
+                prose-strong:font-semibold
+                max-w-none
+                text-[1.125rem] md:text-[1.1875rem]
+                font-serif
+                whitespace-pre-wrap
+              "
+              style={{
+                // Optimización adicional para legibilidad
+                textRendering: 'optimizeLegibility',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+              }}
+            >
+              {activity.text}
+            </div>
+          </div>
+        </div>
+
+        {/* Separador visual sutil */}
+        <div className="h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
+
+        {/* Metadata o información adicional (opcional) */}
+        <div className="px-8 py-4 bg-slate-50 dark:bg-slate-900/50">
+          <p className="text-sm text-slate-500 dark:text-slate-400 text-center">
+            📖 Tómate tu tiempo para leer y comprender el contenido
+          </p>
+        </div>
+      </article>
+
+      {/* Comprehension Questions Section */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-900 to-purple-900 dark:from-indigo-950 dark:via-indigo-950 dark:to-purple-950 text-white rounded-3xl shadow-lg border border-indigo-800/50 overflow-hidden">
+        {/* Header de la sección */}
+        <div className="px-8 py-6 border-b border-indigo-800/30 bg-indigo-900/40">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-indigo-700/50 flex items-center justify-center">
+              <HelpCircle className="w-5 h-5 text-indigo-200" />
+            </div>
+            <div>
+              <h3 className="font-bold text-lg">Comprensión de Lectura</h3>
+              <p className="text-sm text-indigo-300 mt-0.5">
+                {activity.comprehensionQuestions.length} {activity.comprehensionQuestions.length === 1 ? 'pregunta' : 'preguntas'} para verificar tu comprensión
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Lista de preguntas */}
+        <div className="px-8 py-6 space-y-5">
+          {activity.comprehensionQuestions.map((q, i) => (
+            <ComprehensionQuestion
+              key={i}
+              question={q.question}
+              answer={q.answer}
+              index={i}
+            />
+          ))}
+        </div>
+
+        {/* Footer con tip */}
+        <div className="px-8 py-4 bg-indigo-950/40 border-t border-indigo-800/30">
+          <p className="text-sm text-indigo-300 text-center">
+            💡 Intenta responder mentalmente antes de revelar las respuestas
+          </p>
+        </div>
+      </section>
+    </div>
   );
 };
