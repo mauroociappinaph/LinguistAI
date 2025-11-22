@@ -29,7 +29,8 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({
 
     setIsSaving(true);
     try {
-      await addVocabularyItem(item.item, item.explanation, lessonId);
+      const { addVocabularyWord } = useStore.getState();
+      await addVocabularyWord(item.item, item.explanation, lessonId);
       setIsSaved(true);
     } catch (error) {
       console.error('Error saving vocabulary:', error);

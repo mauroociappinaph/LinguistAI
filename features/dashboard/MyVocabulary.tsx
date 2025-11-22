@@ -1,6 +1,7 @@
+```javascript
 import React, { useEffect, useState } from 'react';
 import { BookOpen, Trash2, TrendingUp, Calendar } from 'lucide-react';
-import { getUserVocabulary, deleteVocabularyItem, updateMasteryLevel } from '../../services/supabase/vocabulary';
+import { useStore } from '../../store/useStore';
 
 interface SavedWord {
   id: string;
@@ -13,37 +14,31 @@ interface SavedWord {
 }
 
 export const MyVocabulary: React.FC = () => {
-  const [allVocabulary, setAllVocabulary] = useState<SavedWord[]>([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    vocabulary,
+    isVocabularyLoaded,
+    loadVocabulary,
+    deleteVocabularyWord,
+    updateWordMastery
+  } = useStore();
+
   const [filter, setFilter] = useState<'all' | number>('all');
 
-  // Cargar datos solo una vez al montar
+  // Cargar vocabulario si aún no está cargado
   useEffect(() => {
-    loadVocabulary();
-  }, []);
-
-  const loadVocabulary = async () => {
-    setLoading(true);
-    try {
-      // Cargar TODOS los datos una sola vez
-      const data = await getUserVocabulary() as SavedWord[];
-      setAllVocabulary(data);
-    } catch (error) {
-      console.error('Error loading vocabulary:', error);
-    } finally {
-      setLoading(false);
+    if (!isVocabularyLoaded) {
+      loadVocabulary();
     }
-  };
+  }, [isVocabularyLoaded, loadVocabulary]);
 
   // Filtrar localmente (sin hacer queries a Supabase)
   const filteredVocabulary = filter === 'all'
-    ? allVocabulary
-    : allVocabulary.filter(v => v.mastery_level === filter);
+    ? vocabulary
+    : vocabulary.filter(v => v.mastery_level === filter);
 
   const handleDelete = async (id: string) => {
     try {
-      await deleteVocabularyItem(id);
-      setAllVocabulary(allVocabulary.filter(v => v.id !== id));
+      await deleteVocabularyWord(id);
     } catch (error) {
       console.error('Error deleting word:', error);
     }
@@ -51,10 +46,7 @@ export const MyVocabulary: React.FC = () => {
 
   const handleUpdateMastery = async (id: string, level: number) => {
     try {
-      await updateMasteryLevel(id, level);
-      setAllVocabulary(allVocabulary.map(v =>
-        v.id === id ? { ...v, mastery_level: level } : v
-      ));
+      await updateWordMastery(id, level);
     } catch (error) {
       console.error('Error updating mastery:', error);
     }
@@ -77,7 +69,7 @@ export const MyVocabulary: React.FC = () => {
     return labels[level] || 'New';
   };
 
-  if (loading) {
+  if (!isVocabularyLoaded) {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
@@ -98,7 +90,7 @@ export const MyVocabulary: React.FC = () => {
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
           {filteredVocabulary.length} {filteredVocabulary.length === 1 ? 'word' : 'words'}
-          {filter !== 'all' && ` (${allVocabulary.length} total)`}
+          {filter !== 'all' && ` (${vocabulary.length} total)`}
         </p>
       </div>
 

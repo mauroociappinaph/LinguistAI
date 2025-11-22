@@ -50,6 +50,14 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
             isAuthenticated: true,
             isLoading: false,
           });
+
+          // Cargar vocabulario en background (sin bloquear UI)
+          const { loadVocabulary } = get() as any;
+          if (loadVocabulary) {
+            loadVocabulary().catch((err: Error) =>
+              console.error('Error loading vocabulary in background:', err)
+            );
+          }
         } catch (error) {
           console.error('Error loading user profile:', error);
           set({ user: null, isAuthenticated: false, isLoading: false });
@@ -117,6 +125,12 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
     try {
       await supabaseSignOut();
       set({ user: null, isAuthenticated: false });
+
+      // Limpiar vocabulario del cache
+      const { clearVocabulary } = get() as any;
+      if (clearVocabulary) {
+        clearVocabulary();
+      }
     } catch (error) {
       console.error('Error signing out:', error);
     }
