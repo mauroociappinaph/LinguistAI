@@ -16,7 +16,7 @@ export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
     lesson.vocabulary.length +
     lesson.phrasalVerbs.length +
     lesson.compoundWords.length +
-    lesson.functionalChunks.chunks.length;
+    (lesson.functionalChunks?.chunks?.length || 0);
 
   return (
     <div className="max-w-7xl mx-auto pb-20">
@@ -95,9 +95,15 @@ export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
           title="Useful Phrases"
           description={lesson.functionalChunks.title}
           icon={MessageSquare}
-          count={lesson.functionalChunks.chunks.length}
+          count={lesson.functionalChunks?.chunks?.length || 0}
         >
-          <PhraseTable chunks={lesson.functionalChunks.chunks} />
+          {lesson.functionalChunks?.chunks && lesson.functionalChunks.chunks.length > 0 ? (
+            <PhraseTable chunks={lesson.functionalChunks.chunks} />
+          ) : (
+            <div className="p-4 text-slate-500 italic bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+              No functional chunks available for this lesson.
+            </div>
+          )}
         </VocabularySection>
       </div>
     </div>

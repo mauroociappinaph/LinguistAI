@@ -1,6 +1,6 @@
 import { Lesson, Difficulty } from '../../../../../types';
 import { grammar } from './grammar';
-import { vocabulary, phrasalVerbs, compoundWords } from './vocabulary';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
 import { readingActivity } from './activities';
 
 export const lesson06: Lesson = {
@@ -17,7 +17,7 @@ export const lesson06: Lesson = {
   speaking: "For this project, I prefer a bottom-up approach. Let's build and test the small, individual components first. Then, we can integrate them into the larger system.",
   speakingPracticeMode: 'feedback',
   readingActivity,
-  functionalChunks: { title: "", chunks: [] },
+  functionalChunks,
   listeningActivity: { title: "", audioSrc: "", transcript: "", comprehensionQuestions: [] },
   pronunciationClinic: { title: "", explanation: "", examples: [] },
   globalAccentLab: [],

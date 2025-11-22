@@ -64,6 +64,23 @@ export const compoundWords: VocabularyItem[] = [
 ];
 
 export const functionalChunks = {
-    title: "Functional Chunks",
-    chunks: []
+    title: "Reporting Progress",
+    chunks: [
+        {
+            chunk: "I am currently working on...",
+            usage: "Stating your current task."
+        },
+        {
+            chunk: "I have finished...",
+            usage: "Reporting a completed task."
+        },
+        {
+            chunk: "The feature is ready for review.",
+            usage: "Signaling completion."
+        },
+        {
+            chunk: "We are making good progress on...",
+            usage: "Giving a general update."
+        }
+    ]
 };

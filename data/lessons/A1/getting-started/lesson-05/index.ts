@@ -1,6 +1,6 @@
 import { Lesson, Difficulty } from '../../../../../types';
 import { grammar } from './grammar';
-import { vocabulary, phrasalVerbs, compoundWords } from './vocabulary';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
 import { readingActivity } from './activities';
 
 export const lesson05: Lesson = {
@@ -17,7 +17,7 @@ export const lesson05: Lesson = {
   speaking: "Think about how you learned your first programming language. How much did you learn from tutorials (explicit) versus how much you learned from building projects and seeing examples (implicit)? Both are important.",
   speakingPracticeMode: 'feedback',
   readingActivity,
-  functionalChunks: { title: "", chunks: [] },
+  functionalChunks,
   listeningActivity: { title: "", audioSrc: "", transcript: "", comprehensionQuestions: [] },
   pronunciationClinic: { title: "", explanation: "", examples: [] },
   globalAccentLab: [],

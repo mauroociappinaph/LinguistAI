@@ -22,9 +22,9 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
       setAudioSrc(activity.audioSrc);
       setLoadError(false);
       setIsPlaying(false);
-      
+
       // If initial src is empty, trigger generation immediately
-      if (!activity.audioSrc) {
+      if (!activity.audioSrc && activity.transcript) {
           handleGenerateAudio();
       }
   }, [activity]);
@@ -61,6 +61,8 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
   }, [audioSrc, isGenerating]);
 
   const handleGenerateAudio = async () => {
+      if (!activity.transcript) return;
+
       setIsGenerating(true);
       setLoadError(false);
       const generatedUrl = await generateSpeech(activity.transcript);
@@ -72,17 +74,23 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
       setIsGenerating(false);
   };
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     if (audioRef.current && !loadError && !isGenerating) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch(e => {
-            console.error("Playback failed", e);
-            setIsPlaying(false);
-        });
+        setIsPlaying(true);
+        try {
+          await audioRef.current.play();
+        } catch (e: any) {
+          // Ignore AbortError which happens when pausing while loading
+          if (e.name !== 'AbortError') {
+             console.error("Playback failed", e);
+             setIsPlaying(false);
+          }
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -148,10 +156,10 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
                <p className="relative z-10 text-slate-400 text-sm mb-8">
                    {isGenerating ? "Generating AI Narration..." : "Audio Lesson"}
                </p>
-               
+
                {/* Custom Controls */}
                <div className="relative z-10 w-full max-w-lg bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
-                   <audio ref={audioRef} src={audioSrc} className="hidden" />
+                   <audio ref={audioRef} src={audioSrc || undefined} className="hidden" />
 
                    {loadError && !isGenerating ? (
                        <div className="text-center py-4 flex flex-col items-center justify-center h-[88px]">
@@ -164,15 +172,15 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
                            <div className="flex items-center gap-3 text-xs font-mono text-slate-300 mb-3">
                                <span>{formatTime(currentTime)}</span>
                                <div className="flex-1 relative h-1.5 bg-slate-700 rounded-full group cursor-pointer">
-                                   <div 
-                                       className="absolute top-0 left-0 h-full bg-indigo-500 rounded-full pointer-events-none" 
+                                   <div
+                                       className="absolute top-0 left-0 h-full bg-indigo-500 rounded-full pointer-events-none"
                                        style={{ width: `${(duration > 0 ? currentTime / duration : 0) * 100}%` }}
                                    ></div>
-                                   <input 
-                                       type="range" 
-                                       min={0} 
-                                       max={duration || 0} 
-                                       value={currentTime} 
+                                   <input
+                                       type="range"
+                                       min={0}
+                                       max={duration || 0}
+                                       value={currentTime}
                                        onChange={handleSeek}
                                        disabled={isGenerating}
                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
@@ -192,20 +200,20 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
                                        )}
                                    </button>
-                                   <input 
-                                       type="range" 
-                                       min="0" 
-                                       max="1" 
-                                       step="0.01" 
-                                       value={isMuted ? 0 : volume} 
+                                   <input
+                                       type="range"
+                                       min="0"
+                                       max="1"
+                                       step="0.01"
+                                       value={isMuted ? 0 : volume}
                                        onChange={handleVolumeChange}
                                        className="w-16 h-1 bg-slate-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full"
                                    />
                                </div>
 
                                {/* Play/Pause Button */}
-                               <button 
-                                   onClick={togglePlay} 
+                               <button
+                                   onClick={togglePlay}
                                    disabled={isGenerating}
                                    className={`w-12 h-12 bg-white text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-50 hover:scale-105 transition-all shadow-lg ${isGenerating ? 'opacity-50 cursor-not-allowed' : ''}`}
                                >

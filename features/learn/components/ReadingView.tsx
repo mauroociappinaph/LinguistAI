@@ -108,28 +108,40 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
         <div className="px-8 py-10 md:px-12 md:py-14">
           {/* Contenedor con ancho máximo optimizado para lectura */}
           <div className="max-w-3xl mx-auto">
-            <div
-              className="
-                prose prose-lg dark:prose-invert
-                prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
-                prose-p:text-slate-700 dark:prose-p:text-slate-300
-                prose-p:leading-[1.85] prose-p:mb-6
-                prose-strong:text-slate-900 dark:prose-strong:text-white
-                prose-strong:font-semibold
-                max-w-none
-                text-[1.125rem] md:text-[1.1875rem]
-                font-serif
-                whitespace-pre-wrap
-              "
-              style={{
-                // Optimización adicional para legibilidad
-                textRendering: 'optimizeLegibility',
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale',
-              }}
-            >
-              {activity.text}
-            </div>
+              {/* Custom Text Renderer */}
+              <div className="font-serif text-lg md:text-xl leading-relaxed">
+                {activity.text.split('\n\n').map((block, blockIndex) => {
+                  // Handle Lists
+                  if (block.trim().startsWith('- ') || block.trim().startsWith('* ')) {
+                    return (
+                      <ul key={blockIndex} className="list-disc pl-6 mb-6 space-y-2 marker:text-indigo-500">
+                        {block.split('\n').map((item, itemIndex) => (
+                          <li key={itemIndex} className="text-slate-700 dark:text-slate-300 pl-2">
+                            {item.replace(/^[-*]\s+/, '').split(/(\*\*.*?\*\*)/g).map((part, partIndex) => {
+                              if (part.startsWith('**') && part.endsWith('**')) {
+                                return <strong key={partIndex} className="font-bold text-indigo-700 dark:text-indigo-300">{part.slice(2, -2)}</strong>;
+                              }
+                              return part;
+                            })}
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  // Handle Paragraphs
+                  return (
+                    <p key={blockIndex} className="mb-6 text-slate-700 dark:text-slate-300">
+                      {block.split(/(\*\*.*?\*\*)/g).map((part, partIndex) => {
+                        if (part.startsWith('**') && part.endsWith('**')) {
+                          return <strong key={partIndex} className="font-bold text-indigo-700 dark:text-indigo-300">{part.slice(2, -2)}</strong>;
+                        }
+                        return part;
+                      })}
+                    </p>
+                  );
+                })}
+              </div>
           </div>
         </div>
 

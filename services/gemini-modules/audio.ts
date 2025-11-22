@@ -33,6 +33,11 @@ export const analyzePronunciation = async (transcript: string, context: string):
 
 // 6. Text-to-Speech Generation (Gemini 2.5 Flash Preview TTS)
 export const generateSpeech = async (text: string, voiceName: string = 'Kore'): Promise<string | null> => {
+  if (!text || !text.trim()) {
+    console.warn("generateSpeech called with empty text");
+    return null;
+  }
+
   const cacheKey = generateCacheKey(text, voiceName);
 
   // 1. Check Cache (IndexedDB)

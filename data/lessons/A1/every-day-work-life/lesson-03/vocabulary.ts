@@ -25,6 +25,23 @@ export const compoundWords: VocabularyItem[] = [
 ];
 
 export const functionalChunks = {
-    title: "Functional Chunks",
-    chunks: []
+    title: "Giving & Receiving Instructions",
+    chunks: [
+        {
+            chunk: "Run the command...",
+            usage: "Giving a direct instruction."
+        },
+        {
+            chunk: "Make sure to...",
+            usage: "Emphasizing an important step."
+        },
+        {
+            chunk: "You need to install...",
+            usage: "Stating a requirement."
+        },
+        {
+            chunk: "I'm getting an error when I...",
+            usage: "Reporting a problem during a process."
+        }
+    ]
 };

@@ -3,7 +3,7 @@ import { useStore } from '../../store/useStore';
 import { useLessonNavigation } from './hooks/useLessonNavigation';
 import { LessonHeader } from './components/LessonHeader';
 import { LessonFooter } from './components/LessonFooter';
-import { 
+import {
   LessonIntro,
   GrammarView,
   VocabView,
@@ -18,7 +18,7 @@ import {
 export const LessonRunner: React.FC = () => {
   const { lessons, activeLessonId, completeLesson, exitLesson } = useStore();
   const lesson = lessons.find(l => l.id === activeLessonId);
-  
+
   const { activeSection, setActiveSection, progress, sections } = useLessonNavigation();
 
   // Scroll to top on section change
@@ -58,11 +58,11 @@ export const LessonRunner: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
-       <LessonHeader 
-            sections={sections} 
-            activeSection={activeSection} 
-            onSectionChange={setActiveSection} 
-            progress={progress} 
+       <LessonHeader
+            sections={sections}
+            activeSection={activeSection}
+            onSectionChange={setActiveSection}
+            progress={progress}
        />
 
        <div className="flex-1 w-full max-w-5xl mx-auto py-8 md:py-12 px-4 md:px-8">
@@ -82,9 +82,9 @@ export const LessonRunner: React.FC = () => {
 
            {/* Render Footer for all sections except Quiz (which has its own completion flow) */}
            {activeSection !== 'QUIZ' && (
-             <LessonFooter 
-                onNext={handleNext} 
-                onBack={handleBack} 
+             <LessonFooter
+                onNext={handleNext}
+                onBack={handleBack}
                 nextLabel={activeSection === 'INTRO' ? 'Start Learning' : nextSection ? `Next: ${nextSection.label}` : 'Finish'}
                 showBack={activeSection !== 'INTRO'}
              />

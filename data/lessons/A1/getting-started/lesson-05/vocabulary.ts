@@ -17,6 +17,27 @@ export const vocabulary: VocabularyItem[] = [
 export const phrasalVerbs: VocabularyItem[] = [];
 
 export const compoundWords: VocabularyItem[] = [
-  { item: "top-down", explanation: "Proceeding from the general to the specific.", example: "Learning the theory before practice is a top-down approach.", pronunciation: "/ˌtɒpˈdaʊn/" },
   { item: "bottom-up", explanation: "Proceeding from the specific to the general.", example: "Learning from examples to understand a theory is a bottom-up approach.", pronunciation: "/ˌbɒtəmˈʌp/" }
 ];
+
+export const functionalChunks = {
+  title: "Discussing Learning Styles",
+  chunks: [
+    {
+      chunk: "I learn best by...",
+      usage: "Explaining your preferred learning method."
+    },
+    {
+      chunk: "It helps me to...",
+      usage: "Describing a strategy that works for you."
+    },
+    {
+      chunk: "I have a hard time with...",
+      usage: "Admitting a difficulty in learning."
+    },
+    {
+      chunk: "Can you give me an example?",
+      usage: "Asking for context to understand better."
+    }
+  ]
+};

@@ -22,6 +22,23 @@ export const phrasalVerbs: VocabularyItem[] = [
 export const compoundWords: VocabularyItem[] = [];
 
 export const functionalChunks = {
-    title: "Functional Chunks",
-    chunks: []
+    title: "Discussing Tools & Preferences",
+    chunks: [
+        {
+            chunk: "I prefer using [Tool A] over [Tool B].",
+            usage: "Use this to express a preference between two options."
+        },
+        {
+            chunk: "It is much easier to...",
+            usage: "Use this to explain why a tool or method is better."
+        },
+        {
+            chunk: "I'm having trouble with...",
+            usage: "Use this to report a problem with a tool or environment."
+        },
+        {
+            chunk: "How do I configure...?",
+            usage: "Use this to ask for help with setup or settings."
+        }
+    ]
 };

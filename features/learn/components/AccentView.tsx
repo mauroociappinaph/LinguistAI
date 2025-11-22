@@ -47,14 +47,14 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
         if (!audio) return;
 
         const onEnded = () => setStatus('idle');
-        
+
         const onPause = () => {
             // Only set to paused if not ended and not seeking (if we had seeking)
             if (!audio.ended && !audio.error) {
                 setStatus('paused');
             }
         };
-        
+
         const onPlay = () => setStatus('playing');
 
         audio.addEventListener('ended', onEnded);
@@ -70,7 +70,7 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
 
     const handleTogglePlay = async () => {
         if (!audioRef.current) return;
-        
+
         // Case 1: Audio exists and is playing -> Pause
         if (status === 'playing') {
             audioRef.current.pause();
@@ -81,16 +81,19 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
         if (audioSrc && status !== 'loading') {
             try {
                 await audioRef.current.play();
-            } catch (err) {
-                console.error("Playback failed:", err);
-                setStatus('idle');
+            } catch (err: any) {
+                // Ignore AbortError which happens when pausing while loading
+                if (err.name !== 'AbortError') {
+                    console.error("Playback failed:", err);
+                    setStatus('idle');
+                }
             }
             return;
         }
 
         // Case 3: Audio missing -> Generate then Play
         setStatus('loading');
-        
+
         // Map accents to suitable voices
         const voiceMap: Record<string, string> = {
             'American': 'Kore',
@@ -98,13 +101,19 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
             'Australian': 'Fenrir',
             'German': 'Charon'
         };
-        
-        const voice = Object.keys(voiceMap).find(k => sample.accent.includes(k)) 
-            ? voiceMap[Object.keys(voiceMap).find(k => sample.accent.includes(k))!] 
+
+        const voice = Object.keys(voiceMap).find(k => sample.accent.includes(k))
+            ? voiceMap[Object.keys(voiceMap).find(k => sample.accent.includes(k))!]
             : 'Kore';
-        
+
+        if (!sample.transcript) {
+            console.warn("No transcript available for TTS generation");
+            setStatus('idle');
+            return;
+        }
+
         const url = await generateSpeech(sample.transcript, voice);
-        
+
         if (url) {
             setAudioSrc(url);
             // Short timeout to allow React to update the audio src in the DOM
@@ -140,9 +149,9 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
                   )}
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 truncate">{sample.speakerBio}</p>
-              
+
               <div className="flex items-center gap-3">
-                  <button 
+                  <button
                     onClick={handleTogglePlay}
                     disabled={status === 'loading'}
                     className={`
@@ -161,9 +170,9 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
                           <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                       )}
                   </button>
-                  
-                  <audio ref={audioRef} src={audioSrc} className="hidden" preload="none" />
-                  
+
+                  <audio ref={audioRef} src={audioSrc || undefined} className="hidden" preload="none" />
+
                   {/* Status Text */}
                   <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 min-w-[80px] transition-opacity duration-300">
                       {status === 'loading' && "Generating..."}

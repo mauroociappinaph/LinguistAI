@@ -105,3 +105,25 @@ export const compoundWords = [
     pronunciation: ""
   },
 ];
+
+export const functionalChunks = {
+  title: "Discussing Strategy",
+  chunks: [
+    {
+      chunk: "We should take a [top-down/bottom-up] approach.",
+      usage: "Proposing a strategy."
+    },
+    {
+      chunk: "Let's start with the basics.",
+      usage: "Suggesting a bottom-up start."
+    },
+    {
+      chunk: "We need to look at the big picture.",
+      usage: "Suggesting a top-down view."
+    },
+    {
+      chunk: "How do we break this down?",
+      usage: "Asking for help in decomposing a problem."
+    }
+  ]
+};
