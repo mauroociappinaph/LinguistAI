@@ -1,17 +1,6 @@
-```javascript
 import React, { useEffect, useState } from 'react';
 import { BookOpen, Trash2, TrendingUp, Calendar } from 'lucide-react';
 import { useStore } from '../../store/useStore';
-
-interface SavedWord {
-  id: string;
-  word: string;
-  translation: string | null;
-  lesson_id: string | null;
-  mastery_level: number;
-  last_reviewed: string | null;
-  created_at: string;
-}
 
 export const MyVocabulary: React.FC = () => {
   const {
@@ -71,7 +60,7 @@ export const MyVocabulary: React.FC = () => {
 
   if (!isVocabularyLoaded) {
     return (
-      <div className="flex items-center justify-center h-96">
+      <div className="flex items-center justice-center h-96">
         <div className="text-center">
           <div className="inline-block w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">Loading your vocabulary...</p>
@@ -118,8 +107,8 @@ export const MyVocabulary: React.FC = () => {
           >
             {getMasteryLabel(level)}
           </button>
-        ))}
-      </div>
+        ))}{
+        </div>
 
       {/* Vocabulary List */}
       {filteredVocabulary.length === 0 ? (
