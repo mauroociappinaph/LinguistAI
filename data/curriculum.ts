@@ -6,7 +6,8 @@ import {
   gettingStartedLesson04,
   gettingStartedLesson05,
   gettingStartedLesson06,
-  everyDayWorkLifeLesson01
+  everyDayWorkLifeLesson01,
+  everyDayWorkLifeLesson02
 } from './lessons/A1/index';
 
 
@@ -35,7 +36,8 @@ export const CURRICULUM: Module[] = [
     description: 'Master daily routines, workplace communication, and professional vocabulary used in everyday tech environments.',
     level: Difficulty.A1,
     lessons: [
-      everyDayWorkLifeLesson01
+      everyDayWorkLifeLesson01,
+      everyDayWorkLifeLesson02
     ]
   }
   // Future modules can be added here as the curriculum expands

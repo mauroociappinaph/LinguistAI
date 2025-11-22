@@ -9,5 +9,6 @@ export {
 } from './getting-started';
 
 export {
-  lesson01 as everyDayWorkLifeLesson01
+  lesson01 as everyDayWorkLifeLesson01,
+  lesson02 as everyDayWorkLifeLesson02
 } from './every-day-work-life';
