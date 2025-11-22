@@ -4,4 +4,7 @@
  */
 
 export * from './client';
-// auth, vocabulary, progress, storage, admin se exportarán cuando se creen
+export * from './auth';
+export * from './vocabulary';
+export * from './progress';
+// storage, admin se exportarán cuando se creen
