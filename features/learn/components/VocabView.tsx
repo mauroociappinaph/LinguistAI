@@ -27,11 +27,18 @@ export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
                   {lesson.vocabulary.map((v, i) => <React.Fragment key={i}>{renderVocabCard(v)}</React.Fragment>)}
               </div>
           </div>
-          
+
           <div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4">Phrasal Verbs</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {lesson.phrasalVerbs.map((v, i) => <React.Fragment key={i}>{renderVocabCard(v)}</React.Fragment>)}
+              </div>
+          </div>
+
+          <div>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4">Compound Words</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {lesson.compoundWords.map((v, i) => <React.Fragment key={i}>{renderVocabCard(v)}</React.Fragment>)}
               </div>
           </div>
 
