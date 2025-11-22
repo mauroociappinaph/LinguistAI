@@ -39,17 +39,19 @@ export const signUpWithEmail = async (
       throw new Error('El nombre es requerido');
     }
 
-    // Crear cuenta de autenticación
+    // Crear cuenta de autenticación (el trigger creará el perfil automáticamente)
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          name: name, // Esto se guarda en raw_user_meta_data para el trigger
+        },
+      },
     });
 
     if (authError) throw handleSupabaseError(authError);
     if (!authData.user) throw new Error('Error al crear usuario');
-
-    // Crear perfil de usuario en la tabla profiles
-    await createUserProfile(authData.user.id, name, email);
 
     return authData;
   } catch (error) {
@@ -169,29 +171,6 @@ export const onAuthStateChange = (
 // ============================================
 // HELPERS PRIVADOS (no exportados)
 // ============================================
-
-/**
- * Crea el perfil de usuario en la tabla profiles
- * Helper privado usado solo internamente
- */
-const createUserProfile = async (
-  userId: string,
-  name: string,
-  email: string
-) => {
-  const { error } = await supabase.from('profiles').insert({
-    id: userId,
-    name,
-    email,
-    role: 'user', // Rol por defecto
-    current_level: 'A1',
-    xp: 0,
-    streak: 0,
-    badges: [],
-  });
-
-  if (error) throw handleSupabaseError(error);
-};
 
 /**
  * Obtiene el perfil completo del usuario
