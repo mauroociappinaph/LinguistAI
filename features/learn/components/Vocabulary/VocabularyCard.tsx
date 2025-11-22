@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, BookmarkPlus, Check } from 'lucide-react';
 import { VocabularyItem } from '../../../../types';
+import { addVocabularyItem } from '../../../../services/supabase/vocabulary';
+import { useStore } from '../../../../store/useStore';
 
 interface VocabularyCardProps {
+  variant: 'large' | 'small';
   item: VocabularyItem;
-  variant?: 'large' | 'medium' | 'compact';
-  badge?: string;
-  index?: number;
+  index: number;
+  lessonId?: string;
 }
 
 export const VocabularyCard: React.FC<VocabularyCardProps> = ({
   item,
   variant = 'medium',
   badge,
-  index = 0
+  index = 0,
+  lessonId
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const { isAuthenticated } = useStore();
+
+  const handleSaveVocabulary = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!isAuthenticated || isSaved || isSaving) return;
+
+    setIsSaving(true);
+    try {
+      await addVocabularyItem(item.item, item.explanation, lessonId);
+      setIsSaved(true);
+    } catch (error) {
+      console.error('Error saving vocabulary:', error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const handlePlayAudio = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -63,17 +84,34 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({
               {item.pronunciation}
             </span>
           </div>
-          <button
-            onClick={handlePlayAudio}
-            className={`p-3 rounded-full transition-all duration-300 ${
-              isPlaying
-                ? 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400 scale-110'
-                : 'bg-slate-50 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-indigo-400'
-            }`}
-            aria-label="Play pronunciation"
-          >
-            {isPlaying ? <Volume2 className="w-5 h-5 animate-pulse" /> : <Volume2 className="w-5 h-5" />}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={handlePlayAudio}
+              className={`p-3 rounded-full transition-all duration-300 ${
+                isPlaying
+                  ? 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400 scale-110'
+                  : 'bg-slate-50 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-indigo-400'
+              }`}
+              aria-label="Play pronunciation"
+            >
+              {isPlaying ? <Volume2 className="w-5 h-5 animate-pulse" /> : <Volume2 className="w-5 h-5" />}
+            </button>
+            {isAuthenticated && (
+              <button
+                onClick={handleSaveVocabulary}
+                disabled={isSaved || isSaving}
+                className={`p-3 rounded-full transition-all duration-300 ${
+                  isSaved
+                    ? 'bg-green-100 text-green-600 dark:bg-green-900/50 dark:text-green-400'
+                    : 'bg-slate-50 text-slate-400 hover:bg-green-50 hover:text-green-600 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-green-400 disabled:opacity-50'
+                }`}
+                aria-label="Save to my vocabulary"
+                title="Save to my vocabulary"
+              >
+                {isSaved ? <Check className="w-5 h-5" /> : <BookmarkPlus className="w-5 h-5" />}
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="space-y-4">
@@ -117,16 +155,32 @@ export const VocabularyCard: React.FC<VocabularyCardProps> = ({
             {item.pronunciation}
           </span>
         </div>
-        <button
-          onClick={handlePlayAudio}
-          className={`p-2 rounded-full transition-colors ${
-            isPlaying
-              ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30'
-              : 'text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400'
-          }`}
-        >
-          <Volume2 className="w-4 h-4" />
-        </button>
+        <div className="flex gap-1">
+          <button
+            onClick={handlePlayAudio}
+            className={`p-2 rounded-full transition-colors ${
+              isPlaying
+                ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30'
+                : 'text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400'
+            }`}
+          >
+            <Volume2 className="w-4 h-4" />
+          </button>
+          {isAuthenticated && (
+            <button
+              onClick={handleSaveVocabulary}
+              disabled={isSaved || isSaving}
+              className={`p-2 rounded-full transition-colors ${
+                isSaved
+                  ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30'
+                  : 'text-slate-300 hover:text-green-500 dark:text-slate-600 dark:hover:text-green-400 disabled:opacity-50'
+              }`}
+              title="Save to my vocabulary"
+            >
+              {isSaved ? <Check className="w-4 h-4" /> : <BookmarkPlus className="w-4 h-4" />}
+            </button>
+          )}
+        </div>
       </div>
 
       <p className={`text-slate-600 dark:text-slate-300 mb-3 ${

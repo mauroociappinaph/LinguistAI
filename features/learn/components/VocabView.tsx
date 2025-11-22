@@ -41,6 +41,7 @@ export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
                 variant="large"
                 item={v}
                 index={i}
+                lessonId={lesson.id}
               />
             ))}
           </div>
@@ -62,6 +63,7 @@ export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
                   item={v}
                   badge="Phrasal"
                   index={i}
+                  lessonId={lesson.id}
                 />
               ))}
             </div>
