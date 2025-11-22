@@ -110,7 +110,7 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
           <div className="max-w-3xl mx-auto">
               {/* Custom Text Renderer */}
               <div className="font-serif text-lg md:text-xl leading-relaxed">
-                {activity.text.split('\n\n').map((block, blockIndex) => {
+                {(activity.text || '').split('\n\n').map((block, blockIndex) => {
                   // Handle Lists
                   if (block.trim().startsWith('- ') || block.trim().startsWith('* ')) {
                     return (
@@ -167,7 +167,7 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
             <div>
               <h3 className="font-bold text-lg">Comprensión de Lectura</h3>
               <p className="text-sm text-indigo-300 mt-0.5">
-                {activity.comprehensionQuestions.length} {activity.comprehensionQuestions.length === 1 ? 'pregunta' : 'preguntas'} para verificar tu comprensión
+                {(activity.comprehensionQuestions || []).length} {(activity.comprehensionQuestions || []).length === 1 ? 'pregunta' : 'preguntas'} para verificar tu comprensión
               </p>
             </div>
           </div>
@@ -175,11 +175,11 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
 
         {/* Lista de preguntas */}
         <div className="px-8 py-6 space-y-5">
-          {activity.comprehensionQuestions.map((q, i) => (
+          {(activity.comprehensionQuestions || []).map((q, i) => (
             <ComprehensionQuestion
               key={i}
-              question={q.question}
-              answer={q.answer}
+              question={q?.question || 'Question coming soon...'}
+              answer={q?.answer || 'Answer coming soon...'}
               index={i}
             />
           ))}

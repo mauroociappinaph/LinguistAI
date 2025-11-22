@@ -242,7 +242,7 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
                    <h4 className="font-bold text-slate-800 dark:text-white text-sm uppercase tracking-wide">Transcript</h4>
                </div>
                <p className="text-slate-600 dark:text-slate-300 text-sm leading-loose font-medium border-l-4 border-indigo-200 dark:border-indigo-900 pl-4">
-                   {activity.transcript}
+                   {activity.transcript || 'Transcript coming soon...'}
                </p>
            </div>
 
@@ -251,12 +251,12 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
                    <span>✅</span> Comprehension Check
                </h4>
                <div className="space-y-3">
-                   {activity.comprehensionQuestions.map((q, i) => (
+                   {(activity.comprehensionQuestions || []).map((q, i) => (
                        <div key={i} className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-indigo-100 dark:border-slate-700/50">
-                           <p className="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">{q.question}</p>
+                           <p className="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">{q?.question || 'Question coming soon...'}</p>
                            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-sm font-medium bg-emerald-50 dark:bg-emerald-900/20 w-fit px-3 py-1.5 rounded-lg">
                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                               {q.answer}
+                               {q?.answer || 'Answer coming soon...'}
                            </div>
                        </div>
                    ))}

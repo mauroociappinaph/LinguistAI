@@ -1,7 +1,12 @@
 import { Lesson, Difficulty } from '../../../../../types';
 import { grammar } from './grammar';
 import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
-import { readingActivity } from './activities';
+import {
+  readingActivity,
+  listeningActivity,
+  pronunciationClinic,
+  rolePlay
+} from './activities';
 
 export const lesson05: Lesson = {
   id: "l5",
@@ -18,8 +23,8 @@ export const lesson05: Lesson = {
   speakingPracticeMode: 'feedback',
   readingActivity,
   functionalChunks,
-  listeningActivity: { title: "", audioSrc: "", transcript: "", comprehensionQuestions: [] },
-  pronunciationClinic: { title: "", explanation: "", examples: [] },
+  listeningActivity,
+  pronunciationClinic,
   globalAccentLab: [],
-  rolePlay: { title: "", objective: "", aiPersona: "", initialMessage: "" }
+  rolePlay
 };

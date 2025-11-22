@@ -14,6 +14,15 @@ export const GrammarHero: React.FC<GrammarHeroProps> = ({ title, explanation }) 
 
   // Función para formatear el texto con markdown básico
   const formatText = (text: string) => {
+    // Handle undefined or non-string explanation
+    if (typeof text !== 'string' || !text) {
+      return (
+        <p className="mb-4 text-indigo-50 leading-relaxed">
+          Content coming soon...
+        </p>
+      );
+    }
+
     return text
       .split('\n\n')
       .map((paragraph, idx) => {

@@ -12,6 +12,11 @@ export const vocabulary: VocabularyItem[] = [
   { item: "smoothly / accurately", explanation: "(Adverbs) 'Smoothly' means without interruptions or problems. 'Accurately' means correctly, without any mistakes.", example: "The deployment went smoothly and the calculations were accurately reported.", pronunciation: "/ˈsmuːðli/ /ˈækjərətli/" },
   { item: "effortful", explanation: "(Adjective) Requiring a lot of physical or mental effort.", example: "Speaking a new language can be effortful at first.", pronunciation: "/ˈɛfərtfəl/" },
   { item: "spot", explanation: "(Verb) To see, notice, or recognize someone or something that is difficult to detect.", example: "Can you spot the error in this line of code?", pronunciation: "/spɒt/" },
+  { item: "memorize", explanation: "To learn something so that you remember it exactly.", example: "I use flashcards to memorize new syntax.", pronunciation: "/ˈmɛməraɪz/" },
+  { item: "practice", explanation: "To do something repeatedly to improve your skill.", example: "You need to practice coding every day.", pronunciation: "/ˈpræktɪs/" },
+  { item: "improve", explanation: "To make something better.", example: "Reading documentation helps me improve my technical knowledge.", pronunciation: "/ɪmˈpruːv/" },
+  { item: "goal", explanation: "Something you want to achieve.", example: "My goal is to become a full-stack developer.", pronunciation: "/ɡoʊl/" },
+  { item: "strategy", explanation: "A plan of action designed to achieve a long-term or overall aim.", example: "What is your strategy for learning a new language?", pronunciation: "/ˈstrætədʒi/" }
 ];
 
 export const phrasalVerbs: VocabularyItem[] = [];

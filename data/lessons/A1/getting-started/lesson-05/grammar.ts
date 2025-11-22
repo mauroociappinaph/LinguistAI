@@ -2,26 +2,63 @@ import { GrammarSection } from '../../../../../types';
 import { interactiveExercise } from './interactiveExercise';
 
 export const grammar: GrammarSection = {
-  title: "Explicit vs. Implicit Learning",
-  explanation: "Think of your brain as having two ways of learning, like two different processing modes for acquiring a new skill, such as English.\n\n1.  **Top-Down Learning (Explicit)**: This is your analytical brain. You are **taught** a rule, you think about it **consciously**, and then you apply it. It’s like learning a design pattern from a book. It can be slow and **effortful** at first.\n\n2.  **Bottom-Up Learning (Implicit)**: This is your intuitive brain. You learn naturally by seeing patterns in context, without **realizing it**. You learn to **spot** what 'feels right' **instinctively**, much like how you learned your first language. This process makes your language use **smoothly** and **accurately**.",
-  usage: "This course is designed to train both systems. We give you explicit rules, but we also provide many contextual examples and accent labs to help your brain absorb the patterns implicitly. The goal is fluency, where English feels automatic.",
+  title: "Gerunds vs. Infinitives: Talking about Learning",
+  explanation:
+    "In English, when we use two verbs together, the second verb usually changes form. It either becomes a **Gerund** (ending in **-ing**) or an **Infinitive** (starting with **to**).\n\n" +
+    "**1. Gerunds (-ing)**\n" +
+    "Use the gerund when the verb acts as a **noun** (the subject of a sentence) or after **prepositions**.\n" +
+    "- *Subject:* **Learning** English is important.\n" +
+    "- *After Preposition:* He is good **at coding**.\n\n" +
+    "**2. Infinitives (to + verb)**\n" +
+    "Use the infinitive to express **purpose** (why you do something) or after certain verbs like *want, need, decide, hope*.\n" +
+    "- *Purpose:* I use Anki **to memorize** vocabulary.\n" +
+    "- *After Verb:* I want **to master** React.\n\n" +
+    "**Common Verbs:**\n" +
+    "- **Followed by Gerund:** enjoy, finish, avoid, recommend, keep (e.g., *Keep practicing*).\n" +
+    "- **Followed by Infinitive:** want, need, decide, plan, hope (e.g., *Plan to study*).",
+
+  usage:
+    "In a professional context, you use this distinction constantly to describe your skills, your goals, and your daily activities.\n" +
+    "- **Describing skills:** 'I am good at **debugging**.'\n" +
+    "- **Stating goals:** 'My goal is **to become** a Senior Developer.'\n" +
+    "- **Explaining processes:** '**Testing** the code is essential before **deploying**.'",
+
   examples: [
-    "**Explicit**: The rule says 'add -s for plural'. You learn this rule and then apply it: 'bugs', 'features', 'sprints'.",
-    "**Implicit**: You read and hear 'the code **is** running', 'the server **is** down', 'she **is** the designer' hundreds of times. Your brain learns the pattern without thinking about it.",
-    "Think about learning a new framework. You can read the documentation (explicit), but you only really **get the hang of it** after writing and reading a lot of code (implicit)."
+    "**Gerund as Subject:** '**Refactoring** legacy code can be challenging.'",
+    "**Gerund after Preposition:** 'Thank you **for helping** me with this ticket.'",
+    "**Infinitive for Purpose:** 'We use Docker **to containerize** our applications.'",
+    "**Infinitive after Verb:** 'The team decided **to adopt** TypeScript.'",
+    "**Both (Change in meaning):** 'I stopped **coding**' (I quit) vs 'I stopped **to code**' (I paused another action to start coding)."
   ],
+
   commonMistakes: [
     {
-      incorrect: "The code runs accurate.",
-      correct: "The code runs accurately.",
-      explanation: "Use an adverb (accurately) to describe a verb (runs), not an adjective (accurate)."
+      incorrect: "I want learning React.",
+      correct: "I want to learn React.",
+      explanation: "The verb 'want' is always followed by an infinitive (to + verb)."
     },
     {
-      incorrect: "He learns instinctive new patterns.",
-      correct: "He instinctively learns new patterns.",
-      explanation: "The adverb 'instinctively' should describe the verb 'learns'."
+      incorrect: "I am interested in to learn.",
+      correct: "I am interested in learning.",
+      explanation: "After a preposition (like 'in', 'at', 'for', 'of'), you must always use the gerund (-ing)."
+    },
+    {
+      incorrect: "Develop software is fun.",
+      correct: "Developing software is fun.",
+      explanation: "When a verb is the subject of the sentence (at the beginning), it must be a gerund."
+    },
+    {
+      incorrect: "The actual version is 2.0.",
+      correct: "The current version is 2.0.",
+      explanation: "**False Friend:** 'Actual' means 'real' or 'true'. If you mean 'present' or 'now', use **current**."
+    },
+    {
+      incorrect: "I assisted the meeting.",
+      correct: "I attended the meeting.",
+      explanation: "**False Friend:** 'Assist' means 'to help'. If you mean 'to be present at an event', use **attend**."
     }
   ],
+
   interactiveExercise,
   rules: []
 };
