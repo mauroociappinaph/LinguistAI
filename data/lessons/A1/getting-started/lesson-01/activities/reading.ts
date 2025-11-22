@@ -13,6 +13,10 @@ export const readingActivity: ReadingActivity = {
       answer: "She has been working in the tech industry for eight years."
     },
     {
+      question: "What is Alex's position?",
+      answer: "He is a Senior Frontend Developer."
+    },
+    {
       question: "What field is part of Maria's professional background?",
       answer: "Her background is in behavioral psychology, which helps with user research."
     }

@@ -10,7 +10,10 @@ import {
   everyDayWorkLifeLesson02,
   everyDayWorkLifeLesson03,
   everyDayWorkLifeLesson04,
-  everyDayWorkLifeLesson05
+  everyDayWorkLifeLesson05,
+  everyDayWorkLifeLesson06,
+  everyDayWorkLifeLesson07,
+  everyDayWorkLifeLesson08
 } from './lessons/A1/index';
 
 
@@ -43,7 +46,10 @@ export const CURRICULUM: Module[] = [
       everyDayWorkLifeLesson02,
       everyDayWorkLifeLesson03,
       everyDayWorkLifeLesson04,
-      everyDayWorkLifeLesson05
+      everyDayWorkLifeLesson05,
+      everyDayWorkLifeLesson06,
+      everyDayWorkLifeLesson07,
+      everyDayWorkLifeLesson08
     ]
   }
   // Future modules can be added here as the curriculum expands

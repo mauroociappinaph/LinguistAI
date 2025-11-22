@@ -9,7 +9,10 @@ import {
     everyDayWorkLifeLesson02,
     everyDayWorkLifeLesson03,
     everyDayWorkLifeLesson04,
-    everyDayWorkLifeLesson05
+    everyDayWorkLifeLesson05,
+    everyDayWorkLifeLesson06,
+    everyDayWorkLifeLesson07,
+    everyDayWorkLifeLesson08
 } from './A1';
 
 export const ALL_LESSONS = [
@@ -23,5 +26,8 @@ export const ALL_LESSONS = [
     everyDayWorkLifeLesson02,
     everyDayWorkLifeLesson03,
     everyDayWorkLifeLesson04,
-    everyDayWorkLifeLesson05
+    everyDayWorkLifeLesson05,
+    everyDayWorkLifeLesson06,
+    everyDayWorkLifeLesson07,
+    everyDayWorkLifeLesson08
 ];

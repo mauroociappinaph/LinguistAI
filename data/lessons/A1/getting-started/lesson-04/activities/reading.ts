@@ -8,5 +8,9 @@ export const readingActivity: ReadingActivity = {
       question: "Does Maria have the new server address?",
       answer: "Yes, she does.",
     },
+    {
+      question: "When is the deadline for this task?",
+      answer: "The deadline is tomorrow at 5 p.m.",
+    }
   ],
 };

@@ -14,6 +14,10 @@ export const readingActivity: ReadingActivity = {
       answer: "It is on Friday at 5:00 p.m."
     },
     {
+      question: "What is the name of the next sprint?",
+      answer: "The next sprint is called 'July'."
+    },
+    {
       question: "When does the next sprint start?",
       answer: "It starts in July."
     }

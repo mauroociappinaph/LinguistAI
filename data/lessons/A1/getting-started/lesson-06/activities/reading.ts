@@ -6,5 +6,9 @@ export const readingActivity = {
       question: "Who starts by looking at the whole system?",
       answer: "Anna.",
     },
+    {
+      question: "Who starts by looking at the error log?",
+      answer: "Ben.",
+    }
   ],
 };

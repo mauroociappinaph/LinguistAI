@@ -7,6 +7,10 @@ export const readingActivity: ReadingActivity = {
     {
       question: "Which 'brain' is slow and effortful?",
       answer: "The Analytical Brain (explicit)."
+    },
+    {
+      question: "Which 'brain' is fast, automatic, and works without you realizing it?",
+      answer: "The Intuitive Brain (implicit)."
     }
   ]
 };

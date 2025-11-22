@@ -13,5 +13,8 @@ export {
   lesson02 as everyDayWorkLifeLesson02,
   lesson03 as everyDayWorkLifeLesson03,
   lesson04 as everyDayWorkLifeLesson04,
-  lesson05 as everyDayWorkLifeLesson05
+  lesson05 as everyDayWorkLifeLesson05,
+  lesson06 as everyDayWorkLifeLesson06,
+  lesson07 as everyDayWorkLifeLesson07,
+  lesson08 as everyDayWorkLifeLesson08
 } from './every-day-work-life';
