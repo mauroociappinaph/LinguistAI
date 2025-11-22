@@ -33,12 +33,19 @@ export const analyzePronunciation = async (transcript: string, context: string):
 
 // 6. Text-to-Speech Generation (Gemini 2.5 Flash Preview TTS)
 export const generateSpeech = async (text: string, voiceName: string = 'Kore'): Promise<string | null> => {
-  if (!text || !text.trim()) {
-    console.warn("generateSpeech called with empty text");
+  // Validación robusta de texto
+  const trimmedText = text?.trim();
+
+  if (!trimmedText) {
+    console.error("generateSpeech: Empty text provided", {
+      original: text,
+      trimmed: trimmedText,
+      type: typeof text
+    });
     return null;
   }
 
-  const cacheKey = generateCacheKey(text, voiceName);
+  const cacheKey = generateCacheKey(trimmedText, voiceName);
 
   // 1. Check Cache (IndexedDB)
   const cachedBlob = await getCachedAudio(cacheKey);
@@ -50,7 +57,7 @@ export const generateSpeech = async (text: string, voiceName: string = 'Kore'): 
   try {
     logger.info("Generating audio from Gemini API via proxy...");
     const response = await proxyFetch('/api/gemini/tts', {
-      text,
+      text: trimmedText,
       voiceName
     });
 
@@ -73,7 +80,12 @@ export const generateSpeech = async (text: string, voiceName: string = 'Kore'): 
     return URL.createObjectURL(blob);
 
   } catch (error) {
-    console.error("TTS Generation failed", error);
+    console.error("TTS Generation failed", {
+      error,
+      text: trimmedText,
+      voiceName,
+      errorMessage: error instanceof Error ? error.message : 'Unknown error'
+    });
     return null;
   }
 };
