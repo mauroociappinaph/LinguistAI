@@ -14,10 +14,10 @@ import {
 
 export const lesson02: Lesson = {
   id: "edwl-2",
-  title: "Tools of the Trade",
+  title: "Current Actions",
   level: Difficulty.A1,
-  description: "Learn to talk about your development tools using comparatives and preferences.",
-  didYouKnow: "The difference between a 'framework' and a 'library' is a key concept. With a library, *you* call the code (e.g., `myChart = new ChartLibrary()`). With a framework, *it* calls your code (the framework tells your component when to render). This is called 'Inversion of Control'.",
+  description: "Learn how to describe what you are working on right now using the Present Continuous tense.",
+  didYouKnow: "The present continuous is particularly useful in tech because software development is dynamic - what you're working on changes frequently. 'I was debugging yesterday, I am implementing today, and I will be testing tomorrow.'",
   grammar,
   vocabulary,
   phrasalVerbs,

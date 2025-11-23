@@ -1,90 +1,53 @@
 import { GrammarSection } from '../../../../../types';
 
 export const grammar: GrammarSection = {
-  title: "Present Continuous: Describing Current Activities",
-
+  title: "Prepositions of Place: Describing UI Layouts",
   explanation:
-    "The **present continuous** (am/is/are + verb-ing) is used to describe actions happening **right now**, **in progress**, or **around this moment**.\n\n" +
-    "In the tech world, this tense is essential because it allows you to clearly communicate what you're working on at this exact stage of a project.\n\n" +
-    "**Why it's crucial for developers and IT teams:**\n" +
-    "- Used constantly in **daily stand-ups**: 'I'm fixing...', 'We're testing...'\n" +
-    "- Helps clarify **current workload**: tasks, bugs, deployments, reviews\n" +
-    "- Used in **meetings**, **pull request discussions**, **pair programming**, and **incident response**\n" +
-    "- Perfect for describing **temporary actions**, not routines (‘I am deploying the update right now’)\n\n" +
-    "Structure: **Subject + am/is/are + verb-ing**",
-
+    "**Prepositions of place** are essential for describing user interfaces (UI). You need them to explain where elements are located on the screen.\n\n" +
+    "**Key Prepositions for UI:**\n" +
+    "- **at the top / bottom**: 'The navbar is at the top.'\n" +
+    "- **on the left / right**: 'The sidebar is on the left.'\n" +
+    "- **in the center / middle**: 'The modal is in the center.'\n" +
+    "- **next to**: 'The button is next to the input field.'\n" +
+    "- **below / under**: 'The error message is below the form.'\n" +
+    "- **above**: 'The title is above the image.'\n" +
+    "- **between**: 'The logo is between the menu items.'\n\n" +
+    "Use these to give precise feedback on designs and layouts.",
   usage:
-    "Use the present continuous when describing **active tasks** during collaboration:\n\n" +
-    "- 'I'm reviewing your PR.'\n" +
-    "- 'She's testing the endpoint.'\n" +
-    "- 'They’re setting up the new environment.'\n\n" +
-    "Typical contexts in IT:\n" +
-    "- Stand-ups and sprint meetings\n" +
-    "- Deployment or debugging sessions\n" +
-    "- Describing temporary states (e.g., 'The server is restarting')\n" +
-    "- Explaining what you're doing in real time during a call or demo",
-
+    "Use these prepositions when discussing designs, wireframes, or bugs related to layout.\n\n" +
+    "**Common Contexts:**\n" +
+    "- Design Reviews: 'Move the button to the right.'\n" +
+    "- Bug Reports: 'The footer is overlapping the content.'\n" +
+    "- Frontend Development: 'Position the element in the center.'",
   rules: [
-    { from: "I", to: "am + verb-ing" },
-    { from: "He / She / It", to: "is + verb-ing" },
-    { from: "We / You / They", to: "are + verb-ing" }
+    { from: "At", to: "Specific points (at the top, at the bottom)" },
+    { from: "On", to: "Surfaces/Sides (on the left, on the screen)" },
+    { from: "In", to: "Enclosed spaces (in the header, in the box)" }
   ],
-
   examples: [
-    // Real work tasks
-    "I **am working** on the login bug.",
-    "She **is testing** the new API endpoints.",
-    "We **are developing** the mobile version of the app.",
-
-    // Meetings & collaboration
-    "They **are reviewing** your pull request right now.",
-    "I **am checking** the logs to see the error.",
-    "He **is deploying** the update to production.",
-
-    // System states
-    "The server **is restarting** after the patch.",
-    "Our CI pipeline **is running** the tests.",
-    "The app **is loading** the new configuration.",
-
-    // Temporary professional situations
-    "I'm **working** remotely this week.",
-    "She's **using** a staging environment for debugging."
+    "The search bar is **at the top** of the page.",
+    "The menu is **on the left** side.",
+    "The copyright is **at the bottom**.",
+    "The image is **in the center** of the screen.",
+    "The label is **above** the input field.",
+    "The error is **below** the button."
   ],
-
   commonMistakes: [
     {
-      incorrect: "I work on the bug now.",
-      correct: "I am working on the bug right now.",
-      explanation:
-        "Use present continuous for actions happening at this moment — not simple present."
+      incorrect: "The button is in the top.",
+      correct: "The button is at the top.",
+      explanation: "Use 'at' for top and bottom."
     },
     {
-      incorrect: "I am debug the code.",
-      correct: "I am debugging the code.",
-      explanation: "Always use the **verb-ing** form (debug → debugging)."
-    },
-    {
-      incorrect: "He are testing the app.",
-      correct: "He is testing the app.",
-      explanation: "Use **is** for he/she/it."
-    },
-    {
-      incorrect: "The server is crash.",
-      correct: "The server is crashing.",
-      explanation: "The verb must be in **-ing** form."
-    },
-    {
-      incorrect: "I'm working on frontend every day.",
-      correct: "I work on frontend every day.",
-      explanation:
-        "Daily habits → simple present. Present continuous is only for temporary/in-progress actions."
+      incorrect: "The sidebar is in the left.",
+      correct: "The sidebar is on the left.",
+      explanation: "Use 'on' for left and right sides."
     }
   ],
-
   interactiveExercise: {
     type: "fill-in-the-blank",
-    question: "We ___ (develop) the new feature.",
-    options: ["are developing", "is developing", "am developing"],
-    answer: "are developing"
+    question: "The navigation bar is usually ___ the top of the page.",
+    options: ["at", "in", "on"],
+    answer: "at"
   }
 };

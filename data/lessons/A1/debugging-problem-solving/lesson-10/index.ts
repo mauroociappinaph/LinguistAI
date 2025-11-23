@@ -33,7 +33,14 @@ export const lesson10: Lesson = {
       "**Since** the database **migrated**, **all queries returned** null values.",
       "The API **failed** **because** the authentication token **expired**.",
       "**Then** the backend **returned** 500 errors **after** the load balancer **redirected** traffic."
-    ]
+    ],
+    commonMistakes: [],
+    interactiveExercise: {
+      type: "root-cause",
+      question: "Identify the root cause: The server crashed because of a memory leak.",
+      options: ["Server crash", "Memory leak"],
+      answer: "Memory leak"
+    }
   },
   vocabulary: [
     {
@@ -66,6 +73,7 @@ export const lesson10: Lesson = {
   speaking: "The service crashed because the database connection pool exhausted. When traffic spiked during the marketing campaign, connections weren't being released properly. The root cause was a missing dispose method in the connection handler.",
   speakingPracticeMode: "explanation",
   readingActivity: {
+    title: "Root Cause Analysis Process",
     text: "Root cause analysis involves systematically working backwards from symptoms to initial causes. Ask why repeatedly: symptom leads to direct cause, which leads to underlying condition, which leads to root cause. Document each level of analysis to ensure the complete picture emerges.",
     comprehensionQuestions: [
       {
@@ -77,5 +85,23 @@ export const lesson10: Lesson = {
         answer: "To ensure the complete picture emerges"
       }
     ],
+  },
+  listeningActivity: {
+    title: "Root Cause Discussion",
+    transcript: "We found the root cause.",
+    comprehensionQuestions: [],
+    audioSrc: ""
+  },
+  pronunciationClinic: {
+    title: "Root Cause Terms",
+    explanation: "Pronunciation of analysis terms.",
+    examples: []
+  },
+  globalAccentLab: [],
+  rolePlay: {
+    title: "Root Cause Meeting",
+    objective: "Discuss the root cause.",
+    aiPersona: "Team Lead",
+    initialMessage: "What was the root cause?"
   }
 };

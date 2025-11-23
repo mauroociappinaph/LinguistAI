@@ -1,4 +1,7 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
+import { commonMistakes } from './commonMistakes';
 
 export const lesson03: Lesson = {
   id: "com3",
@@ -7,128 +10,12 @@ export const lesson03: Lesson = {
   description: "Learn to write clear code comments and technical documentation using imperative instruction and present simple for explaining code functionality.",
   didYouKnow: "Well-documented code reduces debugging time by 50% and new developer onboarding by 35%. Good documentation increases code maintainability and reduces technical debt.",
 
-  grammar: {
-    title: "Imperatives for Instructions + Present Simple for Explanations",
-    explanation:
-      "**Imperatives for Code Instructions**: Direct commands - 'Import the library', 'Initialize the variable'\n**Present Simple for Code Explanations**: Describes what code does - 'The function calculates totals', 'Method handles errors'\n**Passive Voice for Technical Writing**: Focuses on actions - 'Data is validated', 'Results are returned'",
-    usage: "Code documentation and comments:\n\n📝 **Instructions**: 'Create a config file', 'Install dependencies'\n💭 **Comments**: 'Function validates user input'\n📖 **Documentation**: 'API returns user data in JSON format'",
-    rules: [
-      {
-        from: "Setup instructions",
-        to: "Imperative verb (Install, Configure, Create)"
-      },
-      {
-        from: "Code explanations",
-        to: "Subject + verb (Function + returns, Method + processes)"
-      },
-      {
-        from: "Technical descriptions",
-        to: "Passive structures (Data + is processed, Results + are displayed)"
-      }
-    ],
-    examples: [
-      "**Install** the required dependencies by running `npm install`.",
-      "The function **calculates** the total price and **returns** the result.",
-      "**Configure** the database connection with the following parameters.",
-      "Method **validates** user input and **handles** error cases.",
-      "Data **is processed** asynchronously and **results are cached**."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "function calculate total",
-        correct: "Calculates the total price using provided items",
-        explanation:
-          "Use complete sentences and clear subject-verb structure."
-      },
-      {
-        incorrect: "do validation and process",
-        correct: "Validate input data and process the results",
-        explanation:
-          "Use imperatives properly in instructions, present simple in descriptions."
-      },
-      {
-        incorrect: "it returns data",
-        correct: "The API returns user data in JSON format",
-        explanation:
-          "Include subject for clarity in technical documentation."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "___ the database connection and ___ the query.",
-      options: ["Setup, Execute", "Setups, Executes", "Setting up, Executing", "Set up, Execute"],
-      answer: "Set up, Execute"
-    }
-  },
-  vocabulary: [
-    {
-      item: "comment",
-      explanation: "A note in the code that explains its purpose or functionality.",
-      example: "// This function validates user input before processing",
-      pronunciation: "/ˈkɑmɛnt/"
-    },
-    {
-      item: "documentation",
-      explanation: "Written instructions and explanations for how to use code or systems.",
-      example: "Complete documentation is essential for API usage.",
-      pronunciation: "/ˌdɑkjʊmɛnˈteɪʃən/"
-    },
-    {
-      item: "README",
-      explanation: "A text file containing information about a project or software.",
-      example: "Always update the README when adding new features.",
-      pronunciation: "/ˈri mi/"
-    },
-    {
-      item: "API",
-      explanation: "Application Programming Interface - rules for how software components interact.",
-      example: "The API provides methods for user authentication.",
-      pronunciation: "/ˈæpi/"
-    },
-    {
-      item: "endpoint",
-      explanation: "A specific URL or connection point in an API.",
-      example: "POST /users is the endpoint for creating new accounts.",
-      pronunciation: "/ˈɛndˌpɔɪnt/"
-    },
-    {
-      item: "parameter",
-      explanation: "A variable passed to a function or method.",
-      example: "The function takes an ID parameter and returns user data.",
-      pronunciation: "/pəˈræmɪtər/"
-    },
-    {
-      item: "deprecated",
-      explanation: "Marked as no longer recommended for use, usually due to better alternatives.",
-      example: "This method is deprecated - use the new version instead.",
-      pronunciation: "/ˈdɛprɪˌkeɪtɪd/"
-    },
-    {
-      item: "refactor",
-      explanation: "To restructure existing code without changing its functionality.",
-      example: "We need to refactor this method for better performance.",
-      pronunciation: "/ˈrifæktər/"
-    }
-  ],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Code Documentation Patterns",
-    chunks: [
-      {
-        chunk: "// ___ - [explanation]",
-        usage: "Writing clear, descriptive code comments"
-      },
-      {
-        chunk: "The [component] ___ and ___",
-        usage: "Describing code functionality and behavior"
-      },
-      {
-        chunk: "To use this, ___ first, then ___",
-        usage: "Providing step-by-step usage instructions"
-      }
-    ]
-  },
+  grammar,
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
+
   scenario: "Writing clear code comments and API documentation for a team project.",
   speaking: "This function calculates totals. Install the dependencies first, then import the library. The method validates user input and returns formatted results. Update the README with the new endpoint documentation.",
   speakingPracticeMode: "documentation",

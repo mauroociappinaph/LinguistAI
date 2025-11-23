@@ -2,39 +2,38 @@ export const vocabulary = [
   {
     item: "top-down",
     explanation:
-      "Proceeding from the general to the specific. (Pronunciation: Stress on 'TOP').",
+      "Procediendo de lo general a lo específico. (Pronunciación: Acento en 'TOP').",
     example: "Learning the theory before practice is a top-down approach.",
     pronunciation: "/ˈtɒpˈdaʊn/",
   },
-  { item: "bottom-up", explanation: "Proceeding from the specific to the general.", example: "Learning from examples to understand a theory is a bottom-up approach.", pronunciation: "/ˌbɒtəmˈʌp/" },
-  { item: "top-down", explanation: "Proceeding from the general to the specific.", example: "We need a top-down view of the architecture.", pronunciation: "/ˌtɒpˈdaʊn/" },
-  { item: "efficient", explanation: "(Adjective) Achieving maximum productivity with minimum wasted effort or expense.", example: "This algorithm is more efficient than the previous one.", pronunciation: "/ɪˈfɪʃənt/" },
-  { item: "scalable", explanation: "(Adjective) Able to change in size or scale.", example: "Microservices are more scalable than monoliths.", pronunciation: "/ˈskeɪləbl/" },
-  { item: "reliable", explanation: "(Adjective) Consistently good in quality or performance; able to be trusted.", example: "PostgreSQL is a very reliable database.", pronunciation: "/rɪˈlaɪəbl/" },
-  { item: "trade-off", explanation: "(Noun) A balance achieved between two desirable but incompatible features.", example: "There is always a trade-off between speed and memory usage.", pronunciation: "/ˈtreɪd ɔːf/" },
+  { item: "bottom-up", explanation: "Procediendo de lo específico a lo general.", example: "Learning from examples to understand a theory is a bottom-up approach.", pronunciation: "/ˌbɒtəmˈʌp/" },
+  { item: "efficient", explanation: "(Adjetivo) Lograr la máxima productividad con el mínimo esfuerzo o gasto desperdiciado.", example: "This algorithm is more efficient than the previous one.", pronunciation: "/ɪˈfɪʃənt/" },
+  { item: "scalable", explanation: "(Adjetivo) Capaz de cambiar de tamaño o escala.", example: "Microservices are more scalable than monoliths.", pronunciation: "/ˈskeɪləbl/" },
+  { item: "reliable", explanation: "(Adjetivo) Consistentemente bueno en calidad o rendimiento; confiable.", example: "PostgreSQL is a very reliable database.", pronunciation: "/rɪˈlaɪəbl/" },
+  { item: "trade-off", explanation: "(Sustantivo) Un equilibrio logrado entre dos características deseables pero incompatibles.", example: "There is always a trade-off between speed and memory usage.", pronunciation: "/ˈtreɪd ɔːf/" },
   {
     item: "approach",
-    explanation: "A way of dealing with a situation or problem.",
+    explanation: "Una forma de lidiar con una situación o problema (enfoque).",
     example: "Let's try a different approach.",
     pronunciation: "/əˈproʊtʃ/",
   },
   {
     item: "strategy",
     explanation:
-      "A plan of action designed to achieve a long-term or overall aim.",
+      "Un plan de acción diseñado para lograr un objetivo a largo plazo o general.",
     example: "Our strategy is to build small components first.",
     pronunciation: "/ˈstrætədʒi/",
   },
   {
     item: "system",
     explanation:
-      "A set of things working together as parts of a mechanism or an interconnecting network.",
+      "Un conjunto de cosas que trabajan juntas como partes de un mecanismo o una red interconectada.",
     example: "We need to understand the whole system.",
     pronunciation: "/ˈsɪstəm/",
   },
   {
     item: "component",
-    explanation: "A part or element of a larger whole.",
+    explanation: "Una parte o elemento de un todo más grande.",
     example: "Let's build the individual components first.",
     pronunciation: "/kəmˈpoʊnənt/",
   },
@@ -79,7 +78,7 @@ export const vocabulary = [
 export const phrasalVerbs = [
   {
     item: "break down",
-    explanation: "To divide something into smaller, more manageable parts.",
+    explanation: "Dividir algo en partes más pequeñas y manejables.",
     example:
       "A top-down approach is to break down the big problem into smaller pieces.",
     pronunciation: ""
@@ -98,7 +97,7 @@ export const compoundWords = [
   {
     item: "problem-solving",
     explanation:
-      "The process of finding solutions to difficult or complex issues.",
+      "El proceso de encontrar soluciones a problemas difíciles o complejos.",
     example: "These are two different styles of problem-solving.",
     pronunciation: ""
   },

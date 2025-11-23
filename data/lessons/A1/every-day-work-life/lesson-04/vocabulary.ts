@@ -2,85 +2,60 @@ import { VocabularyItem } from '../../../../../types';
 
 export const vocabulary: VocabularyItem[] = [
     {
-        item: "currently",
-        explanation: "Right now, at the present moment.",
-        example: "I am currently debugging the login issue.",
-        pronunciation: "/ˈkɜːrəntli/",
+        item: "layout",
+        explanation: "The arrangement of visual elements on a page.",
+        example: "The mobile layout is different from the desktop version.",
+        pronunciation: "/ˈleɪaʊt/",
     },
     {
-        item: "progress",
-        explanation: "Forward movement or development toward a destination.",
-        example: "The project is making good progress.",
-        pronunciation: "/ˈprɑːɡres/",
+        item: "navbar",
+        explanation: "Navigation bar, usually at the top.",
+        example: "Click the link in the navbar.",
+        pronunciation: "/ˈnævbɑːr/",
     },
     {
-        item: "debug",
-        explanation: "Find and fix errors in code.",
-        example: "I am debugging the application.",
-        pronunciation: "/ˌdiːˈbʌɡ/",
+        item: "sidebar",
+        explanation: "A vertical column on the side of the page.",
+        example: "The settings are in the sidebar.",
+        pronunciation: "/ˈsaɪdbɑːr/",
     },
     {
-        item: "develop",
-        explanation: "Create or improve software.",
-        example: "We are developing a new feature.",
-        pronunciation: "/dɪˈvɛləp/",
+        item: "footer",
+        explanation: "The section at the bottom of the page.",
+        example: "Contact info is in the footer.",
+        pronunciation: "/ˈfʊtər/",
     },
     {
-        item: "implement",
-        explanation: "Put a plan or system into operation.",
-        example: "The team is implementing the new design.",
-        pronunciation: "/ˈɪmplɪment/",
+        item: "modal",
+        explanation: "A popup window that appears on top of the content.",
+        example: "Close the modal to continue.",
+        pronunciation: "/ˈmoʊdl/",
     },
     {
-        item: "optimize",
-        explanation: "Make something as effective as possible.",
-        example: "I am optimizing the database queries.",
-        pronunciation: "/ˈɑːptɪmaɪz/",
+        item: "alignment",
+        explanation: "How elements are positioned relative to each other.",
+        example: "Check the vertical alignment of the icons.",
+        pronunciation: "/əˈlaɪnmənt/",
     },
 ];
 
-export const phrasalVerbs: VocabularyItem[] = [
-    {
-        item: "work on",
-        explanation: "To be actively engaged with a task or project.",
-        example: "I am working on the new API design.",
-        pronunciation: ""
-    },
-    {
-        item: "focus on",
-        explanation: "To concentrate attention on something.",
-        example: "The team is focusing on performance optimization.",
-        pronunciation: ""
-    },
-];
-
-export const compoundWords: VocabularyItem[] = [
-    {
-        item: "real-time",
-        explanation: "Happening immediately, without delay.",
-        example: "We are implementing real-time notifications.",
-        pronunciation: ""
-    },
-];
+export const phrasalVerbs: VocabularyItem[] = [];
+export const compoundWords: VocabularyItem[] = [];
 
 export const functionalChunks = {
-    title: "Reporting Progress",
+    title: "Describing Layouts",
     chunks: [
         {
-            chunk: "I am currently working on...",
-            usage: "Stating your current task."
+            chunk: "It should be [preposition]...",
+            usage: "Suggesting a position."
         },
         {
-            chunk: "I have finished...",
-            usage: "Reporting a completed task."
+            chunk: "Move it to the [direction]...",
+            usage: "Giving layout instructions."
         },
         {
-            chunk: "The feature is ready for review.",
-            usage: "Signaling completion."
-        },
-        {
-            chunk: "We are making good progress on...",
-            usage: "Giving a general update."
+            chunk: "It looks aligned with...",
+            usage: "Checking alignment."
         }
     ]
 };

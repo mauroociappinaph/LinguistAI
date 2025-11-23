@@ -6,6 +6,7 @@ import {
   gettingStartedLesson04,
   gettingStartedLesson05,
   gettingStartedLesson06,
+  gettingStartedLesson07,
   everyDayWorkLifeLesson01,
   everyDayWorkLifeLesson02,
   everyDayWorkLifeLesson03,
@@ -95,7 +96,8 @@ export const CURRICULUM: Module[] = [
       gettingStartedLesson03,
       gettingStartedLesson04,
       gettingStartedLesson05,
-      gettingStartedLesson06
+      gettingStartedLesson06,
+      gettingStartedLesson07
     ]
   },
   {

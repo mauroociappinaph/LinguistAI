@@ -81,11 +81,31 @@ export const lesson09: Lesson = {
   speaking: "The data is being processed through multiple transformations but values are getting corrupted. The validation step is working but the encryption is being applied incorrectly. Each record is being updated but some fields are being dropped.",
   speakingPracticeMode: "explanation",
   readingActivity: {
+    title: "Data Flow Analysis",
+    text: "Data flow analysis is critical for debugging.",
     comprehensionQuestions: [
       {
         question: "What happens during data transformation?",
         answer: "Data gets corrupted or lost"
       }
     ],
+  },
+  listeningActivity: {
+    title: "Data Flow Discussion",
+    transcript: "The data is flowing correctly.",
+    comprehensionQuestions: [],
+    audioSrc: ""
+  },
+  pronunciationClinic: {
+    title: "Data Terms",
+    explanation: "Pronunciation of data terms.",
+    examples: []
+  },
+  globalAccentLab: [],
+  rolePlay: {
+    title: "Debugging Session",
+    objective: "Debug a data flow issue.",
+    aiPersona: "Senior Dev",
+    initialMessage: "Let's look at the data flow."
   }
 };

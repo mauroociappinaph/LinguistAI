@@ -1,4 +1,7 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
+import { commonMistakes } from './commonMistakes';
 
 export const lesson05: Lesson = {
   id: "db5",
@@ -8,73 +11,13 @@ export const lesson05: Lesson = {
   didYouKnow: "Systematic bug investigation reduces debugging time by 70% and uncovers 2x more root causes compared to haphazard approaches. Passive voice helps maintain objective, professional tone in technical analysis.",
 
   grammar: {
-    title: "Passive + Imperatives for Investigation",
-    explanation:
-      "**Passive**: Focuses on process/actions - 'The log is analyzed, The code is reviewed'\n**Imperatives + Passive**: Investigation steps - 'Analyze the log, Check the database'\n\nCombine for structured debugging:\n\n🎯 **Investigation**: 'Examine the database - errors are logged'\n📝 **Analysis**: 'The bug is identified - verify the cause'",
-    usage:
-      "Systematic debugging process:\n\n🔍 **Identify**: 'Locate the failing code'\n📊 **Analyze**: 'Data structures are examined'\n🎛️ **Test**: 'Isolate variables, Check assumptions'\n📈 **Document**: 'Findings are recorded'",
-    rules: [
-      {
-        from: "Investigation steps",
-        to: "Imperative + object (Check the logs, Test the function)"
-      },
-      {
-        from: "Analysis descriptions",
-        to: "Passive structure (Data is processed, Logs are generated)"
-      },
-      {
-        from: "Combined process",
-        to: "Imperative + passive (Verify that data is validated)"
-      }
-    ],
-    examples: [
-      "**Investigate** the database connection - make sure **logs are checked**.",
-      "**Isolate** the bug - **variables are examined** one by one.",
-      "**Analyze** the error - **stack trace is reviewed** carefully.",
-      "**Test** the fix - **assumptions are verified**.",
-      "**Document** the investigation - **findings are recorded**."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "I investigate the bug and find it.",
-        correct: "Investigate the bug systematically - root cause is identified.",
-        explanation:
-          "Use imperative for instructions, passive for objective findings."
-      },
-      {
-        incorrect: "Check logs and they are checked.",
-        correct: "Check the logs - they are examined for errors.",
-        explanation:
-          "Don't repeat passive structure unnecessarily."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "___ the code and ___ that variables ___ set correctly.",
-      options: ["Check, Verify, Are", "Checked, Verified, Is", "Checking, Verifying, Are", "Checks, Verifies, Are"],
-      answer: "Check, Verify, Are"
-    }
+    ...grammar,
+    commonMistakes
   },
-  vocabulary: [],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Bug Investigation Communication Patterns",
-    chunks: [
-      {
-        chunk: "___ [step] and ___ that [condition] is met",
-        usage: "Systematic verification during debugging"
-      },
-      {
-        chunk: "Check ___ - verify that [process] ___ [result]",
-        usage: "Testing assumptions step by step"
-      },
-      {
-        chunk: "Investigate ___ - findings ___ documented",
-        usage: "Professional investigation reporting"
-      }
-    ]
-  },
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
   scenario: "Systematically investigating a database connection issue using structured debugging approaches.",
   speaking: "First, investigate the connection pool. Check the logs and verify that connections are being released. Isolate the query and test it separately. The issue is identified - database timeout is occurring.",
   speakingPracticeMode: "instructions",

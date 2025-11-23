@@ -5,7 +5,8 @@ export {
   lesson03 as gettingStartedLesson03,
   lesson04 as gettingStartedLesson04,
   lesson05 as gettingStartedLesson05,
-  lesson06 as gettingStartedLesson06
+  lesson06 as gettingStartedLesson06,
+  lesson07 as gettingStartedLesson07
 } from './getting-started';
 
 export {

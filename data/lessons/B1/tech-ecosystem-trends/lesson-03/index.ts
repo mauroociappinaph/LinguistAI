@@ -1,4 +1,7 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
+import { commonMistakes } from './commonMistakes';
 
 export const techEcosystemTrendsLesson03: Lesson = {
   id: "tet3",
@@ -8,31 +11,13 @@ export const techEcosystemTrendsLesson03: Lesson = {
   didYouKnow: "Research papers use subjunctive mood: 'We recommend that the architecture be redesigned.'",
 
   grammar: {
-    title: "Subjunctive, Nominalization & Advanced Indirect Speech",
-    explanation: "Using formal subjunctive structures like 'recommend that...', nominalization for academic style, and complex indirect speech patterns for professional proposals.",
-    usage: "Technical Documentation, Research Papers & Proposals",
-    rules: [],
-    examples: [],
-    commonMistakes: [],
-    interactiveExercise: {
-      type: "subjunctive-practice",
-      question: "Complete the subjunctive: 'We recommend that the system ___ redesigned.'",
-      options: ["be", "is", "will be", "was"],
-      answer: "be"
-    }
+    ...grammar,
+    commonMistakes
   },
-
-  vocabulary: [],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Formal Technical Writing",
-    chunks: [{
-      chunk: "We recommend that [subject] [verb-subjunctive] [object]",
-      usage: "Making formal suggestions in technical proposals"
-    }]
-  },
-
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
   scenario: "Technical proposal writing and paper discussions.",
   speaking: "We recommend that the system be redesigned to improve scalability.",
   speakingPracticeMode: "subjunctive",

@@ -5,6 +5,7 @@ import {
     gettingStartedLesson04,
     gettingStartedLesson05,
     gettingStartedLesson06,
+    gettingStartedLesson07,
     everyDayWorkLifeLesson01,
     everyDayWorkLifeLesson02,
     everyDayWorkLifeLesson03,

@@ -5,6 +5,8 @@ import {
   GrammarRules,
   GrammarContext,
   GrammarMistakes,
+  GrammarWriting,
+  GrammarCrucialIT,
   GrammarQuiz
 } from './Grammar';
 
@@ -49,7 +51,17 @@ export const GrammarView: React.FC<GrammarViewProps> = ({ grammar }) => {
         <GrammarMistakes mistakes={safeMistakes} />
       </div>
 
-      {/* 5. Quick Check (Interactive Exercise) */}
+      {/* 5. Writing Practice */}
+      <div className="animate-in slide-in-from-bottom-4 fade-in duration-500 delay-350">
+        <GrammarWriting writingExamples={safeGrammar.writingExamples} />
+      </div>
+
+      {/* 6. Why It's Crucial in IT */}
+      <div className="animate-in slide-in-from-bottom-4 fade-in duration-500 delay-400">
+        <GrammarCrucialIT whyCrucial={safeGrammar.whyCrucial} />
+      </div>
+
+      {/* 7. Quick Check (Interactive Exercise) */}
       {safeGrammar.interactiveExercise && (
         <div className="animate-in slide-in-from-bottom-4 fade-in duration-500 delay-450">
           <GrammarQuiz exercise={safeGrammar.interactiveExercise} />

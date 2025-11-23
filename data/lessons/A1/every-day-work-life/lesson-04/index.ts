@@ -14,10 +14,10 @@ import {
 
 export const lesson04: Lesson = {
   id: "edwl-4",
-  title: "Current Actions",
+  title: "UI Layouts & Prepositions",
   level: Difficulty.A1,
-  description: "Learn how to describe what you are working on right now using the Present Continuous tense.",
-  didYouKnow: "The present continuous is particularly useful in tech because software development is dynamic - what you're working on changes frequently. 'I was debugging yesterday, I am implementing today, and I will be testing tomorrow.'",
+  description: "Learn to describe user interface layouts using prepositions of place (at the top, on the left, below).",
+  didYouKnow: "Clear communication about UI layout prevents design implementation errors. 'Pixel perfect' implementation often depends on understanding precise positional language.",
   grammar,
   vocabulary,
   phrasalVerbs,

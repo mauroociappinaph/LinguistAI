@@ -167,4 +167,4 @@ export const lesson05: Lesson = {
     initialMessage: "That's a great demonstration everyone. Now we need to distribute the remaining sprint tasks. Can someone volunteer for the API refactoring?"
   }
 };
-  }
+

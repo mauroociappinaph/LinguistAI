@@ -4,31 +4,31 @@ import { VocabularyItem, FunctionalChunk } from '../../../../../types';
 export const vocabulary: VocabularyItem[] = [
   {
     item: "name",
-    explanation: "Your full name as it appears on your work ID, commits, and email signature. Use your preferred name if appropriate.",
+    explanation: "Your full name as it appears on your work ID, commits, and email signature. Use your preferred name if appropriate. (Tu nombre completo tal como aparece en tu identificación laboral, commits y firma de correo. Usa tu nombre preferido si es apropiado).",
     example: "My name is Alex Johnson. You might know me as 'AJ' on Slack.",
     pronunciation: "/neɪm/"
   },
   {
     item: "professional background",
-    explanation: "Your career path, previous roles, and key experiences that shape your current work.",
+    explanation: "Your career path, previous roles, and key experiences that shape your current work. (Tu trayectoria profesional, roles anteriores y experiencias clave que definen tu trabajo actual).",
     example: "My professional background includes five years in backend development before transitioning to full-stack.",
     pronunciation: "/prəˈfeʃənl ˈbækɡraʊnd/"
   },
   {
     item: "current role",
-    explanation: "Your job title, responsibilities, and seniority level.",
+    explanation: "Your job title, responsibilities, and seniority level. (Tu cargo actual, responsabilidades y nivel de antigüedad).",
     example: "My current role is Senior Software Engineer, focusing on API design and team leadership.",
     pronunciation: "/ˈkɜːrənt roʊl/"
   },
   {
     item: "technical expertise",
-    explanation: "The technologies, frameworks, and tools you specialize in.",
+    explanation: "The technologies, frameworks, and tools you specialize in. (Las tecnologías, frameworks y herramientas en las que te especializas).",
     example: "My technical expertise centers on React, Node.js, and cloud architectures.",
     pronunciation: "/ˈteknɪkl ˌɛkspɜːrˈtiːz/"
   },
   {
     item: "work location",
-    explanation: "Whether you're in-office, remote, or hybrid, and your general location if relevant.",
+    explanation: "Whether you're in-office, remote, or hybrid, and your general location if relevant. (Si trabajas en oficina, remoto o híbrido, y tu ubicación general si es relevante).",
     example: "I work remotely from São Paulo, Brazil, and collaborate across three time zones.",
     pronunciation: "/wɜːrk loʊˈkeɪʃən/"
   }

@@ -1,86 +1,90 @@
 import { GrammarSection } from '../../../../../types';
 
-
 export const grammar: GrammarSection = {
-  title: "Articles, Comparatives & Preferences",
+  title: "Present Continuous: Describing Current Activities",
+
   explanation:
-    "Understanding **articles**, **comparatives**, and **preferences** is essential for speaking clearly about tools, technologies, and choices in the IT world.\n\n" +
-    "**Articles (a/an, the)** help you distinguish between general and specific items:\n" +
-    "- **a / an** → something general or first mentioned\n" +
-    "- **the** → something specific or already known\n\n" +
-    "**Comparatives** allow you to compare tools, frameworks, or processes:\n" +
-    "- Short adjectives (1–2 syllables): add **-er** → fast → faster\n" +
-    "- Long adjectives (3+ syllables): use **more** → more flexible\n" +
-    "- Irregular adjectives: good → better / bad → worse\n\n" +
-    "**Preferences** help you express what you like, dislike, or choose in your workflow:\n" +
-    "- **prefer X to Y**\n" +
-    "- **prefer + -ing** for general habits\n\n" +
-    "These structures are crucial when evaluating libraries, tools, platforms, and workflows in technical discussions.",
+    "The **present continuous** (am/is/are + verb-ing) is used to describe actions happening **right now**, **in progress**, or **around this moment**.\n\n" +
+    "In the tech world, this tense is essential because it allows you to clearly communicate what you're working on at this exact stage of a project.\n\n" +
+    "**Why it's crucial for developers and IT teams:**\n" +
+    "- Used constantly in **daily stand-ups**: 'I'm fixing...', 'We're testing...'\n" +
+    "- Helps clarify **current workload**: tasks, bugs, deployments, reviews\n" +
+    "- Used in **meetings**, **pull request discussions**, **pair programming**, and **incident response**\n" +
+    "- Perfect for describing **temporary actions**, not routines (‘I am deploying the update right now’)\n\n" +
+    "Structure: **Subject + am/is/are + verb-ing**",
 
   usage:
-    "Use these structures when making comparisons or expressing your preferred tools, frameworks, or workflows.\n\n" +
-    "**Common IT use cases:**\n" +
-    "- Justifying a tech choice in a meeting\n" +
-    "- Explaining tool differences in documentation\n" +
-    "- Comparing performance, speed, or usability\n" +
-    "- Describing personal or team preferences\n\n" +
-    "These forms help you communicate more clearly and professionally when discussing technology.",
+    "Use the present continuous when describing **active tasks** during collaboration:\n\n" +
+    "- 'I'm reviewing your PR.'\n" +
+    "- 'She's testing the endpoint.'\n" +
+    "- 'They’re setting up the new environment.'\n\n" +
+    "Typical contexts in IT:\n" +
+    "- Stand-ups and sprint meetings\n" +
+    "- Deployment or debugging sessions\n" +
+    "- Describing temporary states (e.g., 'The server is restarting')\n" +
+    "- Explaining what you're doing in real time during a call or demo",
 
   rules: [
-    { from: "Articles", to: "Use **a/an** for general nouns; use **the** for specific nouns." },
-    { from: "Short adjectives", to: "**adjective + -er + than** → faster than, smaller than" },
-    { from: "Long adjectives", to: "**more + adjective + than** → more efficient than" },
-    { from: "Irregular forms", to: "**better, worse, farther/further**" },
-    { from: "Preferences", to: "**prefer X to Y**" },
-    { from: "Habits", to: "**prefer + -ing** → 'I prefer coding at night.'" }
+    { from: "I", to: "am + verb-ing" },
+    { from: "He / She / It", to: "is + verb-ing" },
+    { from: "We / You / They", to: "are + verb-ing" }
   ],
 
   examples: [
-    "**Articles:** 'I installed **a** new extension. **The** extension improves debugging.'",
-    "'You need **an** API key to access the service.'",
-    "'I bought **a** laptop. **The** laptop is much faster now.'",
+    // Real work tasks
+    "I **am working** on the login bug.",
+    "She **is testing** the new API endpoints.",
+    "We **are developing** the mobile version of the app.",
 
-    "**Comparatives:** 'VS Code is **faster than** Sublime Text.'",
-    "'React is **more popular than** Backbone.'",
-    "'This tool is **more efficient than** the previous version.'",
+    // Meetings & collaboration
+    "They **are reviewing** your pull request right now.",
+    "I **am checking** the logs to see the error.",
+    "He **is deploying** the update to production.",
 
-    "**Preferences:** 'I **prefer** working with light themes.'",
-    "'She **prefers** VS Code **to** WebStorm.'",
-    "'I **like using** extensions, but I **prefer** keeping my setup simple.'"
+    // System states
+    "The server **is restarting** after the patch.",
+    "Our CI pipeline **is running** the tests.",
+    "The app **is loading** the new configuration.",
+
+    // Temporary professional situations
+    "I'm **working** remotely this week.",
+    "She's **using** a staging environment for debugging."
   ],
 
   commonMistakes: [
     {
-      incorrect: "VS Code is more fast than Sublime Text.",
-      correct: "VS Code is faster than Sublime Text.",
-      explanation: "Short adjectives form comparatives with -er, not 'more'."
+      incorrect: "I work on the bug now.",
+      correct: "I am working on the bug right now.",
+      explanation:
+        "Use present continuous for actions happening at this moment — not simple present."
     },
     {
-      incorrect: "I use code editor.",
-      correct: "I use a code editor.",
-      explanation: "Singular countable nouns require an article: a/an."
+      incorrect: "I am debug the code.",
+      correct: "I am debugging the code.",
+      explanation: "Always use the **verb-ing** form (debug → debugging)."
     },
     {
-      incorrect: "I prefer VS Code than Atom.",
-      correct: "I prefer VS Code to Atom.",
-      explanation: "The correct structure is 'prefer X to Y'."
+      incorrect: "He are testing the app.",
+      correct: "He is testing the app.",
+      explanation: "Use **is** for he/she/it."
     },
     {
-      incorrect: "This tool is more easy.",
-      correct: "This tool is easier.",
-      explanation: "‘Easy’ is a short adjective → easier."
+      incorrect: "The server is crash.",
+      correct: "The server is crashing.",
+      explanation: "The verb must be in **-ing** form."
     },
     {
-      incorrect: "The React is popular.",
-      correct: "React is popular.",
-      explanation: "Framework names do not use 'the'."
+      incorrect: "I'm working on frontend every day.",
+      correct: "I work on frontend every day.",
+      explanation:
+        "Daily habits → simple present. Present continuous is only for temporary/in-progress actions."
     }
   ],
 
   interactiveExercise: {
-    type: 'fill-in-the-blank',
-    question: "This framework is ___ than the old one.",
-    options: ["popular", "more popular", "most popular"],
-    answer: "more popular"
+    type: "fill-in-the-blank",
+    question: "We ___ (develop) the new feature.",
+    options: ["are developing", "is developing", "am developing"],
+    answer: "are developing"
   }
 };

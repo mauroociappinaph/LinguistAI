@@ -104,5 +104,23 @@ export const lesson12: Lesson = {
         answer: "Clear ownership and timelines"
       }
     ],
+  },
+  listeningActivity: {
+    title: "Post-Mortem Meeting",
+    transcript: "Let's review the incident.",
+    comprehensionQuestions: [],
+    audioSrc: ""
+  },
+  pronunciationClinic: {
+    title: "Incident Terms",
+    explanation: "Pronunciation of incident terms.",
+    examples: []
+  },
+  globalAccentLab: [],
+  rolePlay: {
+    title: "Post-Mortem Review",
+    objective: "Conduct a post-mortem.",
+    aiPersona: "Engineering Manager",
+    initialMessage: "Let's start the post-mortem."
   }
 };

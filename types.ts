@@ -61,9 +61,10 @@ export interface GrammarSection {
   rules: GrammarRule[];
   examples: string[];
   commonMistakes: CommonMistake[];
+  writingExamples?: string[];
+  whyCrucial?: string;
   interactiveExercise: InteractiveExercise;
 }
-
 export interface VocabularyItem {
   item: string;
   explanation: string;

@@ -83,5 +83,34 @@ export const lesson08: Lesson = {
   ],
   scenario: "Prioritizing bugs in a backlog, comparing their relative importance and business impact.",
   speaking: "The login failure is definitely more serious than the footer alignment issue. User data corruption is worse than just display problems. We should fix the payment validation errors first because they're blocking more users.",
-  speakingPracticeMode: "assessment"
+  speakingPracticeMode: "assessment",
+  phrasalVerbs: [],
+  compoundWords: [],
+  functionalChunks: {
+    title: "Bug Prioritization",
+    chunks: []
+  },
+  readingActivity: {
+    title: "Bug Triage",
+    text: "Bug triage is the process of prioritizing bugs based on severity and impact.",
+    comprehensionQuestions: []
+  },
+  listeningActivity: {
+    title: "Prioritization Meeting",
+    transcript: "We need to fix the critical bugs first.",
+    comprehensionQuestions: [],
+    audioSrc: ""
+  },
+  pronunciationClinic: {
+    title: "Prioritization Terms",
+    explanation: "Pronunciation of key terms.",
+    examples: []
+  },
+  globalAccentLab: [],
+  rolePlay: {
+    title: "Bug Triage Session",
+    objective: "Prioritize a list of bugs.",
+    aiPersona: "Product Owner",
+    initialMessage: "Here is the list of reported bugs. Which one should we fix first?"
+  }
 };

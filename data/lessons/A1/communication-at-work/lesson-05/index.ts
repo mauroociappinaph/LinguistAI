@@ -1,4 +1,7 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
+import { commonMistakes } from './commonMistakes';
 
 export const lesson05: Lesson = {
   id: "com5",
@@ -7,132 +10,16 @@ export const lesson05: Lesson = {
   description: "Learn to provide professional feedback, make technical suggestions, and offer constructive recommendations using modals, passive voice, and connectors in a collaborative work environment.",
   didYouKnow: "Effective suggestions in technical environments use tentative language that invites discussion. The phrase 'have you considered...' opens 70% more collaboration than direct statements like 'You should do...' in code reviews.",
 
-  grammar: {
-    title: "Modals (should/could) + Passive Voice + Connectors",
-    explanation:
-      "**Modals for Tentative Suggestions**: 'Should' for recommendations, 'Could' for possibilities - 'This should be clarified'\n**Passive Voice for Objective Analysis**: Focuses on what's needed, not who - 'Code should be refactored', 'Documentation needs updating'\n**Connectors for Rationale**: 'Because... so...', 'Since... we could...'\n\nPerfect for constructive tech feedback: 'This code should be optimized because it processes too many records'",
-    usage:
-      "Professional suggestion patterns:\n\n💡 **Constructive**: 'This could be improved because...'\n🔧 **Technical**: 'The database should be indexed for better performance'\n👥 **Team focus**: 'We could implement... since it would...'",
-    rules: [
-      {
-        from: "Suggestions",
-        to: "Should + subject + verb (Code should be restructured)"
-      },
-      {
-        from: "Possibilities",
-        to: "Could + subject + verb (You could add validation)"
-      },
-      {
-        from: "Objective recommendations",
-        to: "Should + passive (API should be documented, Tests should be written)"
-      }
-    ],
-    examples: [
-      "**This feature should be implemented** because users need it for compliance.",
-      "**The code could be optimized** since performance is being affected.",
-      "**Documentation should be updated** whenever APIs change.",
-      "**We should consider refactoring** because the current structure is complex.",
-      "**Tests should be added** to prevent regressions in the future."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "Change this code.",
-        correct: "This code should be updated because...",
-        explanation:
-          "Use modals and provide context/rationale for professional suggestions."
-      },
-      {
-        incorrect: "You write better tests.",
-        correct: "Tests should be written more comprehensively.",
-        explanation:
-          "Use passive voice to focus on tasks rather than blame individuals."
-      },
-      {
-        incorrect: "The API needs fixing.",
-        correct: "The API should be revised since it returns inconsistent data.",
-        explanation:
-          "Use 'should' and provide technical reasoning for recommendations."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "The database ___ indexed because query performance ___ slow.",
-      options: ["should be, is being", "should be, is", "could be, has been", "will be, becomes"],
-      answer: "should be, is"
-    }
-  },
-  vocabulary: [
-    {
-      item: "refactor",
-      explanation: "To restructure existing code without changing its functionality for better maintainability.",
-      example: "The legacy code should be refactored before adding new features.",
-      pronunciation: "/ˌriˈfæktər/"
-    },
-    {
-      item: "optimization",
-      explanation: "The process of making something better and more efficient.",
-      example: "Database optimization could improve response times significantly.",
-      pronunciation: "/ˌɑptɪməˈzeɪʃən/"
-    },
-    {
-      item: "best practices",
-      explanation: "Generally recommended methods or techniques that have proven effective.",
-      example: "We should follow best practices for error handling throughout the application.",
-      pronunciation: "/bɛst ˈpræktɪsɪz/"
-    },
-    {
-      item: "scalability",
-      explanation: "The ability of a system to handle increased workload without performance degradation.",
-      example: "The architecture should be reviewed for scalability before launch.",
-      pronunciation: "/ˌskeɪləˈbɪləti/"
-    },
-    {
-      item: "maintenance",
-      explanation: "The work needed to keep something in good working condition.",
-      example: "Code maintenance could be reduced if we implement cleaner architecture.",
-      pronunciation: "/ˈmeɪntənəns/"
-    },
-    {
-      item: "flexibility",
-      explanation: "The ability to adapt to changing requirements or conditions.",
-      example: "The design should provide flexibility for future feature additions.",
-      pronunciation: "/ˌflɛksəˈbɪləti/"
-    },
-    {
-      item: "user experience",
-      explanation: "The overall experience and satisfaction of users when interacting with a product.",
-      example: "User experience should be prioritized in all design decisions.",
-      pronunciation: "/ˈjuːzər ɪkˈspɪriəns/"
-    },
-    {
-      item: "compatibility",
-      explanation: "The ability of different systems or components to work together.",
-      example: "The new framework should be tested for compatibility with existing systems.",
-      pronunciation: "/kəmˌpætəˈbɪləti/"
-    }
-  ],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Professional Suggestion Patterns",
-    chunks: [
-      {
-        chunk: "[Component/Feature] should be [improved] because [reason]",
-        usage: "Making technical suggestions with justifications"
-      },
-      {
-        chunk: "We could [implement] [solution] since it would [benefit]",
-        usage: "Offering alternatives with benefits"
-      },
-      {
-        chunk: "Have you considered [approach]? It might [advantage]",
-        usage: "Gentle suggestions inviting discussion"
-      }
-    ]
-  },
+  grammar,
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
+
   scenario: "Providing constructive feedback in a code review and suggesting technical improvements using professional, collaborative language.",
   speaking: "This authentication module should be refactored because it has too many responsibilities. We could implement the single responsibility principle since it would make testing easier. Have you considered using dependency injection? It might provide better flexibility for future changes.",
   speakingPracticeMode: "constructive",
+
   readingActivity: {
     title: "Reading: The Art of Technical Suggestions",
     text: "Effective technical suggestions in professional environments require careful language that focuses on improvement rather than criticism. Rather than saying 'your code is bad,' frame suggestions as 'the code could be more maintainable' or 'this approach offers better scalability.' Use inclusive language like 'we could consider' to invite collaboration. Always provide rationale for suggestions, explaining how proposed changes benefit maintainability, performance, user experience, or future development. Professional feedback strengthens team relationships while improving code quality.",

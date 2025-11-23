@@ -98,5 +98,23 @@ export const lesson11: Lesson = {
         answer: "Scalability"
       }
     ],
+  },
+  listeningActivity: {
+    title: "Performance Review",
+    transcript: "The app is too slow.",
+    comprehensionQuestions: [],
+    audioSrc: ""
+  },
+  pronunciationClinic: {
+    title: "Performance Terms",
+    explanation: "Pronunciation of performance terms.",
+    examples: []
+  },
+  globalAccentLab: [],
+  rolePlay: {
+    title: "Performance Optimization",
+    objective: "Discuss performance improvements.",
+    aiPersona: "Tech Lead",
+    initialMessage: "We need to optimize the API."
   }
 };
