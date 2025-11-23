@@ -1,16 +1,15 @@
 import React from 'react';
-import { View } from '../../types';
+import { NavLink, useLocation } from 'react-router-dom';
 
 interface SidebarNavigationProps {
-  currentView: View;
-  setView: (view: View) => void;
   isCollapsed: boolean;
-  hoveredItem: View | null;
-  setHoveredItem: (item: View | null) => void;
+  hoveredItem: string | null;
+  setHoveredItem: (item: string | null) => void;
 }
 
 interface NavItem {
-  id: View;
+  id: string;
+  path: string;
   label: string;
   icon: string;
   badge: number | null;
@@ -19,28 +18,32 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    id: View.DASHBOARD,
+    id: 'dashboard',
+    path: '/',
     label: 'Dashboard',
     icon: '📊',
     badge: null,
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
-    id: View.MY_VOCABULARY,
+    id: 'my-vocabulary',
+    path: '/my-vocabulary',
     label: 'My Vocabulary',
     icon: '📚',
     badge: null,
     gradient: 'from-purple-500 to-pink-500'
   },
   {
-    id: View.CHAT,
-    label: 'AI Tutor',
-    icon: '💬',
-    badge: 3, // Mensajes nuevos
-    gradient: 'from-indigo-500 to-purple-500'
+    id: 'curriculum',
+    path: '/curriculum',
+    label: 'Curriculum',
+    icon: '📖',
+    badge: null,
+    gradient: 'from-indigo-500 to-blue-500'
   },
   {
-    id: View.EXPLORER,
+    id: 'explore',
+    path: '/explore',
     label: 'Explore',
     icon: '🌍',
     badge: null,
@@ -49,22 +52,23 @@ const navItems: NavItem[] = [
 ];
 
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
-  currentView,
-  setView,
   isCollapsed,
   hoveredItem,
   setHoveredItem
 }) => {
+  const location = useLocation();
+
   return (
     <nav className="flex-1 px-4 space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
       {navItems.map((item, index) => {
-        const isActive = currentView === item.id;
+        const isActive = location.pathname === item.path ||
+                        (item.path !== '/' && location.pathname.startsWith(item.path));
         const isHovered = hoveredItem === item.id;
 
         return (
-          <button
+          <NavLink
             key={item.id}
-            onClick={() => setView(item.id)}
+            to={item.path}
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
             className={`
@@ -154,7 +158,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 </div>
               </div>
             )}
-          </button>
+          </NavLink>
         );
       })}
     </nav>

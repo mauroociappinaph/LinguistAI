@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useStore } from '../../store/useStore';
-import { View } from '../../types';
 import { SidebarHeader } from './SidebarHeader';
 import { SidebarNavigation } from './SidebarNavigation';
 import { SidebarCurriculum } from './SidebarCurriculum';
 import { SidebarFooter } from './SidebarFooter';
 
+
 export const Sidebar: React.FC = () => {
-  const { currentView, setView, darkMode, toggleDarkMode } = useStore();
+  const { darkMode, toggleDarkMode } = useStore();
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<View | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isCurriculumExpanded, setIsCurriculumExpanded] = useState(true);
   const [expandedModules, setExpandedModules] = useState<string[]>(['getting-started']);
 
@@ -33,8 +33,6 @@ export const Sidebar: React.FC = () => {
       />
 
       <SidebarNavigation
-        currentView={currentView}
-        setView={setView}
         isCollapsed={isCollapsed}
         hoveredItem={hoveredItem}
         setHoveredItem={setHoveredItem}

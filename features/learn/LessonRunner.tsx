@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
 import { useLessonNavigation } from './hooks/useLessonNavigation';
 import { LessonHeader } from './components/LessonHeader';
@@ -16,8 +17,10 @@ import {
 } from './components';
 
 export const LessonRunner: React.FC = () => {
-  const { lessons, activeLessonId, completeLesson, exitLesson } = useStore();
-  const lesson = lessons.find(l => l.id === activeLessonId);
+  const { lessonId } = useParams<{ lessonId: string }>();
+  const navigate = useNavigate();
+  const { lessons, completeLesson } = useStore();
+  const lesson = lessons.find(l => l.id === lessonId);
 
   const { activeSection, setActiveSection, progress, sections } = useLessonNavigation();
 
@@ -59,7 +62,7 @@ export const LessonRunner: React.FC = () => {
 
   const handleComplete = (id: string, xp: number) => {
       completeLesson(id, xp);
-      exitLesson();
+      navigate('/');  // Navegar a dashboard
   };
 
   // Navigation Logic
@@ -73,7 +76,7 @@ export const LessonRunner: React.FC = () => {
           setActiveSection(nextSection.id);
       } else {
           // If for some reason we are at the end but not in QuizView (which handles completion itself)
-          exitLesson();
+          navigate('/');  // Volver a dashboard
       }
   };
 
@@ -81,7 +84,7 @@ export const LessonRunner: React.FC = () => {
       if (previousSection) {
           setActiveSection(previousSection.id);
       } else {
-          exitLesson();
+          navigate('/');  // Volver a dashboard
       }
   };
 

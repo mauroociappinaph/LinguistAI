@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Lesson } from '../../../types';
 import { useStore } from '../../../store/useStore';
 
@@ -9,16 +10,16 @@ interface LessonItemProps {
 
 /**
  * LessonItem component displays an individual lesson within a module.
- * Clicking the lesson will start it.
+ * Clicking the lesson will navigate to it using react-router.
  */
 const LessonItem: React.FC<LessonItemProps> = ({ lesson, index }) => {
-  const startLesson = useStore((state) => state.startLesson);
+  const navigate = useNavigate();
   const completedLessons = useStore((state) => state.user.completedLessons);
 
   const isCompleted = completedLessons.includes(lesson.id);
 
   const handleClick = () => {
-    startLesson(lesson.id);
+    navigate(`/lesson/${lesson.id}`);
   };
 
   return (
