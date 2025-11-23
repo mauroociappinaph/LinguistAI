@@ -12,11 +12,19 @@ export const MyVocabulary: React.FC = () => {
   } = useStore();
 
   const [filter, setFilter] = useState<'all' | number>('all');
+  const [isLocalLoading, setIsLocalLoading] = useState(false);
 
   // Cargar vocabulario si aún no está cargado
   useEffect(() => {
     if (!isVocabularyLoaded) {
-      loadVocabulary();
+      setIsLocalLoading(true);
+      loadVocabulary()
+        .catch((err) => {
+          console.error('[MyVocabulary] Failed to load vocabulary:', err);
+        })
+        .finally(() => {
+          setIsLocalLoading(false);
+        });
     }
   }, [isVocabularyLoaded, loadVocabulary]);
 
@@ -58,7 +66,8 @@ export const MyVocabulary: React.FC = () => {
     return labels[level] || 'New';
   };
 
-  if (!isVocabularyLoaded) {
+  // Mostrar loading mientras se está cargando inicialmente O mientras se recarga
+  if (isLocalLoading || !isVocabularyLoaded) {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
