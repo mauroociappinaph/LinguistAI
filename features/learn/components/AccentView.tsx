@@ -106,13 +106,19 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
             ? voiceMap[Object.keys(voiceMap).find(k => sample.accent.includes(k))!]
             : 'Kore';
 
-        if (!sample.transcript) {
-            console.warn("No transcript available for TTS generation");
+        // Validación robusta: trim y verificar si está vacío
+        const trimmedTranscript = sample.transcript?.trim();
+
+        if (!trimmedTranscript) {
+            console.warn('[AccentView] Empty or whitespace-only transcript', {
+                original: sample.transcript,
+                accent: sample.accent
+            });
             setStatus('idle');
             return;
         }
 
-        const url = await generateSpeech(sample.transcript, voice);
+        const url = await generateSpeech(trimmedTranscript, voice);
 
         if (url) {
             setAudioSrc(url);

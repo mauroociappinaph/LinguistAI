@@ -61,17 +61,39 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
   }, [audioSrc, isGenerating]);
 
   const handleGenerateAudio = async () => {
-      if (!activity.transcript) return;
+      // Validación robusta: trim y verificar si está vacío
+      const trimmedTranscript = activity.transcript?.trim();
+
+      if (!trimmedTranscript) {
+          console.warn('[ListeningView] Empty or whitespace-only transcript, cannot generate audio', {
+              original: activity.transcript,
+              trimmed: trimmedTranscript,
+              type: typeof activity.transcript
+          });
+          setLoadError(true);
+          setIsGenerating(false);
+          return;
+      }
 
       setIsGenerating(true);
       setLoadError(false);
-      const generatedUrl = await generateSpeech(activity.transcript);
-      if (generatedUrl) {
-          setAudioSrc(generatedUrl);
-      } else {
-          setLoadError(true); // Generation failed too
+
+      try {
+          const generatedUrl = await generateSpeech(trimmedTranscript);
+
+          if (generatedUrl) {
+              setAudioSrc(generatedUrl);
+              setLoadError(false);
+          } else {
+              console.error('[ListeningView] generateSpeech returned null');
+              setLoadError(true);
+          }
+      } catch (error) {
+          console.error('[ListeningView] Audio generation failed:', error);
+          setLoadError(true);
+      } finally {
+          setIsGenerating(false);
       }
-      setIsGenerating(false);
   };
 
   const togglePlay = async () => {
