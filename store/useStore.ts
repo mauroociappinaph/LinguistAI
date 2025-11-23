@@ -22,8 +22,6 @@ export const useStore = create<StoreState>()(
         user: state.user,
         isAuthenticated: state.isAuthenticated,
         darkMode: state.darkMode,
-        currentView: state.currentView,
-        activeLessonId: state.activeLessonId,
         // Excluir vocabulary del persist
       }),
     }

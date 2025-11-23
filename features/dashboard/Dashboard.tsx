@@ -5,7 +5,7 @@ import { StatsGrid } from './components/StatsGrid';
 import { BadgesSection } from './components/BadgesSection';
 
 export const Dashboard: React.FC = () => {
-  const { user, lessons, startLesson } = useStore();
+  const { user, lessons } = useStore();
 
   return (
     <div className="space-y-10 fade-in">

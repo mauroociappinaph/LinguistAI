@@ -157,19 +157,20 @@ export const SidebarCurriculum: React.FC<SidebarCurriculumProps> = ({
                   <div className="ml-3 pl-3 border-l-2 border-slate-200 dark:border-slate-700 space-y-1">
                     {module.lessons.map((lesson, index) => {
                       const isCompleted = completedLessons.includes(lesson.id);
-                      const isActive = useStore.getState().activeLessonId === lesson.id;
+                      // No hay isActive ya que no estamos en página de lección desde curriculum
 
                       return (
-                        <button
+                        <a
                           key={lesson.id}
-                          onClick={() => useStore.getState().startLesson(lesson.id)}
+                          href={`/lesson/${lesson.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `/lesson/${lesson.id}`;
+                          }}
                           className={`
                             w-full flex items-center gap-2 px-2 py-1.5 rounded-lg
-                            transition-all text-left group
-                            ${isActive
-                              ? 'bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30'
-                              : 'hover:bg-slate-100 dark:hover:bg-slate-800'
-                            }
+                            transition-all text-left group no-underline
+                            hover:bg-slate-100 dark:hover:bg-slate-800
                           `}
                         >
                           <div className={`
@@ -183,14 +184,11 @@ export const SidebarCurriculum: React.FC<SidebarCurriculumProps> = ({
                           </div>
                           <p className={`
                             text-[11px] font-medium flex-1 truncate
-                            ${isActive
-                              ? 'text-indigo-700 dark:text-indigo-300'
-                              : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-200'
-                            }
+                            text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-200
                           `}>
                             {lesson.title}
                           </p>
-                        </button>
+                        </a>
                       );
                     })}
                   </div>
