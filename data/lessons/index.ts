@@ -62,6 +62,13 @@ import {
     feedbackCollaborationLesson10
 } from './B1/feedback-collaboration/index';
 
+import {
+    techEcosystemTrendsLesson01,
+    techEcosystemTrendsLesson02,
+    techEcosystemTrendsLesson03,
+    techEcosystemTrendsLesson04
+} from './B1/tech-ecosystem-trends/index';
+
 import { Lesson, Difficulty } from '../../types';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
@@ -135,5 +142,9 @@ export const ALL_LESSONS = [
     feedbackCollaborationLesson07,
     feedbackCollaborationLesson08,
     feedbackCollaborationLesson09,
-    feedbackCollaborationLesson10
+    feedbackCollaborationLesson10,
+    techEcosystemTrendsLesson01,
+    techEcosystemTrendsLesson02,
+    techEcosystemTrendsLesson03,
+    techEcosystemTrendsLesson04
 ];

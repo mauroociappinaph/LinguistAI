@@ -63,6 +63,13 @@ import {
   feedbackCollaborationLesson10
 } from './lessons/B1/feedback-collaboration/index';
 
+import {
+  techEcosystemTrendsLesson01,
+  techEcosystemTrendsLesson02,
+  techEcosystemTrendsLesson03,
+  techEcosystemTrendsLesson04
+} from './lessons/B1/tech-ecosystem-trends/index';
+
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environment/lesson-01';
 import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
@@ -200,6 +207,18 @@ export const CURRICULUM: Module[] = [
       feedbackCollaborationLesson08,
       feedbackCollaborationLesson09,
       feedbackCollaborationLesson10
+    ]
+  },
+  {
+    id: 'tech-ecosystem-trends',
+    title: 'Tech Ecosystem Trends',
+    description: 'Master advanced technical communication for DevOps, AI, and formal documentation in advanced tech ecosystems.',
+    level: Difficulty.B1,
+    lessons: [
+      techEcosystemTrendsLesson01,
+      techEcosystemTrendsLesson02,
+      techEcosystemTrendsLesson03,
+      techEcosystemTrendsLesson04
     ]
   }
   // Future modules can be added here as the curriculum expands
