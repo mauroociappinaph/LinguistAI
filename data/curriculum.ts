@@ -68,7 +68,8 @@ import {
   techEcosystemTrendsLesson01,
   techEcosystemTrendsLesson02,
   techEcosystemTrendsLesson03,
-  techEcosystemTrendsLesson04
+  techEcosystemTrendsLesson04,
+  techEcosystemTrendsLesson05
 } from './lessons/B1/tech-ecosystem-trends/index';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
@@ -220,7 +221,8 @@ export const CURRICULUM: Module[] = [
       techEcosystemTrendsLesson01,
       techEcosystemTrendsLesson02,
       techEcosystemTrendsLesson03,
-      techEcosystemTrendsLesson04
+      techEcosystemTrendsLesson04,
+      techEcosystemTrendsLesson05
     ]
   }
   // Future modules can be added here as the curriculum expands

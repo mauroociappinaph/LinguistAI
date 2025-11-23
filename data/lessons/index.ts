@@ -67,7 +67,8 @@ import {
     techEcosystemTrendsLesson01,
     techEcosystemTrendsLesson02,
     techEcosystemTrendsLesson03,
-    techEcosystemTrendsLesson04
+    techEcosystemTrendsLesson04,
+    techEcosystemTrendsLesson05
 } from './B1/tech-ecosystem-trends/index';
 
 import { Lesson, Difficulty } from '../../types';
@@ -147,5 +148,6 @@ export const ALL_LESSONS = [
     techEcosystemTrendsLesson01,
     techEcosystemTrendsLesson02,
     techEcosystemTrendsLesson03,
-    techEcosystemTrendsLesson04
+    techEcosystemTrendsLesson04,
+    techEcosystemTrendsLesson05
 ];
