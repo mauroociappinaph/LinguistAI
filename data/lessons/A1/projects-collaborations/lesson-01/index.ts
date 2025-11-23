@@ -8,11 +8,11 @@ export const lesson01: Lesson = {
   didYouKnow: "Agile methodologies, which popularized sprint planning, were originally developed for software development but are now used across industries. The average sprint duration is 2 weeks, allowing teams to adapt quickly to changes while maintaining steady progress. Sprint planning meetings typically last 1-2 hours per week of sprint duration.",
 
   grammar: {
-    title: "Future Tenses: Will/Shall for Planning",
+    title: "Future Tenses: Will/Shall/Going to + Present/Future Continuous for Planning",
     explanation:
-      "**'Will'** expresses spontaneous decisions and future plans, while **'Shall'** is more formal for suggestions and offers in planning contexts. Use **'going to'** for scheduled plans.\n\nIn project planning: '**We will finish** the user stories by Friday', '**Shall we schedule** a planning meeting?', '**We're going to start** the sprint tomorrow'.\n\nFuture tenses help teams discuss timelines, deadlines, and commitments in development cycles.",
+      "**'Will'** expresses spontaneous decisions and future plans, while **'Shall'** is more formal for suggestions and offers in planning contexts. Use **'going to'** for scheduled plans.\n\nIn project planning: '**We will finish** the user stories by Friday', '**Shall we schedule** a planning meeting?', '**We're going to start** the sprint tomorrow'.\n\n**Additional Planning Forms:**\n\n📋 **Present Continuous for scheduled future**: When plans are firmly scheduled with a specific time\n   Example: '*We **are deploying** the feature tomorrow at 3 PM*'\n\n🔄 **Future Continuous**: For actions that will be in progress at a future time\n   Example: '*This time next week, we **will be testing** the new release*'\n\nFuture tenses help teams discuss timelines, deadlines, and commitments in development cycles.",
     usage:
-      "In sprint planning and project management conversations:\n\n📅 **Planning**: 'The team **will deliver** the feature next sprint'\n🤝 **Agreements**: '**Shall we review** the backlog today?'\n🎯 **Goals**: 'We **are going to implement** agile practices'\n\nUse different tenses for different planning contexts.",
+      "In sprint planning and project management conversations:\n\n📅 **Planning**: 'The team **will deliver** the feature next sprint'\n🤝 **Agreements**: '**Shall we review** the backlog today?'\n🎯 **Goals**: 'We **are going to implement** agile practices'\n📋 **Scheduled Plans**: '**We're deploying** tomorrow at 10 AM'\n⏱️ **Future Progress**: 'Next week we **will be working** on the API'\n\nUse different tenses for different planning contexts.",
     rules: [
       {
         from: "Spontaneous future",
@@ -25,6 +25,14 @@ export const lesson01: Lesson = {
       {
         from: "Scheduled plans",
         to: "going to + infinitive (We're going to demo next week)"
+      },
+      {
+        from: "Present Continuous for scheduled future",
+        to: "am/is/are + verb-ing (We're deploying tomorrow at 3 PM)"
+      },
+      {
+        from: "Future Continuous for in-progress actions",
+        to: "will be + verb-ing (We'll be testing next week)"
       }
     ],
     examples: [
@@ -32,7 +40,11 @@ export const lesson01: Lesson = {
       "**Shall I create** the sprint backlog?",
       "**Our team is going to** implement the new design.",
       "**The product owner will** review the acceptance criteria.",
-      "**Shall we schedule** the planning meeting for Monday?"
+      "**Shall we schedule** the planning meeting for Monday?",
+      "**We're deploying** the feature tomorrow at 3 PM.",
+      "**The team is meeting** with the client on Friday.",
+      "This time next week, **we'll be testing** the new release.",
+      "At 10 AM tomorrow, **we'll be conducting** the stand-up."
     ],
     commonMistakes: [
       {
@@ -145,6 +157,36 @@ export const lesson01: Lesson = {
       explanation: "A meeting held at the end of a sprint to discuss what went well and what could be improved.",
       example: "The sprint retrospective helps us improve our processes.",
       pronunciation: "/ˌrɛtrəˈspɛktɪv/"
+    },
+    {
+      item: "Kanban board",
+      explanation: "A visual workflow management tool showing work items in columns representing different stages.",
+      example: "We track all tasks on the Kanban board.",
+      pronunciation: "/ˈkænbæn bɔrd/"
+    },
+    {
+      item: "WIP (Work In Progress)",
+      explanation: "Tasks currently being worked on; often limited to improve focus and flow.",
+      example: "Our WIP limit is 3 tasks per developer.",
+      pronunciation: "/ˌdʌbəlju aɪ ˈpi/"
+    },
+    {
+      item: "swim lane",
+      explanation: "A horizontal row on a Kanban board used to categorize different types of work or teams.",
+      example: "Each team has their own swim lane on the board.",
+      pronunciation: "/swɪm leɪn/"
+    },
+    {
+      item: "throughput",
+      explanation: "The number of work items completed in a given time period.",
+      example: "Our team's throughput is about 15 tasks per week.",
+      pronunciation: "/ˈθruːpʊt/"
+    },
+    {
+      item: "cycle time",
+      explanation: "The time it takes for a task to move from start to completion.",
+      example: "We're working to reduce our average cycle time.",
+      pronunciation: "/ˈsaɪkəl taɪm/"
     }
   ],
   phrasalVerbs: [],

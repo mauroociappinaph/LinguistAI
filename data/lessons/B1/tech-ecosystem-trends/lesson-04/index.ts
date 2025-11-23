@@ -28,16 +28,89 @@ export const techEcosystemTrendsLesson04: Lesson = {
       explanation: "A specific URL where an API can be accessed for a particular operation.",
       example: "The POST /users endpoint allows creating new user accounts.",
       pronunciation: "/ˈendˌpɔɪnt/"
+    },
+    {
+      item: "product discovery",
+      explanation: "The process of identifying and validating customer needs before building solutions.",
+      example: "During product discovery, we identified three main user pain points.",
+      pronunciation: "/ˈprɑdʌkt dɪˈskʌvəri/"
+    },
+    {
+      item: "OKR (Objectives and Key Results)",
+      explanation: "A goal-setting framework used to define and track objectives and their outcomes.",
+      example: "Our OKR for Q2 is to increase user retention by 20%.",
+      pronunciation: "/oʊ keɪ ɑr/"
+    },
+    {
+      item: "ROI (Return on Investment)",
+      explanation: "A measure of the profitability or value gained from an investment.",
+      example: "The ROI for implementing this feature is projected at 150%.",
+      pronunciation: "/ɑr oʊ aɪ/"
+    },
+    {
+      item: "value proposition",
+      explanation: "The unique value a product or feature offers to customers.",
+      example: "Our value proposition is fast deployment with zero downtime.",
+      pronunciation: "/ˈvælju ˌprɑpəˈzɪʃən/"
+    },
+    {
+      item: "pain point",
+      explanation: "A specific problem experienced by customers or users.",
+      example: "The biggest pain point was slow loading times.",
+      pronunciation: "/peɪn pɔɪnt/"
+    },
+    {
+      item: "opportunity solution tree",
+      explanation: "A visual framework connecting customer outcomes to potential solutions.",
+      example: "We used an opportunity solution tree to prioritize features.",
+      pronunciation: "/ˌɑpərˈtunəti səˈluʃən tri/"
     }
   ],
   phrasalVerbs: [],
   compoundWords: [],
   functionalChunks: {
-    title: "API Documentation Patterns",
+    title: "API Documentation & Prioritization Language Patterns",
     chunks: [
       {
         chunk: "[HTTP Method] [to/the] [endpoint] [to/perform action]",
         usage: "Formal API method descriptions in documentation"
+      },
+      // Prioritization Language
+      {
+        chunk: "This feature is **critical/essential** for [goal].",
+        usage: "Expressing importance"
+      },
+      {
+        chunk: "**It's vital that** we address [issue].",
+        usage: "Emphasizing necessity"
+      },
+      {
+        chunk: "The **top priority** should be [item].",
+        usage: "Ranking importance"
+      },
+      {
+        chunk: "**Compared to** [alternative], this approach is more [adjective].",
+        usage: "Direct comparison"
+      },
+      {
+        chunk: "**While** both solutions work, this one is **more cost-effective**.",
+        usage: "Contrasting options"
+      },
+      {
+        chunk: "**On balance**, the benefits **outweigh** the risks.",
+        usage: "Weighing pros/cons"
+      },
+      {
+        chunk: "**Given that** [context], we should [action].",
+        usage: "Conditional justification"
+      },
+      {
+        chunk: "**Based on** the data/research, it makes sense to [decision].",
+        usage: "Evidence-based reasoning"
+      },
+      {
+        chunk: "**The reason why** we prioritized this is [explanation].",
+        usage: "Explaining rationale"
       }
     ]
   },
