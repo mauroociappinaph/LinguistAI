@@ -1,0 +1,5 @@
+export const scenario = "You're writing an Architecture Decision Record (ADR) explaining why you chose TypeScript over JavaScript, addressing the trade-offs honestly.";
+
+export const speaking = "After evaluating TypeScript and JavaScript, we're adopting TypeScript for our new codebase. While JavaScript is simpler to set up and has zero build overhead, TypeScript provides type safety that prevents entire categories of bugs. Although TypeScript adds compilation steps and increases initial complexity, the long-term benefits outweigh these costs. While our team is experienced with JavaScript, the TypeScript learning curve is manageable—most developers become productive within a week. Although build times increase slightly, the reduction in runtime errors more than compensates. The main trade-off is between short-term simplicity and long-term maintainability. While JavaScript might be faster to start with, TypeScript will save us debugging time as the codebase grows. For a project expected to last years, TypeScript is the better investment despite its upfront costs.";
+
+export const speakingPracticeMode = "explanation" as const;

@@ -42,7 +42,13 @@ import {
 // A2 Imports
 import {
   intermediateWorkplaceLesson01,
-  intermediateWorkplaceLesson02
+  intermediateWorkplaceLesson02,
+  intermediateWorkplaceLesson03,
+  intermediateWorkplaceLesson04,
+  intermediateWorkplaceLesson05,
+  intermediateWorkplaceLesson06,
+  intermediateWorkplaceLesson07,
+  intermediateWorkplaceLesson08
 } from './lessons/A2/index';
 
 import {
@@ -191,7 +197,13 @@ export const CURRICULUM: Module[] = [
     level: Difficulty.A2,
     lessons: [
       intermediateWorkplaceLesson01,
-      intermediateWorkplaceLesson02
+      intermediateWorkplaceLesson02,
+      intermediateWorkplaceLesson03,
+      intermediateWorkplaceLesson04,
+      intermediateWorkplaceLesson05,
+      intermediateWorkplaceLesson06,
+      intermediateWorkplaceLesson07,
+      intermediateWorkplaceLesson08
     ]
   },
   // B1 Modules

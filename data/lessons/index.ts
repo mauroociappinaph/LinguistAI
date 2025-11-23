@@ -41,7 +41,13 @@ import {
 // A2 Imports
 import {
     intermediateWorkplaceLesson01,
-    intermediateWorkplaceLesson02
+    intermediateWorkplaceLesson02,
+    intermediateWorkplaceLesson03,
+    intermediateWorkplaceLesson04,
+    intermediateWorkplaceLesson05,
+    intermediateWorkplaceLesson06,
+    intermediateWorkplaceLesson07,
+    intermediateWorkplaceLesson08
 } from './A2';
 
 import {
@@ -135,6 +141,12 @@ export const ALL_LESSONS = [
     // A2 Lessons
     intermediateWorkplaceLesson01,
     intermediateWorkplaceLesson02,
+    intermediateWorkplaceLesson03,
+    intermediateWorkplaceLesson04,
+    intermediateWorkplaceLesson05,
+    intermediateWorkplaceLesson06,
+    intermediateWorkplaceLesson07,
+    intermediateWorkplaceLesson08,
     // B1 Lessons
     explainingCodeLesson01,
     explainingCodeLesson02,
