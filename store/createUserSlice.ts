@@ -16,10 +16,11 @@ export interface UserSlice {
   isAuthenticated: boolean;
   isLoading: boolean;
   darkMode: boolean;
+  authSubscription: { unsubscribe: () => void } | null; // NUEVO: para cleanup
   // Auth methods
   loadUserProfile: () => Promise<void>;
   signOut: () => Promise<void>;
-  initializeAuth: () => Promise<void>;
+  initializeAuth: () => Promise<() => void>; // CAMBIADO: retorna cleanup function
   // User actions
   toggleDarkMode: () => void;
   completeLesson: (id: string, xp: number) => Promise<void>;
@@ -30,21 +31,46 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
   isAuthenticated: false,
   isLoading: true,
   darkMode: true,
+  authSubscription: null, // NUEVO: inicializar subscription
 
   /**
    * Inicializa el listener de cambios de autenticación
    * Se llama una vez al inicio de la app
    */
   initializeAuth: async () => {
+    console.log('[initializeAuth] Starting...');
+
+    // NUEVO: Limpiar listener previo si existe
+    const currentSubscription = get().authSubscription;
+    if (currentSubscription) {
+      console.log('[initializeAuth] Cleaning up previous listener');
+      currentSubscription.unsubscribe();
+      set({ authSubscription: null });
+    }
+
     try {
       // 1. Verificar sesión actual PRIMERO
-      const { data: { session } } = await supabase.auth.getSession();
+      console.log('[initializeAuth] Checking session...');
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+
+      if (sessionError) {
+        console.error('[initializeAuth] Session error:', sessionError);
+        set({ user: null, isAuthenticated: false, isLoading: false });
+        return () => {}; // NUEVO: retornar cleanup vacío
+      }
+
+      console.log('[initializeAuth] Session:', session ? 'Found' : 'Not found');
 
       if (session?.user) {
+        console.log('[initializeAuth] User found, loading profile...');
         // Hay sesión activa, cargar perfil
         try {
           const profile = await getUserProfile(session.user.id);
+          console.log('[initializeAuth] Profile loaded');
+
           const completedLessons = await getCompletedLessonIds();
+          console.log('[initializeAuth] Completed lessons loaded:', completedLessons.length);
+
           set({
             user: { ...profile, completedLessons },
             isAuthenticated: true,
@@ -54,21 +80,25 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
           // Cargar vocabulario en background (sin bloquear UI)
           const { loadVocabulary } = get() as any;
           if (loadVocabulary) {
+            console.log('[initializeAuth] Loading vocabulary in background...');
             loadVocabulary().catch((err: Error) =>
               console.error('Error loading vocabulary in background:', err)
             );
           }
         } catch (error) {
-          console.error('Error loading user profile:', error);
+          console.error('[initializeAuth] Error loading user profile:', error);
           set({ user: null, isAuthenticated: false, isLoading: false });
         }
       } else {
         // No hay sesión, mostrar login
+        console.log('[initializeAuth] No session, showing login');
         set({ user: null, isAuthenticated: false, isLoading: false });
       }
 
-      // 2. Configurar listener para cambios futuros
-      supabase.auth.onAuthStateChange(async (event, session) => {
+      // 2. Configurar listener para cambios futuros CON CLEANUP
+      console.log('[initializeAuth] Setting up auth state listener...');
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+        console.log('[onAuthStateChange] Event:', event);
         if (event === 'SIGNED_IN' && session?.user) {
           try {
             const profile = await getUserProfile(session.user.id);
@@ -86,9 +116,22 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
           set({ user: null, isAuthenticated: false, isLoading: false });
         }
       });
+
+      // NUEVO: Almacenar subscription para cleanup futuro
+      set({ authSubscription: subscription });
+      console.log('[initializeAuth] Completed successfully');
+
+      // NUEVO: Retornar función de cleanup
+      return () => {
+        console.log('[initializeAuth] Cleanup called');
+        subscription.unsubscribe();
+        set({ authSubscription: null });
+      };
+
     } catch (error) {
-      console.error('Error initializing auth:', error);
+      console.error('[initializeAuth] Unexpected error:', error);
       set({ user: null, isAuthenticated: false, isLoading: false });
+      return () => {}; // NUEVO: retornar cleanup vacío en caso de error
     }
   },
 
