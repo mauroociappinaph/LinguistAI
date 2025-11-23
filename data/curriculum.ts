@@ -39,6 +39,12 @@ import {
   debuggingLesson12
 } from './lessons/A1/index';
 
+// A2 Imports
+import {
+  intermediateWorkplaceLesson01,
+  intermediateWorkplaceLesson02
+} from './lessons/A2/index';
+
 import {
   explainingCodeLesson01,
   explainingCodeLesson02,
@@ -177,6 +183,18 @@ export const CURRICULUM: Module[] = [
       debuggingLesson12
     ]
   },
+  // A2 Modules
+  {
+    id: 'intermediate-workplace-communication',
+    title: 'Intermediate Workplace Communication',
+    description: 'Compare tools, analyze systems, and present technical proposals using comparatives, superlatives, and analogies.',
+    level: Difficulty.A2,
+    lessons: [
+      intermediateWorkplaceLesson01,
+      intermediateWorkplaceLesson02
+    ]
+  },
+  // B1 Modules
   {
     id: 'explaining-your-code',
     title: 'Explaining Your Code',

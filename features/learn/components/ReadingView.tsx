@@ -47,14 +47,14 @@ const ComprehensionQuestion: React.FC<ComprehensionQuestionProps> = ({
         onClick={() => setIsRevealed(!isRevealed)}
         className="ml-11 flex items-center gap-2 text-sm font-medium text-indigo-300 hover:text-indigo-200 transition-colors duration-200 group/btn"
         aria-expanded={isRevealed}
-        aria-label={isRevealed ? "Ocultar respuesta" : "Mostrar respuesta"}
+        aria-label={isRevealed ? "Hide answer" : "Show answer"}
       >
         <ChevronDown
           className={`w-4 h-4 transition-transform duration-300 ${
             isRevealed ? 'rotate-180' : ''
           }`}
         />
-        <span>{isRevealed ? 'Ocultar respuesta' : 'Mostrar respuesta'}</span>
+        <span>{isRevealed ? ' Hide answer' : 'Show answer'}</span>
       </button>
 
       {/* Respuesta con animación */}
@@ -151,7 +151,7 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
         {/* Metadata o información adicional (opcional) */}
         <div className="px-8 py-4 bg-slate-50 dark:bg-slate-900/50">
           <p className="text-sm text-slate-500 dark:text-slate-400 text-center">
-            📖 Tómate tu tiempo para leer y comprender el contenido
+            📖 Take your time to read and understand the content
           </p>
         </div>
       </article>
@@ -165,9 +165,9 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
               <HelpCircle className="w-5 h-5 text-indigo-200" />
             </div>
             <div>
-              <h3 className="font-bold text-lg">Comprensión de Lectura</h3>
+              <h3 className="font-bold text-lg">Reading Comprehension</h3>
               <p className="text-sm text-indigo-300 mt-0.5">
-                {(activity.comprehensionQuestions || []).length} {(activity.comprehensionQuestions || []).length === 1 ? 'pregunta' : 'preguntas'} para verificar tu comprensión
+                {(activity.comprehensionQuestions || []).length} {(activity.comprehensionQuestions || []).length === 1 ? 'question' : 'questions'} to verify your comprehension
               </p>
             </div>
           </div>
@@ -185,10 +185,10 @@ export const ReadingView: React.FC<ReadingViewProps> = ({ activity }) => {
           ))}
         </div>
 
-        {/* Footer con tip */}
+        {/* Footer with tip */}
         <div className="px-8 py-4 bg-indigo-950/40 border-t border-indigo-800/30">
           <p className="text-sm text-indigo-300 text-center">
-            💡 Intenta responder mentalmente antes de revelar las respuestas
+            💡 Try to answer mentally before revealing the answers
           </p>
         </div>
       </section>

@@ -38,6 +38,12 @@ import {
     debuggingLesson12
 } from './A1';
 
+// A2 Imports
+import {
+    intermediateWorkplaceLesson01,
+    intermediateWorkplaceLesson02
+} from './A2';
+
 import {
     explainingCodeLesson01,
     explainingCodeLesson02,
@@ -126,6 +132,10 @@ export const ALL_LESSONS = [
     debuggingLesson10,
     debuggingLesson11,
     debuggingLesson12,
+    // A2 Lessons
+    intermediateWorkplaceLesson01,
+    intermediateWorkplaceLesson02,
+    // B1 Lessons
     explainingCodeLesson01,
     explainingCodeLesson02,
     explainingCodeLesson03,
