@@ -50,6 +50,19 @@ import {
   explainingCodeLesson09
 } from './lessons/B1/explaining-your-code/index';
 
+import {
+  feedbackCollaborationLesson01,
+  feedbackCollaborationLesson02,
+  feedbackCollaborationLesson03,
+  feedbackCollaborationLesson04,
+  feedbackCollaborationLesson05,
+  feedbackCollaborationLesson06,
+  feedbackCollaborationLesson07,
+  feedbackCollaborationLesson08,
+  feedbackCollaborationLesson09,
+  feedbackCollaborationLesson10
+} from './lessons/B1/feedback-collaboration/index';
+
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environment/lesson-01';
 import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
@@ -169,6 +182,24 @@ export const CURRICULUM: Module[] = [
       explainingCodeLesson07,
       explainingCodeLesson08,
       explainingCodeLesson09
+    ]
+  },
+  {
+    id: 'feedback-collaboration',
+    title: 'Feedback & Collaboration',
+    description: 'Master professional communication skills for team collaboration, code reviews, debates, customer support, and asynchronous workflows in tech environments.',
+    level: Difficulty.B1,
+    lessons: [
+      feedbackCollaborationLesson01,
+      feedbackCollaborationLesson02,
+      feedbackCollaborationLesson03,
+      feedbackCollaborationLesson04,
+      feedbackCollaborationLesson05,
+      feedbackCollaborationLesson06,
+      feedbackCollaborationLesson07,
+      feedbackCollaborationLesson08,
+      feedbackCollaborationLesson09,
+      feedbackCollaborationLesson10
     ]
   }
   // Future modules can be added here as the curriculum expands

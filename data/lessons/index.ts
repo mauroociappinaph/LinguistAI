@@ -48,6 +48,20 @@ import {
     explainingCodeLesson08,
     explainingCodeLesson09
 } from './B1/explaining-your-code';
+
+import {
+    feedbackCollaborationLesson01,
+    feedbackCollaborationLesson02,
+    feedbackCollaborationLesson03,
+    feedbackCollaborationLesson04,
+    feedbackCollaborationLesson05,
+    feedbackCollaborationLesson06,
+    feedbackCollaborationLesson07,
+    feedbackCollaborationLesson08,
+    feedbackCollaborationLesson09,
+    feedbackCollaborationLesson10
+} from './B1/feedback-collaboration/index';
+
 import { Lesson, Difficulty } from '../../types';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
@@ -111,5 +125,15 @@ export const ALL_LESSONS = [
     explainingCodeLesson06,
     explainingCodeLesson07,
     explainingCodeLesson08,
-    explainingCodeLesson09
+    explainingCodeLesson09,
+    feedbackCollaborationLesson01,
+    feedbackCollaborationLesson02,
+    feedbackCollaborationLesson03,
+    feedbackCollaborationLesson04,
+    feedbackCollaborationLesson05,
+    feedbackCollaborationLesson06,
+    feedbackCollaborationLesson07,
+    feedbackCollaborationLesson08,
+    feedbackCollaborationLesson09,
+    feedbackCollaborationLesson10
 ];
