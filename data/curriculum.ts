@@ -13,7 +13,29 @@ import {
   everyDayWorkLifeLesson05,
   everyDayWorkLifeLesson06,
   everyDayWorkLifeLesson07,
-  everyDayWorkLifeLesson08
+  everyDayWorkLifeLesson08,
+  projectsCollaborationsLesson01,
+  projectsCollaborationsLesson02,
+  projectsCollaborationsLesson03,
+  projectsCollaborationsLesson04,
+  communicationLesson01,
+  communicationLesson02,
+  communicationLesson03,
+  communicationLesson04,
+  communicationLesson05,
+  communicationLesson06,
+  debuggingLesson01,
+  debuggingLesson02,
+  debuggingLesson03,
+  debuggingLesson04,
+  debuggingLesson05,
+  debuggingLesson06,
+  debuggingLesson07,
+  debuggingLesson08,
+  debuggingLesson09,
+  debuggingLesson10,
+  debuggingLesson11,
+  debuggingLesson12
 } from './lessons/A1/index';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
@@ -21,29 +43,8 @@ import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environme
 import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
 import { lesson03 as workEnvironmentLesson03 } from './lessons/A1/work-environment/lesson-03';
 import { lesson04 as workEnvironmentLesson04 } from './lessons/A1/work-environment/lesson-04';
+import { lesson05 as workEnvironmentLesson05 } from './lessons/A1/work-environment/lesson-05';
 import { lesson06 as workEnvironmentLesson06 } from './lessons/A1/work-environment/lesson-06';
-
-// Placeholder work environment lessons (only for lessons not created yet)
-const workEnvironmentLesson05: Lesson = {
-  id: "we5",
-  title: "Needs and Abilities",
-  level: Difficulty.A1,
-  description: "Learn about company culture, team dynamics, and workplace relationships.",
-  didYouKnow: "TODO: Placeholder content",
-  grammar: {} as any,
-  vocabulary: [],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: { title: "TODO", chunks: [] },
-  scenario: "TODO",
-  speaking: "TODO",
-  speakingPracticeMode: "conversation",
-  readingActivity: {} as any,
-  listeningActivity: {} as any,
-  pronunciationClinic: { title: "TODO", explanation: "TODO", examples: [] },
-  globalAccentLab: [],
-  rolePlay: {} as any
-};
 
 
 /**
@@ -93,6 +94,52 @@ export const CURRICULUM: Module[] = [
       workEnvironmentLesson04,
       workEnvironmentLesson05,
       workEnvironmentLesson06
+    ]
+  },
+  {
+    id: 'projects-collaborations',
+    title: 'Projects Collaborations',
+    description: 'Master project collaboration skills including planning, code reviews, meetings, and issue tracking in tech environments.',
+    level: Difficulty.A1,
+    lessons: [
+      projectsCollaborationsLesson01,
+      projectsCollaborationsLesson02,
+      projectsCollaborationsLesson03,
+      projectsCollaborationsLesson04
+    ]
+  },
+  {
+    id: 'communication-at-work',
+    title: 'Communication at Work',
+    description: 'Master professional communication skills including emails, meetings, documentation, stakeholder updates, suggestions, and planning in tech workplace environments.',
+    level: Difficulty.A1,
+    lessons: [
+      communicationLesson01,
+      communicationLesson02,
+      communicationLesson03,
+      communicationLesson04,
+      communicationLesson05,
+      communicationLesson06
+    ]
+  },
+  {
+    id: 'debugging-problem-solving',
+    title: 'Debugging & Problem Solving',
+    description: 'Master systematic debugging techniques, problem-solving methodologies, and technical issue resolution in software development.',
+    level: Difficulty.A1,
+    lessons: [
+      debuggingLesson01,
+      debuggingLesson02,
+      debuggingLesson03,
+      debuggingLesson04,
+      debuggingLesson05,
+      debuggingLesson06,
+      debuggingLesson07,
+      debuggingLesson08,
+      debuggingLesson09,
+      debuggingLesson10,
+      debuggingLesson11,
+      debuggingLesson12
     ]
   }
   // Future modules can be added here as the curriculum expands

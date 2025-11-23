@@ -1,188 +1,312 @@
-// Lesson 2 Template - TODO: Replace with actual lesson content
 import { Lesson, Difficulty } from '../../../../../types';
-// TODO: import { grammar } from './grammar';
-// TODO: import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
-// TODO: import { readingActivity, listeningActivity, pronunciationClinic, globalAccentLab, scenario, speaking, speakingPracticeMode, rolePlay } from './activities';
 
 export const lesson02: Lesson = {
-  id: "we2", // work-environment lesson 2
-  title: "Roles and Responsibilities",
+  id: "we2",
+  title: "Remote Work & Digital Tools",
   level: Difficulty.A1,
-  description: "Learn to talk about professional roles, responsibilities, and abilities in tech environments using 'can/cannot' and job-related vocabulary.",
-  didYouKnow: "In software development, the average person changes roles within their company every 2.4 years. Companies now recognize that helping employees develop new skills and change roles benefits both the employee and the organization.",
+  description: "Master essential vocabulary and phrases for remote work environments, virtual meetings, and digital collaboration tools in tech settings.",
+  didYouKnow: "By 2025, 70% of the global workforce will work remotely at least 2.5 days per week according to Harvard Business Review research. This shift has accelerated digital tool adoption, with Microsoft's Teams and Zoom seeing massive growth during the pandemic.",
 
   grammar: {
-    title: "Can/Can't: Professional Abilities",
+    title: "Prepositions for Digital Locations",
     explanation:
-      "Use **'can'** to talk about your skills and abilities in the workplace. Use **'cannot'** or **'can not'** (often contracted to **'can't'**) when describing things you are not able to do.\n\nThis modal verb helps you explain what you are capable of professionally: programming languages, soft skills, technical abilities, and job-related tasks.\n\n**Practice saying:** 'I **can** work with APIs', 'She **can't** design graphics', 'Can you work overtime?', '**Can** your team handle React development?', '**We cannot** work without documentation'.",
+      "**'In'** for inside digital spaces, **'on'** for online platforms, **'from'** for remote locations.\n\n- **in** a meeting (virtual space)\n- **on** Teams/Zoom/Slack (platforms)\n- **from** home/office/café (physical locations)\n\nUse these prepositions to describe your remote work setup: 'We're meeting **in** Google Meet!', 'Share that document **on** Slack', 'She works **from** multiple locations'.",
     usage:
-      "Use 'can' and 'can't' to talk about:\n\n🖥️ **Technical skills**: 'Can you code in Python?'\n💬 **Soft skills**: 'She can present to clients'\n⏰ **Work preferences**: 'I can't work weekends'\n🛠️ **Professional abilities**: 'We can deploy on Fridays'\n\nUse 'can' for questions about current abilities, and full forms (cannot) when emphasizing strong inability.",
+      "In remote work, these prepositions help you communicate clearly:\n\n**'Log in'** to systems, **'attend'** meetings online, **'connect from'** anywhere.\n\nExamples: 'I'm connecting **from** my home office', 'Join the call **on** Microsoft Teams', 'The files are **in** the shared drive'.",
     rules: [
       {
-        from: "Subject + can",
-        to: "Positive ability (I can, You can, She can...)"
+        from: "Digital platforms",
+        to: "on (on Slack, on Teams, on GitHub)"
       },
       {
-        from: "Subject + cannot",
-        to: "Negative inability (I can't, You can't, It can't...)"
+        from: "Virtual meetings/call",
+        to: "in (in a meeting, in a call)"
       },
       {
-        from: "Can + subject",
-        to: "Questions (Can I?, Can you?, Can she?...)"
-      },
-      {
-        from: "Can + subject + not",
-        to: "Negative questions (Can't I?, Can't you?, Can't it?...)"
+        from: "Physical locations when working remotely",
+        to: "from (from home, from the office, from a café)"
       }
     ],
     examples: [
-      "**I can** fix bugs in production code.",
-      "**She can't** design user interfaces.",
-      "**Can you** work with databases?",
-      "**They cannot** handle React development.",
-      "**Can we** deploy to staging today?"
+      "We're discussing this **on** Slack.",
+      "The team works **from** home today.",
+      "Join the call **in** Zoom at 3 PM.",
+      "**From** my home office, I can see...",
+      "Save the file **in** the shared folder."
     ],
     commonMistakes: [
       {
-        incorrect: "I no can fix this bug.",
-        correct: "I can't fix this bug.",
+        incorrect: "Let me share it in Slack.",
+        correct: "Let me share it on Slack.",
         explanation:
-          "Don't use full forms like 'no can'. Use the contraction 'can't' in informal speech."
+          "Use 'on' for platforms like Slack, not 'in'."
       },
       {
-        incorrect: "Can I can help you?",
-        correct: "Can I help you?",
+        incorrect: "The meeting is at Zoom.",
+        correct: "The meeting is on Zoom.",
         explanation:
-          "Don't combine modal verbs. Use only one modal verb per construction."
-      },
-      {
-        incorrect: "She can to code.",
-        correct: "She can code.",
-        explanation:
-          "Don't add 'to' after 'can'. Modal verbs are followed by the bare infinitive (base form)."
-      },
+          "Use 'on' for online platforms, not 'at'."
+      }
     ],
     interactiveExercise: {
       type: "fill-in-the-blank",
-      question: "___ you design mobile apps professionally?",
-      options: ["Can", "Can't", "Cannot", "Can not"],
-      answer: "Can"
+      question: "Join the standup ___ Teams at 9 AM.",
+      options: ["in", "on", "from", "at"],
+      answer: "on"
     }
   },
   vocabulary: [
     {
-      item: "developer",
-      explanation: "A person who develops software and applications.",
-      example: "I am a frontend developer with 3 years of experience.",
-      pronunciation: "/dɪˈvɛləpər/"
+      item: "remote work",
+      explanation: "Working from a location outside the main office, usually from home.",
+      example: "Remote work has become standard in our tech company.",
+      pronunciation: "/rɪˈmoʊt wɜːrk/"
     },
     {
-      item: "manager",
-      explanation: "A person responsible for leading a team and overseeing projects.",
-      example: "My manager approves all project deadlines.",
-      pronunciation: "/ˈmænɪdʒər/"
+      item: "virtual meeting",
+      explanation: "An online meeting conducted through video conferencing software.",
+      example: "Let's schedule a virtual meeting to discuss the project.",
+      pronunciation: "/ˈvɜːrtʃuəl ˈmiːtɪŋ/"
     },
     {
-      item: "designer",
-      explanation: "A person who creates visual designs and user interfaces.",
-      example: "The designer created beautiful mockups for our app.",
-      pronunciation: "/dɪˈzaɪnər/"
+      item: "video call",
+      explanation: "A phone call between people using video technology so they can see each other.",
+      example: "I have a video call with the client at 2 PM.",
+      pronunciation: "/ˈvɪdioʊ kɔːl/"
     },
     {
-      item: "analyst",
-      explanation: "A person who analyzes data and business requirements.",
-      example: "The business analyst helps understand user needs.",
-      pronunciation: "/ˈænəlɪst/"
+      item: "bandwidth",
+      explanation: "The capacity of a communication channel to transmit information.",
+      example: "Slow bandwidth makes video meetings challenging.",
+      pronunciation: "/ˈbændwɪdθ/"
     },
     {
-      item: "engineer",
-      explanation: "A person who applies science and mathematics to solve problems.",
-      example: "The DevOps engineer manages our deployment pipeline.",
-      pronunciation: "/ˌɛndʒɪˈnɪr/"
+      item: "connection",
+      explanation: "The state of being linked or joined to something, especially over the internet.",
+      example: "My internet connection dropped during the presentation.",
+      pronunciation: "/kəˈnɛkʃən/"
     },
     {
-      item: "architect",
-      explanation: "A person who designs the high-level structure of systems.",
-      example: "The software architect designs our microservices infrastructure.",
-      pronunciation: "/ˈɑːrkɪtɛkt/"
-    },
-    {
-      item: "tester",
-      explanation: "A person who tests software for quality assurance.",
-      example: "The QA tester found three bugs in our release.",
-      pronunciation: "/ˈtɛstər/"
-    },
-    {
-      item: "consultant",
-      explanation: "A person who provides expert advice on specific areas.",
-      example: "We hired a security consultant for our data protection plans.",
-      pronunciation: "/kənˈsʌltənt/"
-    },
-    {
-      item: "specialist",
-      explanation: "A person with deep knowledge in a specific field.",
-      example: "She is our database specialist and handles all SQL optimization.",
-      pronunciation: "/ˈspɛʃəlɪst/"
-    },
-    {
-      item: "coordinator",
-      explanation: "A person who organizes and synchronizes team activities.",
-      example: "The project coordinator schedules all our team meetings.",
-      pronunciation: "/koʊˈɔːrdɪneɪtər/"
-    },
-    {
-      item: "responsibility",
-      explanation: "A duty or task that someone is required to carry out.",
-      example: "One of my responsibilities is to maintain code documentation.",
-      pronunciation: "/rɪˌspɑːnsəˈbɪləti/"
-    },
-    {
-      item: "authority",
-      explanation: "The power to make decisions or take actions.",
-      example: "As lead developer, he has the authority to approve pull requests.",
-      pronunciation: "/əˈθɔːrəti/"
-    },
-    {
-      item: "hierarchy",
-      explanation: "The system's arrangement of people by rank or class in an organization.",
-      example: "Our company has a clear hierarchy from entry-level to executive roles.",
-      pronunciation: "/ˈhaɪərɑːrki/"
+      item: "laptop",
+      explanation: "A portable computer small enough to be carried around easily.",
+      example: "I use my laptop for all remote work.",
+      pronunciation: "/ˈlæptɒp/"
     },
     {
       item: "colleague",
       explanation: "A person with whom one works, especially in a profession or business.",
-      example: "My colleague from marketing helped design our landing page.",
+      example: "My colleague is joining from a different time zone.",
       pronunciation: "/ˈkɑːliːɡ/"
     },
     {
-      item: "internship",
-      explanation: "A period of training with an organization for professional experience.",
-      example: "He gained valuable experience through two summers of internships.",
-      pronunciation: "/ˈɪntərnʃɪp/"
+      item: "distraction",
+      explanation: "Something that prevents someone from giving their attention to something else.",
+      example: "Working from home has some distractions I need to manage.",
+      pronunciation: "/dɪˈstrækʃən/"
+    },
+    {
+      item: "flexibility",
+      explanation: "The ability to change or be changed easily to suit new conditions.",
+      example: "Remote work offers great flexibility in scheduling.",
+      pronunciation: "/ˌflɛksəˈbɪləti/"
+    },
+    {
+      item: "headset",
+      explanation: "A pair of headphones and a microphone worn together, usually for telephoning.",
+      example: "I always wear my headset during video calls.",
+      pronunciation: "/ˈhɛdsɛt/"
+    },
+    {
+      item: "mute button",
+      explanation: "A button to silence audio input and output.",
+      example: "Remember to use the mute button when not speaking.",
+      pronunciation: "/myuːt ˈbʌtən/"
+    },
+    {
+      item: "screen share",
+      explanation: "The action of sharing one's screen display with others in a video meeting.",
+      example: "I'll screen share the latest changes to the code.",
+      pronunciation: "/skriːn ʃɛr/"
+    },
+    {
+      item: "time zone",
+      explanation: "A region of the globe that observes a uniform standard time.",
+      example: "We have team members in different time zones.",
+      pronunciation: "/taɪm zoʊn/"
+    },
+    {
+      item: "hybrid model",
+      explanation: "A work arrangement combining remote and office work.",
+      example: "Our company is implementing a hybrid model.",
+      pronunciation: "/ˈhaɪbrɪd ˈmɑːdəl/"
+    },
+    {
+      item: "connect remotely",
+      explanation: "To join meetings or systems from a location outside the office.",
+      example: "I can connect remotely using VPN and my work laptop.",
+      pronunciation: "/kəˈnɛkt rɪˈmoʊtli/"
     }
   ],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: { title: "TODO: Title", chunks: [] },
-  scenario: "TODO: Scenario",
-  speaking: "TODO: Speaking instructions",
+  phrasalVerbs: [
+    {
+      item: "log on",
+      explanation: "To start using a computer system or website.",
+      example: "First, log on to your work account.",
+      pronunciation: "/lɔg ɔn/"
+    },
+    {
+      item: "log off",
+      explanation: "To stop using a computer system or website.",
+      example: "Don't forget to log off after work.",
+      pronunciation: "/lɔg ɔf/"
+    },
+    {
+      item: "tune in",
+      explanation: "To start paying attention to something, especially audio or video.",
+      example: "Please tune in to the webinar at 10 AM.",
+      pronunciation: "/tun ɪn/"
+    },
+    {
+      item: "drop off",
+      explanation: "To suddenly disconnect or lose connection.",
+      example: "My connection dropped off during the presentation.",
+      pronunciation: "/drɔp ɔf/"
+    }
+  ],
+  compoundWords: [
+    {
+      item: "video conference",
+      explanation: "A meeting conducted via video technology where participants can see and hear each other.",
+      example: "We held a video conference with the client.",
+      pronunciation: "/ˈvɪdioʊ ˈkɑːnfərəns/"
+    },
+    {
+      item: "remote access",
+      explanation: "Access to a computer system from a remote location.",
+      example: "I use remote access to connect to company servers.",
+      pronunciation: "/rɪˈmoʊt ˈæksɛs/"
+    },
+    {
+      item: "home office",
+      explanation: "An office or work area in someone's home.",
+      example: "I've set up a proper home office for better productivity.",
+      pronunciation: "/hoʊm ˈɔfɪs/"
+    }
+  ],
+  functionalChunks: {
+    title: "Remote Work Communication Patterns",
+    chunks: [
+      {
+        chunk: "I'm connecting ___ [location], is the meeting starting?",
+        usage: "Indicating your location when joining remotely"
+      },
+      {
+        chunk: "Can you ___ your screen? I'd like to see that.",
+        usage: "Requesting screen sharing in meetings"
+      },
+      {
+        chunk: "My internet ___ is unstable, can we troubleshoot?",
+        usage: "Reporting technical issues"
+      },
+      {
+        chunk: "Let me put you ___ speaker so everyone can hear.",
+        usage: "Managing audio in virtual meetings"
+      },
+      {
+        chunk: "I'm working ___ this week, but I'm available online.",
+        usage: "Explaining work arrangement"
+      }
+    ]
+  },
+  scenario: "Joining a remote team meeting and explaining your work-from-home setup to new colleagues.",
+  speaking: "Hi everyone, I'm dialing in from my home office in Buenos Aires. My internet connection is good, but I have time zone difference. Let me screen share my current work progress.",
   speakingPracticeMode: "conversation",
   readingActivity: {
-    title: "Reading: Work Environment Content Coming Soon",
-    text: "This reading section for 'Office Meetings & Presentations' is under development.\n\nPlease check back later or continue with other lesson sections.",
-    comprehensionQuestions: [],
+    title: "Reading: Remote Work Best Practices",
+    text: "Remote work requires strong digital communication skills. **Connect** with your team regularly using video calls and instant messaging. **Screen share** to show work progress and get feedback. Respect **time zones** when scheduling meetings. Practice good etiquette like using the **mute button** appropriately and enabling camera when possible. Address **distractions** proactively and set clear availability status. The **hybrid model** combines flexibility with collaboration opportunities.",
+    comprehensionQuestions: [
+      {
+        question: "What should you do regularly in remote work?",
+        answer: "Connect with your team using video calls and instant messaging."
+      },
+      {
+        question: "What is important when scheduling remote meetings?",
+        answer: "Respect time zones."
+      },
+      {
+        question: "What etiquette should you practice in video calls?",
+        answer: "Using the mute button appropriately and enabling camera when possible."
+      }
+    ],
   },
   listeningActivity: {
-    title: "Listening: Work Environment Audio Coming Soon",
-    transcript: "This listening exercise for 'Office Meetings & Presentations' is under development.\n\nAudio content will be available soon - please continue with other lesson sections.",
-    comprehensionQuestions: [],
+    title: "Listening: Remote Team Standup",
+    transcript: "Good morning team! Let's get started with our standup. I'm working from my home office today. How's everyone's connection? Mark, you look muted there - can you unmute? Sarah, can you screen share your progress on that API? My bandwidth here is not great, so bear with me. Okay, let's jump in. I'm connecting from Berlin, what's everyone working on?",
+    comprehensionQuestions: [
+      {
+        question: "Where is the speaker working from?",
+        answer: "Home office."
+      },
+      {
+        question: "What does the speaker ask Sarah to do?",
+        answer: "Screen share her progress."
+      },
+      {
+        question: "What issue does the speaker mention?",
+        answer: "Bandwidth is not great."
+      }
+    ],
     audioSrc: "",
   },
   pronunciationClinic: {
-    title: "TODO: Pronunciation Title",
-    explanation: "TODO: Explanation",
-    examples: []
+    title: "Pronunciation Clinic: Tech Meeting Terms",
+    explanation: "Master the pronunciation of common virtual meeting vocabulary used in remote work environments. These terms are essential for clear communication in international teams.",
+    examples: [
+      {
+        term: "bandwidth",
+        phonetic: "/ˈbændwɪdθ/",
+        tip: "Three syllables: 'band-wi-dth'. Don't confuse with 'brand width' - stress the second syllable and pronounce the th fully."
+      },
+      {
+        term: "remote",
+        phonetic: "/rɪˈmoʊt/",
+        tip: "Two syllables: 're-moat'. Stress on first syllable. Sounds like 'moat' (as in castle defense ditch)."
+      },
+      {
+        term: "headset",
+        phonetic: "/ˈhɛdsɛt/",
+        tip: "Two syllables: 'head-set'. Pronounce the 't' distinctly. Not 'head-sed' or 'hedset'."
+      },
+      {
+        term: "connection",
+        phonetic: "/kəˈnɛkʃən/",
+        tip: "Three syllables: 'con-ner-tion'. Stress on second syllable. The 'nn' is clear, not slurred."
+      },
+      {
+        term: "distractions",
+        phonetic: "/dɪˈstrækʃənz/",
+        tip: "Three syllables: 'dis-track-shunz'. Plural 's' is pronounced softly. Focus on the 'traction' part."
+      }
+    ]
   },
-  globalAccentLab: [],
-  rolePlay: {} as any
+  globalAccentLab: [
+    {
+      accent: "American English (California)",
+      speakerBio: "Tommy, Tech Lead from Silicon Valley",
+      audioSrc: "",
+      transcript: "Okay team, I'm connecting from my home office here in Palo Alto. Got great bandwidth today. Let's get this standup started. Who's presenting the user stories for Sprint 4? I want to screen share the architecture diagram - can everyone see that clearly?"
+    },
+    {
+      accent: "British English (London)",
+      speakerBio: "Emma, Product Manager from London",
+      audioSrc: "",
+      transcript: "Morning everyone! Connecting from my flat today, hope the connection holds up. Right then, let's jump into the agile ceremony. Sarah, would you mind screen sharing the Kanban board? I want to review the work in progress column before planning the next sprint."
+    }
+  ],
+  rolePlay: {
+    title: "Remote Team Onboarding",
+    objective: "Guide a new remote team member through their first virtual meeting setup and introduce them to remote work tools using appropriate digital communication phrases.",
+    aiPersona: "New Remote Developer joining the team",
+    initialMessage: "Hi everyone! I'm joining remotely from Mexico City. Can someone help me set up for the meeting? I can see the video but I'm not sure about the audio settings."
+  }
 };

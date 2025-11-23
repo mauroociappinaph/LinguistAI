@@ -12,58 +12,44 @@ import {
     everyDayWorkLifeLesson05,
     everyDayWorkLifeLesson06,
     everyDayWorkLifeLesson07,
-    everyDayWorkLifeLesson08
+    everyDayWorkLifeLesson08,
+    projectsCollaborationsLesson01,
+    projectsCollaborationsLesson02,
+    projectsCollaborationsLesson03,
+    projectsCollaborationsLesson04,
+    communicationLesson01,
+    communicationLesson02,
+    communicationLesson03,
+    communicationLesson04,
+    communicationLesson05,
+    communicationLesson06,
+    debuggingLesson01,
+    debuggingLesson02,
+    debuggingLesson03,
+    debuggingLesson04,
+    debuggingLesson05,
+    debuggingLesson06,
+    debuggingLesson07,
+    debuggingLesson08,
+    debuggingLesson09,
+    debuggingLesson10,
+    debuggingLesson11,
+    debuggingLesson12
 } from './A1';
 import { Lesson, Difficulty } from '../../types';
+
+// Updated: Resolved inconsistencies by importing complete WE-4 and WE-5 lessons directly
+// All WE lessons (1-6) now properly implemented and imported
 
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './A1/work-environment/lesson-01';
 import { lesson02 as workEnvironmentLesson02 } from './A1/work-environment/lesson-02';
 import { lesson03 as workEnvironmentLesson03 } from './A1/work-environment/lesson-03';
+import { lesson04 as workEnvironmentLesson04 } from './A1/work-environment/lesson-04';
+import { lesson05 as workEnvironmentLesson05 } from './A1/work-environment/lesson-05';
 import { lesson06 as workEnvironmentLesson06 } from './A1/work-environment/lesson-06';
 
 // Placeholder work environment lessons for incomplete lessons
-const workEnvironmentLesson04: Lesson = {
-    id: "we4",
-    title: "Onboarding",
-    level: Difficulty.A1,
-    description: "Develop skills for virtual meetings, video calls, and remote team collaboration.",
-    didYouKnow: "TODO: Placeholder content",
-    grammar: {} as any,
-    vocabulary: [],
-    phrasalVerbs: [],
-    compoundWords: [],
-    functionalChunks: { title: "TODO", chunks: [] },
-    scenario: "TODO",
-    speaking: "TODO",
-    speakingPracticeMode: "conversation",
-    readingActivity: {} as any,
-    listeningActivity: {} as any,
-    pronunciationClinic: { title: "TODO", explanation: "TODO", examples: [] },
-    globalAccentLab: [],
-    rolePlay: {} as any
-};
-
-const workEnvironmentLesson05: Lesson = {
-    id: "we5",
-    title: "Needs and Abilities",
-    level: Difficulty.A1,
-    description: "Learn about company culture, team dynamics, and workplace relationships.",
-    didYouKnow: "TODO: Placeholder content",
-    grammar: {} as any,
-    vocabulary: [],
-    phrasalVerbs: [],
-    compoundWords: [],
-    functionalChunks: { title: "TODO", chunks: [] },
-    scenario: "TODO",
-    speaking: "TODO",
-    speakingPracticeMode: "conversation",
-    readingActivity: {} as any,
-    listeningActivity: {} as any,
-    pronunciationClinic: { title: "TODO", explanation: "TODO", examples: [] },
-    globalAccentLab: [],
-    rolePlay: {} as any
-};
 
 export const ALL_LESSONS = [
     gettingStartedLesson01,
@@ -85,5 +71,27 @@ export const ALL_LESSONS = [
     workEnvironmentLesson03,
     workEnvironmentLesson04,
     workEnvironmentLesson05,
-    workEnvironmentLesson06
+    workEnvironmentLesson06,
+    projectsCollaborationsLesson01,
+    projectsCollaborationsLesson02,
+    projectsCollaborationsLesson03,
+    projectsCollaborationsLesson04,
+    communicationLesson01,
+    communicationLesson02,
+    communicationLesson03,
+    communicationLesson04,
+    communicationLesson05,
+    communicationLesson06,
+    debuggingLesson01,
+    debuggingLesson02,
+    debuggingLesson03,
+    debuggingLesson04,
+    debuggingLesson05,
+    debuggingLesson06,
+    debuggingLesson07,
+    debuggingLesson08,
+    debuggingLesson09,
+    debuggingLesson10,
+    debuggingLesson11,
+    debuggingLesson12
 ];

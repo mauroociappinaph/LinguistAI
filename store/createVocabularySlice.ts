@@ -25,6 +25,7 @@ export interface VocabularyWord {
 export interface VocabularySlice {
   vocabulary: VocabularyWord[];
   isVocabularyLoaded: boolean;
+  vocabularyError: string | null;
   loadVocabulary: () => Promise<void>;
   addVocabularyWord: (word: string, translation: string, lessonId?: string) => Promise<void>;
   deleteVocabularyWord: (id: string) => Promise<void>;
@@ -35,6 +36,7 @@ export interface VocabularySlice {
 export const createVocabularySlice: StateCreator<VocabularySlice> = (set, get) => ({
   vocabulary: [],
   isVocabularyLoaded: false,
+  vocabularyError: null,
 
   /**
    * Carga el vocabulario desde Supabase
@@ -43,10 +45,15 @@ export const createVocabularySlice: StateCreator<VocabularySlice> = (set, get) =
   loadVocabulary: async () => {
     try {
       const data = await getUserVocabulary() as VocabularyWord[];
-      set({ vocabulary: data, isVocabularyLoaded: true });
+      set({ vocabulary: data, isVocabularyLoaded: true, vocabularyError: null });
     } catch (error) {
       console.error('Error loading vocabulary:', error);
-      set({ isVocabularyLoaded: true }); // Marcar como loaded aunque falle
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido al cargar vocabulario';
+      set({
+        vocabulary: [],
+        isVocabularyLoaded: true,
+        vocabularyError: errorMessage
+      });
     }
   },
 
@@ -108,6 +115,6 @@ export const createVocabularySlice: StateCreator<VocabularySlice> = (set, get) =
    * Limpia el vocabulario (al hacer logout)
    */
   clearVocabulary: () => {
-    set({ vocabulary: [], isVocabularyLoaded: false });
+    set({ vocabulary: [], isVocabularyLoaded: false, vocabularyError: null });
   },
 });
