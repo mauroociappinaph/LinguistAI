@@ -1,4 +1,7 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
+import { commonMistakes } from './commonMistakes';
 
 export const lesson05: Lesson = {
   id: "we5",
@@ -7,177 +10,12 @@ export const lesson05: Lesson = {
   description: "Learn to express professional needs and abilities using 'can/can't', 'need to', and vocabulary for workplace requirements and skills development in tech environments.",
   didYouKnow: "According to LinkedIn's 2024 Workplace Learning Report, 94% of workers would stay at a company longer if it invested in their professional development. Learning new technologies and getting certifications in skills like cloud computing, data analysis, and cybersecurity is becoming essential for career advancement in tech.",
 
-  grammar: {
-    title: "Can/Can't for Abilities & Need to for Requirements",
-    explanation:
-      "Use **'can'** for current abilities and **'can't'** for limitations. Use **'need to'** for necessary requirements and actions. Combine them to discuss professional growth:\n\n**'I can code in Python'** (current ability)\n**'I need to learn React'** (requirement)\n**'I can't handle DevOps yet'** (limitation)\n\n**'Need'** is modal (=must) followed by infinitive without 'to'. Use **'don't need to'** for non-essentials.",
-    usage:
-      "In tech job conversations, use these to:\n\n🛠️ Describe technical skills\n📚 Express learning requirements\n🎯 Discuss career development\n👥 Explain team capabilities\n\nUse 'can/can't' for what you do know, 'need to' for what you must acquire.",
-    rules: [
-      {
-        from: "Current skills (positive)",
-        to: "Can + infinitive (I can deploy apps)"
-      },
-      {
-        from: "Skills you lack (negative)",
-        to: "Can't + infinitive (She can't use APIs)"
-      },
-      {
-        from: "Required skills (obligation)",
-        to: "Need to + infinitive (We need to learn AWS)"
-      },
-      {
-        from: "Unnecessary skills",
-        to: "Don't need to + infinitive (They don't need to code Java)"
-      }
-    ],
-    examples: [
-      "**I can** handle database queries efficiently.",
-      "**She can't** design user interfaces.",
-      "**We need to** upgrade our cloud security.",
-      "**You don't need to** know assembly language anymore.",
-      "**Our team can** implement agile methodology."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "I need to study React today.",
-        correct: "I need to study React today.",
-        explanation:
-          "This is actually correct! Use 'need to' for requirement + infinitive."
-      },
-      {
-        incorrect: "He cans program in C++.",
-        correct: "He can program in C++.",
-        explanation:
-          "Don't add 's' to 'can' - it's already correct as a modal verb."
-      },
-      {
-        incorrect: "We need learn Kubernetes.",
-        correct: "We need to learn Kubernetes.",
-        explanation:
-          "Never omit 'to' after modal verbs. Always use full form."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "Our developers ___ to attend the security training.",
-      options: ["need", "needs", "needing", "needed"],
-      answer: "need"
-    }
-  },
-  vocabulary: [
-    {
-      item: "ability",
-      explanation: "The power or skill to do something.",
-      example: "Her ability to debug complex code is impressive.",
-      pronunciation: "/əˈbɪləti/"
-    },
-    {
-      item: "skill",
-      explanation: "An ability or expertise that can be learned through training.",
-      example: "JavaScript is a crucial skill for frontend developers.",
-      pronunciation: "/skɪl/"
-    },
-    {
-      item: "certification",
-      explanation: "An official document that proves someone has the knowledge or skill to do something.",
-      example: "I need AWS certification for my cloud role.",
-      pronunciation: "/ˌsɜːrtɪfɪˈkeɪʃən/"
-    },
-    {
-      item: "training",
-      explanation: "The process of learning the skills needed for a particular job.",
-      example: "The team attended training on the new testing framework.",
-      pronunciation: "/ˈtreɪnɪŋ/"
-    },
-    {
-      item: "requirement",
-      explanation: "Something that is necessary for a particular purpose.",
-      example: "The job requirement includes 3 years of React experience.",
-      pronunciation: "/rɪˈkwaɪərmənt/"
-    },
-    {
-      item: "competency",
-      explanation: "The ability to do something well or effectively.",
-      example: "Our competency in machine learning sets us apart.",
-      pronunciation: "/ˈkɑːmpɪtənsi/"
-    },
-    {
-      item: "proficiency",
-      explanation: "A high level of skill or expertise in something.",
-      example: "His proficiency in SQL query optimization is outstanding.",
-      pronunciation: "/prəˈfɪʃənsi/"
-    },
-    {
-      item: "expertise",
-      explanation: "Special knowledge or skill in a particular area.",
-      example: "We need his expertise in cybersecurity for this project.",
-      pronunciation: "/ˌɛkspɜːrˈtiːz/"
-    },
-    {
-      item: "capability",
-      explanation: "The power or ability to do something.",
-      example: "Our team's capability in full-stack development is growing.",
-      pronunciation: "/ˌkeɪpəˈbɪləti/"
-    },
-    {
-      item: "limitation",
-      explanation: "A restriction or weakness in ability or knowledge.",
-      example: "Her main limitation is lack of experience with Docker.",
-      pronunciation: "/ˌlɪmɪˈteɪʃən/"
-    },
-    {
-      item: "gap",
-      explanation: "A space or difference between what you know and what you need to know.",
-      example: "There's a skills gap in our data science team.",
-      pronunciation: "/ɡæp/"
-    },
-    {
-      item: "resource",
-      explanation: "A useful or valuable possession or quality of a country, person, or organization.",
-      example: "Training resources are available on the company portal.",
-      pronunciation: "/rɪˈsɔːrs/"
-    },
-    {
-      item: "development",
-      explanation: "The process of developing or being developed in skill or knowledge.",
-      example: "Professional development is important in tech careers.",
-      pronunciation: "/dɪˈvɛləpmənt/"
-    },
-    {
-      item: "assessment",
-      explanation: "An evaluation of knowledge, skills, or needs.",
-      example: "The skills assessment showed we need to focus on cloud computing.",
-      pronunciation: "/əˈsɛsmənt/"
-    }
-  ],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Professional Development Communication",
-    chunks: [
-      {
-        chunk: "I can [skill], but I need ___ [another skill]",
-        usage: "Expressing current abilities and future needs"
-      },
-      {
-        chunk: "Our team ___ handle [task/area], but we ___ learn [new technology]",
-        usage: "Discussing team capabilities and requirements"
-      },
-      {
-        chunk: "This project requires [skill] that I/we ___ know yet",
-        usage: "Identifying missing competencies"
-      },
-      {
-        chunk: "My limitation is [area], so I ___ to improve there",
-        usage: "Discussing personal development goals"
-      },
-      {
-        chunk: "[Company/team] needs ___ invest in [training/certification]",
-        usage: "Recommending organizational development"
-      }
-    ]
-  },
+  grammar,
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
+
   scenario: "Discussing your current tech skills and professional development needs during a performance review with your manager.",
   speaking: "I can work with React and Node.js effectively, but I need to improve my DevOps skills. Our team can handle frontend development, but we need to learn more about cloud architecture for scalability.",
   speakingPracticeMode: "conversation",

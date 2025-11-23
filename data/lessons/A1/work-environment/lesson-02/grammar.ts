@@ -4,9 +4,9 @@ import { commonMistakes } from './commonMistakes';
 export const grammar: GrammarSection = {
   title: "Prepositions for Digital Locations",
   explanation:
-    "**'In'** para espacios digitales, **'on'** para plataformas online, **'from'** para ubicaciones remotas.\\n\\n- **in** a meeting (espacio virtual)\\n- **on** Teams/Zoom/Slack (plataformas)\\n- **from** home/office/café (ubicaciones físicas)\\n\\nUsa estas preposiciones para describir tu configuración de trabajo remoto: 'We're meeting **in** Google Meet!', 'Share that document **on** Slack', 'She works **from** multiple locations'.",
+    "**'In'** for inside digital spaces, **'on'** for online platforms, **'from'** for remote locations.\\n\\n- **in** a meeting (virtual space)\\n- **on** Teams/Zoom/Slack (platforms)\\n- **from** home/office/café (physical locations)\\n\\nUse these prepositions to describe your remote work setup: 'We're meeting **in** Google Meet!', 'Share that document **on** Slack', 'She works **from** multiple locations'.",
   usage:
-    "En trabajo remoto, estas preposiciones te ayudan a comunicarte claramente:\\n\\n**'Log in'** a los sistemas, **'attend'** reuniones online, **'connect from'** cualquier lugar.\\n\\nEjemplos: 'I'm connecting **from** my home office', 'Join the call **on** Microsoft Teams', 'The files are **in** the shared drive'.",
+    "In remote work, these prepositions help you communicate clearly:\\n\\n**'Log in'** to systems, **'attend'** meetings online, **'connect from'** anywhere.\\n\\nExamples: 'I'm connecting **from** my home office', 'Join the call **on** Microsoft Teams', 'The files are **in** the shared drive'.",
   rules: [
     {
       from: "Digital platforms",

@@ -28,6 +28,11 @@ export const grammar: GrammarSection = {
     "The testing environment **is not responding** - **can you investigate**?"
   ],
   commonMistakes,
+  writingExamples: [
+    "**Scenario: Email to a new team member**\nI would be able to review the documentation with you next Tuesday. Would that work for you?",
+    "**Scenario: Slack message during standup**\nThe deployment requirements are now available. Would you be able to take a look?"
+  ],
+  whyCrucial: "📝 **80% of professional IT communication is written** - emails, documentation, issue reports all build credibility.\n\n🕐 **Tone matters in remote work**: Professional distance through conditionals prevents misunderstandings and builds trust.\n\n🎯 **Career acceleration**: Professionals who master formal written communication advance 50% faster in tech careers.",
   interactiveExercise: {
     type: "fill-in-the-blank",
     question: "___ you please provide an update on the project status?",
