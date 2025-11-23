@@ -38,6 +38,18 @@ import {
   debuggingLesson12
 } from './lessons/A1/index';
 
+import {
+  explainingCodeLesson01,
+  explainingCodeLesson02,
+  explainingCodeLesson03,
+  explainingCodeLesson04,
+  explainingCodeLesson05,
+  explainingCodeLesson06,
+  explainingCodeLesson07,
+  explainingCodeLesson08,
+  explainingCodeLesson09
+} from './lessons/B1/explaining-your-code/index';
+
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environment/lesson-01';
 import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
@@ -140,6 +152,23 @@ export const CURRICULUM: Module[] = [
       debuggingLesson10,
       debuggingLesson11,
       debuggingLesson12
+    ]
+  },
+  {
+    id: 'explaining-your-code',
+    title: 'Explaining Your Code',
+    description: 'Master advanced explanation skills for technical content using sophisticated tenses, connectors, and passive voice to communicate complex software concepts clearly.',
+    level: Difficulty.B1,
+    lessons: [
+      explainingCodeLesson01,
+      explainingCodeLesson02,
+      explainingCodeLesson03,
+      explainingCodeLesson04,
+      explainingCodeLesson05,
+      explainingCodeLesson06,
+      explainingCodeLesson07,
+      explainingCodeLesson08,
+      explainingCodeLesson09
     ]
   }
   // Future modules can be added here as the curriculum expands

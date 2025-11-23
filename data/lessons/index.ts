@@ -36,10 +36,19 @@ import {
     debuggingLesson11,
     debuggingLesson12
 } from './A1';
-import { Lesson, Difficulty } from '../../types';
 
-// Updated: Resolved inconsistencies by importing complete WE-4 and WE-5 lessons directly
-// All WE lessons (1-6) now properly implemented and imported
+import {
+    explainingCodeLesson01,
+    explainingCodeLesson02,
+    explainingCodeLesson03,
+    explainingCodeLesson04,
+    explainingCodeLesson05,
+    explainingCodeLesson06,
+    explainingCodeLesson07,
+    explainingCodeLesson08,
+    explainingCodeLesson09
+} from './B1/explaining-your-code';
+import { Lesson, Difficulty } from '../../types';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './A1/work-environment/lesson-01';
@@ -93,5 +102,14 @@ export const ALL_LESSONS = [
     debuggingLesson09,
     debuggingLesson10,
     debuggingLesson11,
-    debuggingLesson12
+    debuggingLesson12,
+    explainingCodeLesson01,
+    explainingCodeLesson02,
+    explainingCodeLesson03,
+    explainingCodeLesson04,
+    explainingCodeLesson05,
+    explainingCodeLesson06,
+    explainingCodeLesson07,
+    explainingCodeLesson08,
+    explainingCodeLesson09
 ];
