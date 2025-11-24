@@ -1,3 +1,5 @@
-export const scenario = "You're presenting system performance to your team.";
-export const speaking = "In this presentation, I will explain system performance using Present Perfect.";
-export const speakingPracticeMode = "presentation" as const;
+export const scenario = "You're presenting a postmortem report about a recent production incident. Explain what has happened, what you've discovered during the investigation, and what improvements have been implemented since then.";
+
+export const speaking = "Our payment service experienced a complete outage last Thursday that has affected approximately 15,000 transactions. The incident has been classified as Severity 1 due to revenue impact. We've identified the root cause as a database connection leak that has been introduced in version 2.5.0. The investigation has revealed that the payment processor has been holding connections without releasing them properly. Since the incident, we've implemented several improvements. We've rolled back to the stable version and have deployed a permanent fix that has passed all stress tests. We've also enhanced our monitoring to detect connection leaks earlier and have added automated alerts. Performance has been stable for 72 hours since these changes, and we haven't observed any regressions.";
+
+export const speakingPracticeMode = "explanation" as const;

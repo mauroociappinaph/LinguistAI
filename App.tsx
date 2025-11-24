@@ -10,8 +10,6 @@ const App: React.FC = () => {
   const { isAuthenticated, isLoading, initializeAuth } = useStore();
   const [showSignUp, setShowSignUp] = useState(false);
 
-  console.log('🚀 [APP] React Router DOM is ACTIVE - nuevo código cargando');
-
   // Inicializar autenticación al cargar la app
   useEffect(() => {
     let cleanup: (() => void) | undefined;
