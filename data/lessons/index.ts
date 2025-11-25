@@ -39,7 +39,8 @@ import {
     intermediateWorkplaceLesson05,
     intermediateWorkplaceLesson06,
     intermediateWorkplaceLesson07,
-    intermediateWorkplaceLesson08
+    intermediateWorkplaceLesson08,
+    intermediateWorkplaceLesson09
 } from './A2';
 
 import {
@@ -72,7 +73,9 @@ import {
     techEcosystemTrendsLesson02,
     techEcosystemTrendsLesson03,
     techEcosystemTrendsLesson04,
-    techEcosystemTrendsLesson05
+    techEcosystemTrendsLesson05,
+    techEcosystemTrendsLesson06,
+    techEcosystemTrendsLesson07
 } from './B1/tech-ecosystem-trends/index';
 
 // B2 Imports
@@ -142,6 +145,7 @@ export const ALL_LESSONS = [
     intermediateWorkplaceLesson06,
     intermediateWorkplaceLesson07,
     intermediateWorkplaceLesson08,
+    intermediateWorkplaceLesson09,
     // B1 Lessons
     explainingCodeLesson01,
     explainingCodeLesson02,
@@ -167,6 +171,8 @@ export const ALL_LESSONS = [
     techEcosystemTrendsLesson03,
     techEcosystemTrendsLesson04,
     techEcosystemTrendsLesson05,
+    techEcosystemTrendsLesson06,
+    techEcosystemTrendsLesson07,
     // B2 Lessons
     projectManagementLesson01,
     // C1 Lessons

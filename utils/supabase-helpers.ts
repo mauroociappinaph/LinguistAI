@@ -86,3 +86,20 @@ export const sanitizeName = (name: string): string => {
     .replace(/[<>]/g, '') // Eliminar caracteres peligrosos para HTML
     .slice(0, 50); // Limitar longitud
 };
+
+/**
+ * Transforma un perfil de la base de datos a UserState
+ * @param profile - Perfil de la base de datos
+ * @returns UserState formateado
+ */
+export const transformProfileToUser = (profile: any): UserState => {
+  return {
+    name: profile.name || '',
+    currentLevel: profile.current_level || 'A1',
+    xp: profile.xp || 0,
+    streak: profile.streak || 0,
+    badges: profile.badges || [],
+    completedLessons: profile.completed_lessons || []
+  };
+};
+

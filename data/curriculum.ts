@@ -28,7 +28,14 @@ import {
   debuggingLesson09,
   debuggingLesson10,
   debuggingLesson11,
-  debuggingLesson12
+
+  debuggingLesson12,
+  workEnvironmentLesson01,
+  workEnvironmentLesson02,
+  workEnvironmentLesson03,
+  workEnvironmentLesson04,
+  workEnvironmentLesson05,
+  workEnvironmentLesson06
 } from './lessons/A1/index';
 
 // A2 Imports
@@ -40,7 +47,8 @@ import {
   intermediateWorkplaceLesson05,
   intermediateWorkplaceLesson06,
   intermediateWorkplaceLesson07,
-  intermediateWorkplaceLesson08
+  intermediateWorkplaceLesson08,
+  intermediateWorkplaceLesson09
 } from './lessons/A2/index';
 
 import {
@@ -73,7 +81,9 @@ import {
   techEcosystemTrendsLesson02,
   techEcosystemTrendsLesson03,
   techEcosystemTrendsLesson04,
-  techEcosystemTrendsLesson05
+  techEcosystemTrendsLesson05,
+  techEcosystemTrendsLesson06,
+  techEcosystemTrendsLesson07
 } from './lessons/B1/tech-ecosystem-trends/index';
 
 import {
@@ -98,13 +108,7 @@ import {
   lesson02 as advancedTechnicalWritingLesson02
 } from './lessons/C1/index';
 
-// Import work environment lessons directly from their files (avoiding module index issues)
-import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environment/lesson-01';
-import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
-import { lesson03 as workEnvironmentLesson03 } from './lessons/A1/work-environment/lesson-03';
-import { lesson04 as workEnvironmentLesson04 } from './lessons/A1/work-environment/lesson-04';
-import { lesson05 as workEnvironmentLesson05 } from './lessons/A1/work-environment/lesson-05';
-import { lesson06 as workEnvironmentLesson06 } from './lessons/A1/work-environment/lesson-06';
+
 
 
 /**
@@ -201,7 +205,8 @@ export const CURRICULUM: Module[] = [
       intermediateWorkplaceLesson05,
       intermediateWorkplaceLesson06,
       intermediateWorkplaceLesson07,
-      intermediateWorkplaceLesson08
+      intermediateWorkplaceLesson08,
+      intermediateWorkplaceLesson09
     ]
   },
   // B1 Modules
@@ -266,7 +271,9 @@ export const CURRICULUM: Module[] = [
       techEcosystemTrendsLesson02,
       techEcosystemTrendsLesson03,
       techEcosystemTrendsLesson04,
-      techEcosystemTrendsLesson05
+      techEcosystemTrendsLesson05,
+      techEcosystemTrendsLesson06,
+      techEcosystemTrendsLesson07
     ]
   },
   {

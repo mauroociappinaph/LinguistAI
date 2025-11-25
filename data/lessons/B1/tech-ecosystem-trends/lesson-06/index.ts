@@ -1,6 +1,6 @@
 import { Lesson, Difficulty } from '../../../../../types';
 
-export const lesson06: Lesson = {
+export const techEcosystemTrendsLesson06: Lesson = {
   id: "tet6",
   title: "Writing API Docs: Imperative Tone",
   level: Difficulty.B1,

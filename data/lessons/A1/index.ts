@@ -39,3 +39,12 @@ export {
   lesson11 as debuggingLesson11,
   lesson12 as debuggingLesson12
 } from './debugging-problem-solving';
+
+export {
+  lesson01 as workEnvironmentLesson01,
+  lesson02 as workEnvironmentLesson02,
+  lesson03 as workEnvironmentLesson03,
+  lesson04 as workEnvironmentLesson04,
+  lesson05 as workEnvironmentLesson05,
+  lesson06 as workEnvironmentLesson06
+} from './work-environment';
