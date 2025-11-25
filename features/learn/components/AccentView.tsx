@@ -40,6 +40,16 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
     const [audioSrc, setAudioSrc] = useState(sample.audioSrc);
     const [status, setStatus] = useState<'idle' | 'loading' | 'playing' | 'paused'>('idle');
     const audioRef = useRef<HTMLAudioElement>(null);
+    const currentUrlRef = useRef<string | null>(null);
+
+    // Cleanup function
+    useEffect(() => {
+        return () => {
+            if (currentUrlRef.current) {
+                URL.revokeObjectURL(currentUrlRef.current);
+            }
+        };
+    }, []);
 
     // Ensure internal audio state stays in sync with component state
     useEffect(() => {
@@ -118,10 +128,18 @@ const AccentCard: React.FC<{ sample: AccentSample }> = ({ sample }) => {
             return;
         }
 
-        const url = await generateSpeech(trimmedTranscript, voice);
+        const blob = await generateSpeech(trimmedTranscript, voice);
 
-        if (url) {
+        if (blob) {
+            // Cleanup previous URL
+            if (currentUrlRef.current) {
+                URL.revokeObjectURL(currentUrlRef.current);
+            }
+
+            const url = URL.createObjectURL(blob);
+            currentUrlRef.current = url;
             setAudioSrc(url);
+
             // Short timeout to allow React to update the audio src in the DOM
             setTimeout(() => {
                 if (audioRef.current) {

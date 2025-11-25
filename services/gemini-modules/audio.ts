@@ -20,7 +20,7 @@ export const analyzePronunciation = async (transcript: string, context: string):
         context
       });
 
-      return result as PronunciationResult;
+       return result as PronunciationResult;
     } catch (error) {
       console.error("Pronunciation analysis failed", error);
       return {

@@ -57,7 +57,36 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
       };
   }, [activity]); // handleGenerateAudio is stable (defined below)
 
-  // ... (useEffect for audio events remains same)
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => {
+        if(isFinite(audio.duration)) setDuration(audio.duration);
+    };
+    const onEnded = () => setIsPlaying(false);
+    const onError = () => {
+        if (audioSrc && !isGenerating) {
+            console.warn("Audio load error, attempting generation...");
+            setLoadError(true);
+            // Attempt fallback generation
+            handleGenerateAudio();
+        }
+    };
+
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('error', onError);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('error', onError);
+    };
+  }, [audioSrc, isGenerating]);
 
   const handleGenerateAudio = async () => {
       // Validación robusta: trim y verificar si está vacío

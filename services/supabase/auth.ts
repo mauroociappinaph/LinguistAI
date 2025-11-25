@@ -3,7 +3,6 @@ import {
   handleSupabaseError,
   validateEmail,
   validatePassword,
-  transformProfileToUser,
   sanitizeName
 } from '../../utils/supabase-helpers';
 import { UserState } from '../../types';

@@ -24,12 +24,9 @@ export class ErrorBoundary extends Component<Props, State> {
     errorInfo: null,
   };
 
-  static getDerivedStateFromError(error: Error): Partial<State> {
-    return {
-      hasError: true,
-      error,
-    };
-  }
+  static getDerivedStateFromError(error: Error): Pick<State, 'hasError' | 'error'> {
+  return { hasError: true, error };
+}
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log error to console
@@ -44,15 +41,11 @@ export class ErrorBoundary extends Component<Props, State> {
     // Example: Sentry.captureException(error, { extra: errorInfo });
   }
 
-  handleReset = (): void => {
-    // @ts-expect-error - Known issue with React 19 types and class components
-    this.setState({
-      hasError: false,
-      error: null,
-      errorInfo: null,
-    });
-    window.location.href = '/';
-  };
+// ✅ Simplificado
+handleReset = (): void => {
+  window.location.href = '/';
+};
+
 
   render(): ReactNode {
     if (this.state.hasError) {
