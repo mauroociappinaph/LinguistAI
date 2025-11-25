@@ -1,39 +1,44 @@
-const isDebugMode = process.env.VITE_DEBUG_MODE === 'true';
+/**
+ * Logger utility para manejo consistente de logs
+ * Oculta logs de debug/info en producción automáticamente
+ */
+
+const isProduction = import.meta.env.PROD;
 
 type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 
 class Logger {
-  private prefix: string;
-
-  constructor(prefix: string = 'App') {
-    this.prefix = prefix;
-  }
-
-  private formatMessage(message: string): string {
-    const timestamp = new Date().toISOString();
-    return `[${timestamp}] [${this.prefix}] ${message}`;
+  private shouldLog(level: LogLevel): boolean {
+    if (isProduction) {
+      // En producción solo mostrar warnings y errores
+      return level === 'warn' || level === 'error';
+    }
+    return true;
   }
 
   info(message: string, ...args: any[]) {
-    if (isDebugMode) {
-      console.log(this.formatMessage(message), ...args);
+    if (this.shouldLog('info')) {
+      console.log(`[INFO] ${message}`, ...args);
     }
   }
 
   warn(message: string, ...args: any[]) {
-    console.warn(this.formatMessage(message), ...args);
+    if (this.shouldLog('warn')) {
+      console.warn(`[WARN] ${message}`, ...args);
+    }
   }
 
   error(message: string, ...args: any[]) {
-    console.error(this.formatMessage(message), ...args);
+    if (this.shouldLog('error')) {
+      console.error(`[ERROR] ${message}`, ...args);
+    }
   }
 
   debug(message: string, ...args: any[]) {
-    if (isDebugMode) {
-      console.debug(this.formatMessage(message), ...args);
+    if (this.shouldLog('debug')) {
+      console.debug(`[DEBUG] ${message}`, ...args);
     }
   }
 }
 
-export const logger = new Logger('LinguistAI');
-export const createLogger = (prefix: string) => new Logger(prefix);
+export const logger = new Logger();

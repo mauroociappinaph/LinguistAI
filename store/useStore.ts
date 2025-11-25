@@ -42,7 +42,7 @@ export const useStore = create<StoreState>()(
 
       // Manejo de errores en rehidratación
       onRehydrateStorage: () => {
-        return (state, error) => {
+        return (_state, error) => {
           if (error) {
             console.error('Error rehydrating store:', error);
             // Limpiar storage corrupto

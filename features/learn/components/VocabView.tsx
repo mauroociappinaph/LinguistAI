@@ -12,11 +12,15 @@ interface VocabViewProps {
 
 export const VocabView: React.FC<VocabViewProps> = ({ lesson }) => {
   // Calculate total terms for the hero section
-  const totalTerms =
-    lesson.vocabulary.length +
-    lesson.phrasalVerbs.length +
-    lesson.compoundWords.length +
-    (lesson.functionalChunks?.chunks?.length || 0);
+  // Fix BUG-014: Memoizar cálculos costosos
+  const totalTerms = useMemo(() => {
+    return (
+      (lesson.vocabulary?.keyTerms?.length || 0) +
+      (lesson.vocabulary?.phrasalVerbs?.length || 0) +
+      (lesson.vocabulary?.compoundWords?.length || 0) +
+      (lesson.vocabulary?.functionalChunks?.length || 0)
+    );
+  }, [lesson.vocabulary]);
 
   return (
     <div className="max-w-7xl mx-auto pb-20">

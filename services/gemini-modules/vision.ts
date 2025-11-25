@@ -14,7 +14,7 @@ export const editImage = async (base64Image: string, prompt: string): Promise<st
         prompt
       });
 
-      return response.text || null;
+      return (response as any).text || null;
     } catch (error) {
       console.error("Image edit failed", error);
       return null;

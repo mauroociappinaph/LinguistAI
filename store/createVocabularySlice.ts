@@ -33,7 +33,7 @@ export interface VocabularySlice {
   clearVocabulary: () => void;
 }
 
-export const createVocabularySlice: StateCreator<VocabularySlice> = (set, get) => ({
+export const createVocabularySlice: StateCreator<VocabularySlice> = (set) => ({
   vocabulary: [],
   isVocabularyLoaded: false,
   vocabularyError: null,

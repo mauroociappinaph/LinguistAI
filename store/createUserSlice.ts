@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { UserState, Difficulty } from '../types';
+import { UserState } from '../types';
 import {
   getCurrentUser,
   signOut as supabaseSignOut,

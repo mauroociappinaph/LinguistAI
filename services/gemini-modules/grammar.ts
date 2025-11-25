@@ -7,7 +7,7 @@ export const checkGrammarFast = async (text: string): Promise<string> => {
       text
     });
 
-    return response.correctedText || "Could not analyze.";
+    return (response as any).correctedText || "Could not analyze.";
   } catch (error) {
     console.error("Grammar check failed", error);
     return "Error checking grammar.";

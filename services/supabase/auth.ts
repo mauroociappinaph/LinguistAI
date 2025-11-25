@@ -3,6 +3,7 @@ import {
   handleSupabaseError,
   validateEmail,
   validatePassword,
+  transformProfileToUser,
   sanitizeName
 } from '../../utils/supabase-helpers';
 import { UserState } from '../../types';
@@ -151,7 +152,7 @@ export const isAdmin = async (): Promise<boolean> => {
 export const onAuthStateChange = (
   callback: (user: UserState | null) => void
 ) => {
-  return supabase.auth.onAuthStateChange(async (event, session) => {
+  return supabase.auth.onAuthStateChange(async (_event, session) => {
     if (session?.user) {
       const profile = await getUserProfile(session.user.id);
       callback(profile);

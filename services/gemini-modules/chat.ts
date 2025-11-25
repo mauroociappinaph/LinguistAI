@@ -13,7 +13,7 @@ export const sendChatMessage = async (
       systemInstruction: SYSTEM_INSTRUCTION
     });
 
-    return { text: response.text || "" };
+    return { text: (response as any).text || "" };
   } catch (error) {
     console.error("Chat failed", error);
     throw error;
@@ -35,7 +35,9 @@ export const sendRolePlayMessage = async (
       aiPersona
     });
 
-    return { text: response.text || "" };
+    // Chat Service Fix
+    const responseText = (response as any).text || "";
+    return { text: responseText };
   } catch (error) {
     console.error("RolePlay Chat failed", error);
     throw error;

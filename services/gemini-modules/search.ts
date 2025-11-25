@@ -9,8 +9,8 @@ export const searchCulturalFact = async (query: string) => {
     });
 
     return {
-      text: response.text || "No information found.",
-      sources: response.sources || []
+      text: (response as any).text || "No information found.",
+      sources: (response as any).sources || []
     };
   } catch (error) {
     console.error("Search failed", error);
