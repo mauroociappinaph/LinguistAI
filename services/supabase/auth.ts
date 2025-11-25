@@ -4,6 +4,7 @@ import {
   validateEmail,
   validatePassword,
   transformProfileToUser,
+  sanitizeName
 } from '../../utils/supabase-helpers';
 import { UserState } from '../../types';
 
@@ -16,46 +17,39 @@ import { UserState } from '../../types';
 /**
  * Registra un nuevo usuario con email y contraseña
  * @param email - Email del usuario
- * @param password - Contraseña (mínimo 6 caracteres)
- * @param name - Nombre completo del usuario
- * @returns Datos del usuario creado
+ * @param password - Contraseña
+ * @param name - Nombre completo
+ * @returns Datos del usuario registrado
  */
-export const signUpWithEmail = async (
-  email: string,
-  password: string,
-  name: string
-) => {
+export const signUpWithEmail = async (email: string, password: string, name: string) => {
   try {
-    // Validaciones usando helpers reutilizables
     if (!validateEmail(email)) {
       throw new Error('Email inválido');
     }
 
     if (!validatePassword(password)) {
-      throw new Error('La contraseña debe tener al menos 6 caracteres');
+      throw new Error('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número');
     }
 
-    if (!name || name.trim().length === 0) {
+    const cleanName = sanitizeName(name);
+    if (cleanName.length === 0) {
       throw new Error('El nombre es requerido');
     }
 
-    // Crear cuenta de autenticación (el trigger creará el perfil automáticamente)
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: {
-          name: name, // Esto se guarda en raw_user_meta_data para el trigger
+          name: cleanName,
         },
       },
     });
 
-    if (authError) throw handleSupabaseError(authError);
-    if (!authData.user) throw new Error('Error al crear usuario');
-
-    return authData;
+    if (error) throw error;
+    return data;
   } catch (error) {
-    throw handleSupabaseError(error as Error);
+    throw handleSupabaseError(error as any);
   }
 };
 
