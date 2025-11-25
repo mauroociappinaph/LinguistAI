@@ -7,14 +7,6 @@ import {
   gettingStartedLesson05,
   gettingStartedLesson06,
   gettingStartedLesson07,
-  everyDayWorkLifeLesson01,
-  everyDayWorkLifeLesson02,
-  everyDayWorkLifeLesson03,
-  everyDayWorkLifeLesson04,
-  everyDayWorkLifeLesson05,
-  everyDayWorkLifeLesson06,
-  everyDayWorkLifeLesson07,
-  everyDayWorkLifeLesson08,
   projectsCollaborationsLesson01,
   projectsCollaborationsLesson02,
   projectsCollaborationsLesson03,
@@ -84,6 +76,28 @@ import {
   techEcosystemTrendsLesson05
 } from './lessons/B1/tech-ecosystem-trends/index';
 
+import {
+  professionalHabitsLesson01,
+  professionalHabitsLesson02,
+  professionalHabitsLesson03,
+  professionalHabitsLesson04,
+  professionalHabitsLesson05,
+  professionalHabitsLesson06,
+  professionalHabitsLesson07,
+  professionalHabitsLesson08
+} from './lessons/B1/index';
+
+// B2 Imports
+import {
+  lesson01 as projectManagementLesson01
+} from './lessons/B2/index';
+
+// C1 Imports
+import {
+  lesson01 as advancedTechnicalWritingLesson01,
+  lesson02 as advancedTechnicalWritingLesson02
+} from './lessons/C1/index';
+
 // Import work environment lessons directly from their files (avoiding module index issues)
 import { lesson01 as workEnvironmentLesson01 } from './lessons/A1/work-environment/lesson-01';
 import { lesson02 as workEnvironmentLesson02 } from './lessons/A1/work-environment/lesson-02';
@@ -111,22 +125,6 @@ export const CURRICULUM: Module[] = [
       gettingStartedLesson05,
       gettingStartedLesson06,
       gettingStartedLesson07
-    ]
-  },
-  {
-    id: 'every-day-work-life',
-    title: 'Every Day Work Life',
-    description: 'Master daily routines, workplace communication, and professional vocabulary used in everyday tech environments.',
-    level: Difficulty.A1,
-    lessons: [
-      everyDayWorkLifeLesson01,
-      everyDayWorkLifeLesson02,
-      everyDayWorkLifeLesson03,
-      everyDayWorkLifeLesson04,
-      everyDayWorkLifeLesson05,
-      everyDayWorkLifeLesson06,
-      everyDayWorkLifeLesson07,
-      everyDayWorkLifeLesson08
     ]
   },
   {
@@ -243,6 +241,22 @@ export const CURRICULUM: Module[] = [
     ]
   },
   {
+    id: 'professional-habits',
+    title: 'Professional Habits & Efficiency',
+    description: 'Master advanced adverbs, comparisons, and professional communication patterns for describing work efficiency and technical processes.',
+    level: Difficulty.B1,
+    lessons: [
+      professionalHabitsLesson01,
+      professionalHabitsLesson02,
+      professionalHabitsLesson03,
+      professionalHabitsLesson04,
+      professionalHabitsLesson05,
+      professionalHabitsLesson06,
+      professionalHabitsLesson07,
+      professionalHabitsLesson08
+    ]
+  },
+  {
     id: 'tech-ecosystem-trends',
     title: 'Tech Ecosystem Trends',
     description: 'Master advanced technical communication for DevOps, AI, and formal documentation in advanced tech ecosystems.',
@@ -253,6 +267,25 @@ export const CURRICULUM: Module[] = [
       techEcosystemTrendsLesson03,
       techEcosystemTrendsLesson04,
       techEcosystemTrendsLesson05
+    ]
+  },
+  {
+    id: 'project-management',
+    title: 'Project Management & Milestones',
+    description: 'Master advanced tenses for reporting project milestones, sprint goals, and future deliverables in professional project management contexts.',
+    level: Difficulty.B2,
+    lessons: [
+      projectManagementLesson01
+    ]
+  },
+  {
+    id: 'advanced-technical-writing',
+    title: 'Advanced Technical Writing',
+    description: 'Master sophisticated writing techniques including nominalization, inversion, and advanced grammatical structures for formal technical documentation and academic papers.',
+    level: Difficulty.C1,
+    lessons: [
+      advancedTechnicalWritingLesson01,
+      advancedTechnicalWritingLesson02
     ]
   }
   // Future modules can be added here as the curriculum expands

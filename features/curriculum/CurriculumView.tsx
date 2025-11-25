@@ -1,14 +1,20 @@
 import React from 'react';
 import { CURRICULUM } from '../../data/curriculum';
 import ModuleCard from './components/ModuleCard';
+import { SEOHead } from '../../components/SEO';
+import { getSEOForRoute } from '../../utils/seoConfig';
 
 /**
  * CurriculumView component displays all available modules and their lessons
  * in a clear, hierarchical, and didactic manner.
  */
 const CurriculumView: React.FC = () => {
+  const seoConfig = getSEOForRoute('/curriculum');
+
   return (
-    <div className="curriculum-view">
+    <>
+      <SEOHead {...seoConfig} />
+      <div className="curriculum-view">
       <div className="curriculum-header">
         <h1>📚 Mi Curriculum de Aprendizaje</h1>
         <p className="curriculum-subtitle">
@@ -95,6 +101,7 @@ const CurriculumView: React.FC = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 

@@ -6,14 +6,6 @@ import {
     gettingStartedLesson05,
     gettingStartedLesson06,
     gettingStartedLesson07,
-    everyDayWorkLifeLesson01,
-    everyDayWorkLifeLesson02,
-    everyDayWorkLifeLesson03,
-    everyDayWorkLifeLesson04,
-    everyDayWorkLifeLesson05,
-    everyDayWorkLifeLesson06,
-    everyDayWorkLifeLesson07,
-    everyDayWorkLifeLesson08,
     projectsCollaborationsLesson01,
     projectsCollaborationsLesson02,
     projectsCollaborationsLesson03,
@@ -83,6 +75,17 @@ import {
     techEcosystemTrendsLesson05
 } from './B1/tech-ecosystem-trends/index';
 
+// B2 Imports
+import {
+    lesson01 as projectManagementLesson01
+} from './B2/index';
+
+// C1 Imports
+import {
+    lesson01 as advancedTechnicalWritingLesson01,
+    lesson02 as advancedTechnicalWritingLesson02
+} from './C1/index';
+
 import { Lesson, Difficulty } from '../../types';
 
 // Import work environment lessons directly from their files (avoiding module index issues)
@@ -102,14 +105,6 @@ export const ALL_LESSONS = [
     gettingStartedLesson04,
     gettingStartedLesson05,
     gettingStartedLesson06,
-    everyDayWorkLifeLesson01,
-    everyDayWorkLifeLesson02,
-    everyDayWorkLifeLesson03,
-    everyDayWorkLifeLesson04,
-    everyDayWorkLifeLesson05,
-    everyDayWorkLifeLesson06,
-    everyDayWorkLifeLesson07,
-    everyDayWorkLifeLesson08,
     workEnvironmentLesson01,
     workEnvironmentLesson02,
     workEnvironmentLesson03,
@@ -171,5 +166,10 @@ export const ALL_LESSONS = [
     techEcosystemTrendsLesson02,
     techEcosystemTrendsLesson03,
     techEcosystemTrendsLesson04,
-    techEcosystemTrendsLesson05
+    techEcosystemTrendsLesson05,
+    // B2 Lessons
+    projectManagementLesson01,
+    // C1 Lessons
+    advancedTechnicalWritingLesson01,
+    advancedTechnicalWritingLesson02
 ];
