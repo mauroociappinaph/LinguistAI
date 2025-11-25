@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { useStore } from './store/useStore';
 import { Layout } from './components';
 import { LoginForm, SignUpForm } from './components/Auth';
@@ -12,20 +13,29 @@ const App: React.FC = () => {
 
   // Inicializar autenticación al cargar la app
   useEffect(() => {
+    let isMounted = true;
     let cleanup: (() => void) | undefined;
 
-    // Inicializar autenticación y guardar función de cleanup
-    initializeAuth().then((cleanupFn) => {
-      cleanup = cleanupFn;
-    });
+    const init = async () => {
+      const cleanupFn = await initializeAuth();
+      if (isMounted) {
+        cleanup = cleanupFn;
+      } else {
+        // Si ya se desmontó, ejecutar cleanup inmediatamente
+        cleanupFn();
+      }
+    };
+
+    init();
 
     // Cleanup al desmontar el componente
     return () => {
+      isMounted = false;
       if (cleanup) {
         cleanup();
       }
     };
-  }, []); // Sin dependencias para evitar re-inicializaciones
+  }, [initializeAuth]); // Fix BUG-001: Agregar dependencia
 
   // Loading state
   if (isLoading) {
@@ -54,15 +64,17 @@ const App: React.FC = () => {
     );
   }
 
-  // Authenticated - show main app with BrowserRouter and Error Boundary
+  // Authenticated - show main app with BrowserRouter, HelmetProvider and Error Boundary
   return (
-    <ErrorBoundary>
-      <BrowserRouter>
-        <Layout>
-          <AppRoutes />
-        </Layout>
-      </BrowserRouter>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <Layout>
+            <AppRoutes />
+          </Layout>
+        </BrowserRouter>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 };
 
