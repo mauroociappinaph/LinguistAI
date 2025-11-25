@@ -1,3 +1,5 @@
-export const scenario = "You're presenting microservices explanation to your team.";
-export const speaking = "In this presentation, I will explain microservices explanation using Metaphors.";
-export const speakingPracticeMode = "presentation" as const;
+export const scenario = "You need to explain a complex technical concept (like APIs, caching, or load balancing) to a non-technical stakeholder. Use metaphors and analogies to make it understandable.";
+
+export const speaking = "Let me explain how APIs work using a restaurant analogy. Think of an API as a waiter in a restaurant. You, the customer, are like the client application. The kitchen is like the server or database. You don't go directly into the kitchen to get your food—that would be chaotic. Instead, you tell the waiter what you want from the menu. The waiter is like the API—they take your request to the kitchen, wait for the food to be prepared, and bring it back to you. The menu is similar to API documentation—it tells you what's available and how to ask for it. Just as a good waiter translates your request into something the kitchen understands, an API translates your application's request into something the server can process. This system is as organized as a well-run restaurant. The waiter (API) handles multiple tables (clients) efficiently, knows exactly what the kitchen (server) can provide, and ensures everyone gets what they ordered. If the kitchen is busy, the waiter might tell you there's a wait—similar to how an API returns a 'busy' status when the server is overloaded.";
+
+export const speakingPracticeMode = "explanation" as const;

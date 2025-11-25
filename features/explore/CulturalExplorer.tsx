@@ -3,6 +3,8 @@ import { searchCulturalFact } from '../../services';
 import { Button } from '../../components';
 import { InsightCard } from './components';
 import { Search, Sparkles, Loader2 } from 'lucide-react';
+import { SEOHead } from '../../components/SEO';
+import { getSEOForRoute } from '../../utils/seoConfig';
 
 export const CulturalExplorer: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -23,7 +25,9 @@ export const CulturalExplorer: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
+    <>
+      <SEOHead {...getSEOForRoute('/explore')} />
+      <div className="max-w-4xl mx-auto p-6 space-y-8">
       {/* Header Section */}
       <div className="text-center space-y-4 py-8">
         <div className="inline-flex items-center justify-center p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mb-4">
@@ -85,5 +89,6 @@ export const CulturalExplorer: React.FC = () => {
         )}
       </div>
     </div>
+    </>
   );
 };

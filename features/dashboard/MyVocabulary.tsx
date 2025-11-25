@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BookOpen, Trash2, TrendingUp, Calendar } from 'lucide-react';
 import { useStore } from '../../store/useStore';
+import { SEOHead } from '../../components/SEO';
+import { getSEOForRoute } from '../../utils/seoConfig';
 
 export const MyVocabulary: React.FC = () => {
   const {
@@ -79,7 +81,9 @@ export const MyVocabulary: React.FC = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <>
+      <SEOHead {...getSEOForRoute('/my-vocabulary')} />
+      <div className="max-w-6xl mx-auto p-6">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
@@ -203,5 +207,6 @@ export const MyVocabulary: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 };

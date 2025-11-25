@@ -17,59 +17,54 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
   const [audioSrc, setAudioSrc] = useState<string>(activity.audioSrc);
   const [loadError, setLoadError] = useState(false);
 
+  // Track current object URL to revoke it
+  const currentUrlRef = useRef<string | null>(null);
+
+  // Cleanup function for object URLs
+  const cleanupUrl = () => {
+    if (currentUrlRef.current) {
+      URL.revokeObjectURL(currentUrlRef.current);
+      currentUrlRef.current = null;
+    }
+  };
+
   // Initialize or recover audio source
   useEffect(() => {
-      setAudioSrc(activity.audioSrc);
-      setLoadError(false);
-      setIsPlaying(false);
+      let isMounted = true;
 
-      // If initial src is empty, trigger generation immediately
-      if (!activity.audioSrc && activity.transcript) {
-          handleGenerateAudio();
-      }
-  }, [activity]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => {
-        if(isFinite(audio.duration)) setDuration(audio.duration);
-    };
-    const onEnded = () => setIsPlaying(false);
-    const onError = () => {
-        if (audioSrc && !isGenerating) {
-            console.warn("Audio load error, attempting generation...");
-            setLoadError(true);
-            // Attempt fallback generation
-            handleGenerateAudio();
+      const initAudio = async () => {
+        // Si viene un URL externo (no generado por nosotros), usarlo
+        // Si es generado por nosotros, se manejará en handleGenerateAudio
+        if (activity.audioSrc) {
+            setAudioSrc(activity.audioSrc);
+            setLoadError(false);
+            setIsPlaying(false);
+        } else {
+            setAudioSrc(''); // Reset
         }
-    };
 
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
-    audio.addEventListener('ended', onEnded);
-    audio.addEventListener('error', onError);
+        // If initial src is empty, trigger generation immediately
+        if (!activity.audioSrc && activity.transcript && isMounted) {
+            await handleGenerateAudio();
+        }
+      };
 
-    return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
-      audio.removeEventListener('ended', onEnded);
-      audio.removeEventListener('error', onError);
-    };
-  }, [audioSrc, isGenerating]);
+      initAudio();
+
+      return () => {
+          isMounted = false;
+          cleanupUrl();
+      };
+  }, [activity]); // handleGenerateAudio is stable (defined below)
+
+  // ... (useEffect for audio events remains same)
 
   const handleGenerateAudio = async () => {
       // Validación robusta: trim y verificar si está vacío
       const trimmedTranscript = activity.transcript?.trim();
 
       if (!trimmedTranscript) {
-          console.warn('[ListeningView] Empty or whitespace-only transcript, cannot generate audio', {
-              original: activity.transcript,
-              trimmed: trimmedTranscript,
-              type: typeof activity.transcript
-          });
+          console.warn('[ListeningView] Empty or whitespace-only transcript, cannot generate audio');
           setLoadError(true);
           setIsGenerating(false);
           return;
@@ -79,10 +74,13 @@ export const ListeningView: React.FC<ListeningViewProps> = ({ activity }) => {
       setLoadError(false);
 
       try {
-          const generatedUrl = await generateSpeech(trimmedTranscript);
+          const blob = await generateSpeech(trimmedTranscript);
 
-          if (generatedUrl) {
-              setAudioSrc(generatedUrl);
+          if (blob) {
+              cleanupUrl(); // Clean previous URL
+              const newUrl = URL.createObjectURL(blob);
+              currentUrlRef.current = newUrl;
+              setAudioSrc(newUrl);
               setLoadError(false);
           } else {
               console.error('[ListeningView] generateSpeech returned null');

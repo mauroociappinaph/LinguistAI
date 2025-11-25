@@ -15,6 +15,8 @@ import {
   RolePlayView,
   QuizView
 } from './components';
+import { SEOHead } from '../../components/SEO';
+import { getSEOForRoute, getLessonStructuredData } from '../../utils/seoConfig';
 
 export const LessonRunner: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
@@ -100,8 +102,17 @@ export const LessonRunner: React.FC = () => {
     }
   };
 
+  // Generate dynamic SEO for this lesson
+  const lessonSEO = getSEOForRoute(`/lesson/${lessonId}`, {
+    title: `${lesson.title} - LinguistAI`,
+    description: lesson.description || `Aprende ${lesson.title} con lecciones interactivas de inglés técnico para IT.`,
+    structuredData: getLessonStructuredData(lesson.id, lesson.title, lesson.description || '')
+  });
+
   return (
-    <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
+    <>
+      <SEOHead {...lessonSEO} />
+      <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
        <LessonHeader
             sections={sections}
             activeSection={activeSection}
@@ -135,5 +146,6 @@ export const LessonRunner: React.FC = () => {
            )}
        </div>
     </div>
+    </>
   );
 };

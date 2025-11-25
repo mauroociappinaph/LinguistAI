@@ -1,3 +1,5 @@
-export const scenario = "You're presenting cloud migration to your team.";
-export const speaking = "In this presentation, I will explain cloud migration using Modal Verbs.";
-export const speakingPracticeMode = "presentation" as const;
+export const scenario = "You're presenting a technical proposal to implement automated testing in your project. Explain what you propose, why it would be beneficial, and what the implementation would involve.";
+
+export const speaking = "I propose that we should implement automated end-to-end testing for our application. This change would significantly reduce manual testing time and could catch bugs before they reach production. We should start with the most critical user flows, which would provide immediate value. The implementation might take 4-6 weeks, but the long-term benefits would outweigh the initial investment. We could use Cypress or Playwright for browser automation. Both tools would work well, but I would recommend Playwright because it supports multiple browsers and has better performance. We must ensure the tests run in our CI/CD pipeline, which would require some infrastructure changes. The team might need a week of training, but automated testing could reduce our QA cycle from 3 days to just a few hours. We should also consider the maintenance cost—automated tests must be updated when features change. However, this cost would be much lower than the time saved on manual testing.";
+
+export const speakingPracticeMode = "explanation" as const;

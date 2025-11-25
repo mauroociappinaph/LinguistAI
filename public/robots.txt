@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Bloquear rutas privadas y de autenticación
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://linguistai.vercel.app/sitemap.xml

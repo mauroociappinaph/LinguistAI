@@ -11,16 +11,20 @@ import {
 } from '../services/supabase/progress';
 import { supabase } from '../services/supabase/client';
 
+// Flags para prevenir inicialización múltiple (Module-level singleton)
+let isInitializing = false;
+let isInitialized = false;
+
 export interface UserSlice {
   user: UserState | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   darkMode: boolean;
-  authSubscription: { unsubscribe: () => void } | null; // NUEVO: para cleanup
+  authSubscription: { unsubscribe: () => void } | null;
   // Auth methods
   loadUserProfile: () => Promise<void>;
   signOut: () => Promise<void>;
-  initializeAuth: () => Promise<() => void>; // CAMBIADO: retorna cleanup function
+  initializeAuth: () => Promise<() => void>;
   // User actions
   toggleDarkMode: () => void;
   completeLesson: (id: string, xp: number) => Promise<void>;
@@ -31,16 +35,22 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
   isAuthenticated: false,
   isLoading: true,
   darkMode: true,
-  authSubscription: null, // NUEVO: inicializar subscription
+  authSubscription: null,
 
   /**
    * Inicializa el listener de cambios de autenticación
    * Se llama una vez al inicio de la app
    */
   initializeAuth: async () => {
+    if (isInitializing || isInitialized) {
+      console.warn('[initializeAuth] Already initialized or initializing');
+      return () => {};
+    }
+
+    isInitializing = true;
     console.log('[initializeAuth] Starting...');
 
-    // NUEVO: Limpiar listener previo si existe
+    // Limpiar listener previo si existe (defensive programming)
     const currentSubscription = get().authSubscription;
     if (currentSubscription) {
       console.log('[initializeAuth] Cleaning up previous listener');
@@ -56,7 +66,9 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
       if (sessionError) {
         console.error('[initializeAuth] Session error:', sessionError);
         set({ user: null, isAuthenticated: false, isLoading: false });
-        return () => {}; // NUEVO: retornar cleanup vacío
+        isInitialized = true;
+        isInitializing = false;
+        return () => {};
       }
 
       console.log('[initializeAuth] Session:', session ? 'Found' : 'Not found');
@@ -78,10 +90,11 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
           });
 
           // Cargar vocabulario en background (sin bloquear UI)
-          const { loadVocabulary } = get() as any;
-          if (loadVocabulary) {
+          // Fix BUG-002: Type safety check
+          const state = get() as unknown as { loadVocabulary?: () => Promise<void> };
+          if (state.loadVocabulary && typeof state.loadVocabulary === 'function') {
             console.log('[initializeAuth] Loading vocabulary in background...');
-            loadVocabulary().catch((err: Error) =>
+            state.loadVocabulary().catch((err: Error) =>
               console.error('Error loading vocabulary in background:', err)
             );
           }
@@ -117,21 +130,26 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
         }
       });
 
-      // NUEVO: Almacenar subscription para cleanup futuro
       set({ authSubscription: subscription });
+      isInitialized = true;
       console.log('[initializeAuth] Completed successfully');
 
-      // NUEVO: Retornar función de cleanup
+      // Retornar función de cleanup
       return () => {
         console.log('[initializeAuth] Cleanup called');
         subscription.unsubscribe();
         set({ authSubscription: null });
+        isInitialized = false;
       };
 
     } catch (error) {
       console.error('[initializeAuth] Unexpected error:', error);
       set({ user: null, isAuthenticated: false, isLoading: false });
-      return () => {}; // NUEVO: retornar cleanup vacío en caso de error
+      isInitialized = true; // Mark as initialized to prevent infinite retry loops if it's a hard error
+      isInitializing = false;
+      return () => {};
+    } finally {
+      isInitializing = false;
     }
   },
 
@@ -170,9 +188,9 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
       set({ user: null, isAuthenticated: false });
 
       // Limpiar vocabulario del cache
-      const { clearVocabulary } = get() as any;
-      if (clearVocabulary) {
-        clearVocabulary();
+      const state = get() as unknown as { clearVocabulary?: () => void };
+      if (state.clearVocabulary && typeof state.clearVocabulary === 'function') {
+        state.clearVocabulary();
       }
     } catch (error) {
       console.error('Error signing out:', error);
@@ -189,8 +207,23 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
    * Actualiza Zustand Y sincroniza con Supabase
    */
   completeLesson: async (id: string, xp: number) => {
-    const { user } = get();
-    if (!user) return;
+    const { user, isAuthenticated } = get();
+
+    // Fix BUG-006: Validaciones robustas
+    if (!isAuthenticated || !user) {
+      console.error('User must be authenticated to complete lessons');
+      return;
+    }
+
+    if (!id || typeof id !== 'string') {
+      console.error('Invalid lesson ID');
+      return;
+    }
+
+    if (typeof xp !== 'number' || xp < 0) {
+      console.error('XP must be a positive number');
+      return;
+    }
 
     try {
       // Sincronizar con Supabase primero
@@ -210,7 +243,7 @@ export const createUserSlice: StateCreator<UserSlice> = (set, get) => ({
       }));
     } catch (error) {
       console.error('Error completing lesson:', error);
-      // Si falla Supabase, al menos actualizar localmente
+      // Si falla Supabase, al menos actualizar localmente (Optimistic UI fallback)
       set((state) => ({
         user: state.user
           ? {

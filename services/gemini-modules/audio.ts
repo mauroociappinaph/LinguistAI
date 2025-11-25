@@ -32,16 +32,17 @@ export const analyzePronunciation = async (transcript: string, context: string):
 };
 
 // 6. Text-to-Speech Generation (Gemini 2.5 Flash Preview TTS)
-export const generateSpeech = async (text: string, voiceName: string = 'Kore'): Promise<string | null> => {
-  // Validación robusta de texto
-  const trimmedText = text?.trim();
+export const generateSpeech = async (text: string | undefined | null, voiceName: string = 'Kore'): Promise<Blob | null> => {
+  // Validación robusta de texto (BUG-004)
+  if (!text || typeof text !== 'string') {
+    console.error("generateSpeech: Invalid text provided", { text, type: typeof text });
+    return null;
+  }
 
-  if (!trimmedText) {
-    console.error("generateSpeech: Empty text provided", {
-      original: text,
-      trimmed: trimmedText,
-      type: typeof text
-    });
+  const trimmedText = text.trim();
+
+  if (trimmedText.length === 0) {
+    console.error("generateSpeech: Empty text provided");
     return null;
   }
 
@@ -51,7 +52,7 @@ export const generateSpeech = async (text: string, voiceName: string = 'Kore'): 
   const cachedBlob = await getCachedAudio(cacheKey);
   if (cachedBlob) {
     logger.info("Audio loaded from cache (IndexedDB) ⚡");
-    return URL.createObjectURL(cachedBlob);
+    return cachedBlob; // Return Blob directly (BUG-012)
   }
 
   try {
@@ -77,7 +78,7 @@ export const generateSpeech = async (text: string, voiceName: string = 'Kore'): 
 
     await cacheAudio(cacheKey, blob);
 
-    return URL.createObjectURL(blob);
+    return blob; // Return Blob directly
 
   } catch (error) {
     console.error("TTS Generation failed", {

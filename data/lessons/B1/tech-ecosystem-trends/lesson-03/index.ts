@@ -7,8 +7,8 @@ export const techEcosystemTrendsLesson03: Lesson = {
   id: "tet3",
   title: "Technical Papers & Proposals",
   level: Difficulty.B1,
-  description: "Master advanced grammar for formal technical writing including subjunctive, nominalization, and indirect speech.",
-  didYouKnow: "Research papers use subjunctive mood: 'We recommend that the architecture be redesigned.'",
+  description: "Master formal recommendations using modals (should/must/could) for professional technical writing and proposals.",
+  didYouKnow: "Professional proposals use 'should' and 'must' to make recommendations: 'The architecture should be redesigned' is clearer than complex subjunctive forms.",
 
   grammar: {
     ...grammar,
@@ -18,17 +18,17 @@ export const techEcosystemTrendsLesson03: Lesson = {
   phrasalVerbs,
   compoundWords,
   functionalChunks,
-  scenario: "Technical proposal writing and paper discussions.",
-  speaking: "We recommend that the system be redesigned to improve scalability.",
-  speakingPracticeMode: "subjunctive",
+  scenario: "Writing technical proposals and making formal recommendations to stakeholders.",
+  speaking: "We recommend that the system should be redesigned to improve scalability. All security patches must be applied before deployment.",
+  speakingPracticeMode: "formal-recommendations",
   readingActivity: {
     title: "Reading: Technical Proposal Structure",
-    text: "Formal technical proposals use subjunctive mood to make recommends that incorporate best practices and established standards.",
+    text: "Formal technical proposals use clear modal verbs to make recommendations. 'Should' indicates strong recommendations, while 'must' indicates requirements. For example: 'The system should be updated regularly' and 'All code must be reviewed before deployment.' This approach makes proposals clear and actionable.",
     comprehensionQuestions: []
   },
   listeningActivity: {
     title: "Listening: Architectural Proposal Discussion",
-    transcript: "We recommend that the monolithic architecture be decomposed into microservices to enhance maintainability.",
+    transcript: "We recommend that the monolithic architecture should be decomposed into microservices to enhance maintainability. All services must communicate via well-defined APIs, and we could implement a service mesh for better observability.",
     comprehensionQuestions: [],
     audioSrc: ""
   },
@@ -40,8 +40,8 @@ export const techEcosystemTrendsLesson03: Lesson = {
   globalAccentLab: [],
   rolePlay: {
     title: "Technical Proposal Defense",
-    objective: "Practice defending technical recommendations using subjunctive and formal language.",
-    aiPersona: "Research committee member",
+    objective: "Practice defending technical recommendations using should/must/could and formal language.",
+    aiPersona: "Technical committee member",
     initialMessage: "Can you explain the rationale behind your recommendation to implement this architectural change?"
   }
 };

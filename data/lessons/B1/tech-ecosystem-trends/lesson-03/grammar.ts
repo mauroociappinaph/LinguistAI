@@ -1,31 +1,33 @@
 import { GrammarSection } from '../../../../../types';
 
 export const grammar: GrammarSection = {
-  title: "Subjunctive, Nominalization & Advanced Indirect Speech",
-  explanation: "Using formal subjunctive structures like 'recommend that...', nominalization for academic style, and complex indirect speech patterns for professional proposals.",
-  usage: "Technical Documentation, Research Papers & Proposals",
+  title: "Formal Recommendations with Should/Must",
+  explanation: "In technical proposals and documentation, we use **should** and **must** to make professional recommendations. These modals are more appropriate than subjunctive for B1 learners.\\n\\n**Should** = Strong recommendation (but not mandatory)\\n**Must** = Requirement or necessity\\n**Could** = Suggestion or possibility\\n\\n**Pattern:** Subject + should/must/could + base verb",
+  usage: "Technical Documentation, Proposals & Professional Recommendations:\\n\\n📋 **Proposals**: 'The system should be updated regularly'\\n🔧 **Requirements**: 'All code must be reviewed before deployment'\\n💡 **Suggestions**: 'We could implement caching for better performance'",
   rules: [ {
-      from: "Formal recommendations",
-      to: "Use subjunctive base verb: 'We recommend that the system **be** updated.'"
+      from: "Strong recommendations",
+      to: "Use 'should': 'The database **should be** optimized for performance.'"
     },
     {
-      from: "Nominalization",
-      to: "Convert verbs to nouns for academic style: 'decide → make a decision', 'analyze → conduct an analysis'"
+      from: "Requirements",
+      to: "Use 'must': 'Security patches **must be** applied immediately.'"
     },
     {
-      from: "Advanced indirect speech",
-      to: "Shift tenses and modals: 'will → would', 'can → could', 'must → had to / would need to'"
+      from: "Suggestions",
+      to: "Use 'could': 'We **could implement** automated testing.'"
     }],
    examples: [
-    "We suggest that the report **be submitted** before Friday.",
-    "The **implementation** of automated backups improved reliability.",
-    "The engineer stated that the system **would require** further testing."
+    "The architecture **should be** redesigned to improve scalability.",
+    "All API endpoints **must be** documented following OpenAPI standards.",
+    "We **could migrate** to microservices for better maintainability.",
+    "The deployment process **should be** automated to reduce errors.",
+    "Code reviews **must be** completed before merging to main branch."
   ],
   commonMistakes: [],
   interactiveExercise: {
-    type: "subjunctive-practice",
-    question: "Complete the subjunctive: 'We recommend that the system ___ redesigned.'",
-    options: ["be", "is", "will be", "was"],
-    answer: "be"
+    type: "modal-selection",
+    question: "Complete with the correct modal: 'Security vulnerabilities ___ be fixed immediately.'",
+    options: ["should", "must", "could", "might"],
+    answer: "must"
   }
 };
