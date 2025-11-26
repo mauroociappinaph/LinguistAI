@@ -86,13 +86,14 @@ export const careerDevelopmentLesson01: Lesson = {
     {
       item: "reach out",
       explanation: "To contact someone (professional but friendly).",
-      example: "Feel free to reach out if you have questions."
+      example: "Feel free to reach out if you have questions.",
+      pronunciation: "/riːtʃ aʊt/"
     },
     {
       item: "follow up",
       explanation: "To contact again to check progress or remind.",
       example: "I wanted to follow up on my application.",
-      separator: " "
+      pronunciation: "/ˈfɑːloʊ ʌp/"
     }
   ],
   compoundWords: [],

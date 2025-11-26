@@ -32,4 +32,5 @@ const lesson04: Lesson = {
   globalAccentLab,
   rolePlay
 };
-export default lesson04;
+
+export { lesson04 };

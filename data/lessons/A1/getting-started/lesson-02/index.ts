@@ -2,15 +2,15 @@
 import { Lesson, Difficulty } from '../../../../../types';
 import { grammar } from './grammar';
 import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
-import { 
-  readingActivity, 
-  listeningActivity, 
-  pronunciationClinic, 
-  globalAccentLab, 
-  scenario, 
-  speaking, 
+import {
+  readingActivity,
+  listeningActivity,
+  pronunciationClinic,
+  globalAccentLab,
+  scenario,
+  speaking,
   speakingPracticeMode,
-  rolePlay 
+  rolePlay
 } from './activities';
 
 const lesson02: Lesson = {
@@ -33,4 +33,4 @@ const lesson02: Lesson = {
   globalAccentLab,
   rolePlay
 };
-export default lesson02;
+export { lesson02 };

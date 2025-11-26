@@ -86,13 +86,14 @@ export const advancedTechnicalWritingLesson03: Lesson = {
     {
       item: "phase out",
       explanation: "To gradually stop using something.",
-      example: "We are phasing out the legacy system."
+      example: "We are phasing out the legacy system.",
+      pronunciation: "/feɪz aʊt/"
     },
     {
       item: "drill down",
       explanation: "To look at data or details in more depth.",
       example: "Let's drill down into the error logs.",
-      separator: " "
+      pronunciation: "/drɪl daʊn/"
     }
   ],
   compoundWords: [],

@@ -34,4 +34,4 @@ const lesson01: Lesson = {
   rolePlay
 };
 
-export default lesson01;
+export { lesson01 };
