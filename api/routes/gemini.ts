@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { asyncHandler } from '../middleware/index.js';
+import { asyncHandler, requireAuth } from '../middleware/index.js';
 import {
   handleChat,
   handleRolePlay,
@@ -12,10 +12,13 @@ import {
 
 /**
  * Rutas para endpoints de Gemini
- * Ahora solo define las rutas y delega a los controllers
+ * Todos los endpoints requieren autenticación JWT
  */
 
 const router: Router = Router();
+
+// Aplicar autenticación a todas las rutas
+router.use(requireAuth);
 
 /**
  * POST /api/gemini/chat

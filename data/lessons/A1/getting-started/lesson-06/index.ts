@@ -8,7 +8,7 @@ import {
   rolePlay
 } from './activities';
 
-export const lesson06: Lesson = {
+const lesson06: Lesson = {
   id: "l6",
   title: "Thinking in Systems: Top-Down & Bottom-Up",
   level: Difficulty.A1,
@@ -28,3 +28,4 @@ export const lesson06: Lesson = {
   globalAccentLab: [],
   rolePlay
 };
+export default lesson06;

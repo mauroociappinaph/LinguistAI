@@ -27,8 +27,8 @@ export const intermediateWorkplaceLesson09: Lesson = {
     ],
     examples: [
       "I **have been working** as a developer for five years.",
-      "She **has been leading** the team since January.",
-      "We **have been fixing** bugs all morning.",
+      "She **has been learning** Go for the past few months.",
+      "We **have been using** this framework since the project started.",
       "They **have been testing** the new feature recently.",
       "What **have you been doing** lately?"
     ],

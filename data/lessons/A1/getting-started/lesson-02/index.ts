@@ -13,7 +13,7 @@ import {
   rolePlay 
 } from './activities';
 
-export const lesson02: Lesson = {
+const lesson02: Lesson = {
   id: "l2",
   title: "Personal Information",
   level: Difficulty.A1,
@@ -33,3 +33,4 @@ export const lesson02: Lesson = {
   globalAccentLab,
   rolePlay
 };
+export default lesson02;

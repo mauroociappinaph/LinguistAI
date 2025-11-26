@@ -75,18 +75,22 @@ import {
     techEcosystemTrendsLesson04,
     techEcosystemTrendsLesson05,
     techEcosystemTrendsLesson06,
-    techEcosystemTrendsLesson07
-} from './B1/tech-ecosystem-trends/index';
+    techEcosystemTrendsLesson07,
+    careerDevelopmentLesson01,
+    careerDevelopmentLesson02
+} from './B1/index';
 
 // B2 Imports
 import {
-    lesson01 as projectManagementLesson01
+    lesson01 as projectManagementLesson01,
+    technicalPresentationsLesson01
 } from './B2/index';
 
 // C1 Imports
 import {
     lesson01 as advancedTechnicalWritingLesson01,
-    lesson02 as advancedTechnicalWritingLesson02
+    lesson02 as advancedTechnicalWritingLesson02,
+    advancedTechnicalWritingLesson03
 } from './C1/index';
 
 import { Lesson, Difficulty } from '../../types';
@@ -173,9 +177,13 @@ export const ALL_LESSONS = [
     techEcosystemTrendsLesson05,
     techEcosystemTrendsLesson06,
     techEcosystemTrendsLesson07,
+    careerDevelopmentLesson01,
+    careerDevelopmentLesson02,
     // B2 Lessons
     projectManagementLesson01,
+    technicalPresentationsLesson01,
     // C1 Lessons
     advancedTechnicalWritingLesson01,
-    advancedTechnicalWritingLesson02
+    advancedTechnicalWritingLesson02,
+    advancedTechnicalWritingLesson03
 ];

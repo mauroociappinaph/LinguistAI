@@ -23,7 +23,7 @@ export const grammar: GrammarSection = {
     {
       from: "High certainty (Negative)",
       to: "Can't be + noun/adjective (It can't be the frontend)"
-    }
+    },
   ],
   examples: [
     "**Investigate** the database - it **must be** a connection error.",

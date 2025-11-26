@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
 import { useLessonNavigation } from './hooks/useLessonNavigation';
@@ -17,12 +17,19 @@ import {
 } from './components';
 import { SEOHead } from '../../components/SEO';
 import { getSEOForRoute, getLessonStructuredData } from '../../utils/seoConfig';
+import { loadLesson } from '../../data/lessonLoader';
+import { CURRICULUM } from '../../data/curriculum';
+import { Lesson } from '../../types';
 
 export const LessonRunner: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
   const { lessons, completeLesson } = useStore();
-  const lesson = lessons.find(l => l.id === lessonId);
+
+  // Local state for dynamic loading
+  const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const { activeSection, setActiveSection, progress, sections } = useLessonNavigation();
 
@@ -31,7 +38,83 @@ export const LessonRunner: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeSection]);
 
-  if (!lesson) return <div>Lesson not found</div>;
+  // Load lesson data
+  useEffect(() => {
+    const fetchLesson = async () => {
+      if (!lessonId) return;
+
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        // 1. Check if we have the full lesson in store (optional optimization)
+        const storeLesson = lessons.find(l => l.id === lessonId);
+        if (storeLesson && storeLesson.grammar) {
+          setCurrentLesson(storeLesson);
+          setIsLoading(false);
+          return;
+        }
+
+        // 2. Find metadata to know where to load from
+        let foundMetadata: { level: string; moduleId: string } | undefined;
+
+        for (const module of CURRICULUM) {
+          const lessonMeta = module.lessons.find(l => l.id === lessonId);
+          if (lessonMeta) {
+            foundMetadata = { level: module.level, moduleId: module.id };
+            break;
+          }
+        }
+
+        if (!foundMetadata) {
+          throw new Error('Lesson not found in curriculum');
+        }
+
+        // 3. Load dynamic content
+        const loadedLesson = await loadLesson(foundMetadata.level, foundMetadata.moduleId, lessonId);
+        setCurrentLesson(loadedLesson);
+      } catch (err) {
+        console.error('Error loading lesson:', err);
+        setError('Failed to load lesson content. Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLesson();
+  }, [lessonId, lessons]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-950">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
+
+  if (error || !currentLesson) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-950 p-4">
+        <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+          <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⚠️</span>
+          </div>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Lesson Not Found</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-6">
+            {error || "We couldn't find the lesson you're looking for."}
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            Return to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const lesson = currentLesson;
 
   // Safe defaults for lesson activities with complete structures
   const safeReading = lesson.readingActivity || {

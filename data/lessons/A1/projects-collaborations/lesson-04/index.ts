@@ -1,4 +1,6 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
 
 export const lesson04: Lesson = {
   id: "pc4",
@@ -6,186 +8,18 @@ export const lesson04: Lesson = {
   level: Difficulty.A1,
   description: "Learn to track issues, troubleshoot problems, and use past tenses and cause/effect relationship vocabulary in technical problem-solving scenarios.",
   didYouKnow: "Software development teams spend an average of 35-50% of their time fixing bugs and resolving issues. Effective issue tracking reduces this time significantly, with tools like Jira helping teams manage tickets and maintain clear communication about problems and solutions. Good problem-solving skills are among the top requirements for modern developers.",
+  
+  grammar,
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
 
-  grammar: {
-    title: "Past Tenses & Cause/Effect: Because/So That",
-    explanation:
-      "**'Because'** shows cause: 'The database crashed **because** of the memory leak'. **'So that'** shows purpose: 'We added logging **so that** we can debug issues'.\n\nIn problem-solving: 'The build failed **because** dependencies were missing', 'We implemented error handling **so that** users see helpful messages'.",
-    usage:
-      "Use in issue analysis:\n\n🔍 **Cause**: 'The error occurred **because** of input validation'\n🎯 **Purpose**: 'We added monitoring **so that** we can detect issues early'\n\nPast tenses for what happened, present for current analysis.",
-    rules: [
-      {
-        from: "Cause relationship",
-        to: "because + clause (Because the server crashed, the site was down)"
-      },
-      {
-        from: "Purpose/result",
-        to: "so that + clause (We added tests so that we prevent regression)"
-      },
-      {
-        from: "Past complained problems",
-        to: "Past simple for resolved issues, past perfect for sequence"
-      }
-    ],
-    examples: [
-      "The API failed **because** the authentication token expired.",
-      "We implemented caching **so that** the page loads faster.",
-      "The user **reported** the bug last week, and we **fixed** it yesterday.",
-      "The server **had crashed** before we **identified** the memory leak.",
-      "We added monitoring **so that** we can prevent future outages."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "The code broke because of we didn't test it.",
-        correct: "The code broke because we didn't test it.",
-        explanation:
-          "Don't add 'of' after 'because'. Use 'because' + subject + verb directly."
-      },
-      {
-        incorrect: "We deployed so that fix the issue.",
-        correct: "We deployed so that we could fix the issue.",
-        explanation:
-          "After 'so that', use a full clause with subject and modal verb when needed."
-      },
-      {
-        incorrect: "The bug occurred because the error handling wasn't there.",
-        correct: "The bug occurred because the error handling wasn't implemented.",
-        explanation:
-          "Use more precise vocabulary. 'Wasn't there' sounds vague; 'wasn't implemented' is clearer."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "The application crashed ___ of a null pointer exception.",
-      options: ["because", "so that", "than"],
-      answer: "because"
-    }
-  },
-  vocabulary: [
-    {
-      item: "troubleshoot",
-      explanation: "To identify and solve problems in a system or process.",
-      example: "Let's troubleshoot the login issue step by step.",
-      pronunciation: "/ˈtrʌblˌʃut/"
-    },
-    {
-      item: "debug",
-      explanation: "To find and fix defects or problems in software.",
-      example: "I spent two hours debugging the authentication flow.",
-      pronunciation: "/diˈbʌg/"
-    },
-    {
-      item: "replicate",
-      explanation: "To make or do something again in exactly the same way.",
-      example: "Can you replicate the steps that caused this error?",
-      pronunciation: "/ˈrɛplɪkeɪt/"
-    },
-    {
-      item: "reproduce",
-      explanation: "To create the same conditions to see a problem again.",
-      example: "I can't reproduce the bug on my machine.",
-      pronunciation: "/ˌriprəˈdus/"
-    },
-    {
-      item: "isolate",
-      explanation: "To separate something from others to examine it individually.",
-      example: "Let's isolate the problematic component in our tests.",
-      pronunciation: "/ˈaɪsəleɪt/"
-    },
-    {
-      item: "workaround",
-      explanation: "A temporary solution to bypass a problem until it can be properly fixed.",
-      example: "We implemented a workaround until the permanent fix is deployed.",
-      pronunciation: "/ˈwɜrkəˌraʊnd/"
-    },
-    {
-      item: "root cause",
-      explanation: "The fundamental reason for a problem or issue.",
-      example: "We identified the root cause as a database connection timeout.",
-      pronunciation: "/rut kɔz/"
-    },
-    {
-      item: "regression",
-      explanation: "A bug that reappears after a fix or change that was supposed to prevent it.",
-      example: "The test suite prevents regression of fixed issues.",
-      pronunciation: "/rɪˈgrɛʃən/"
-    },
-    {
-      item: "severity",
-      explanation: "The degree of seriousness or importance of a problem.",
-      example: "This is a high severity bug that affects all users.",
-      pronunciation: "/sɪˈvɛrəti/"
-    },
-    {
-      item: "priority",
-      explanation: "The relative importance or urgency of a task or issue.",
-      example: "Set the priority to critical for this production issue.",
-      pronunciation: "/praɪˈɔrəti/"
-    },
-    {
-      item: "trace",
-      explanation: "To follow the path or development of something, especially to find the source.",
-      example: "The stack trace helped us identify where the error originated.",
-      pronunciation: "/treɪs/"
-    },
-    {
-      item: "impact",
-      explanation: "The effect or influence that an event, situation, or action has on something.",
-      example: "This issue has minimal impact on user experience.",
-      pronunciation: "/ˈɪmpækt/"
-    },
-    {
-      item: "backup",
-      explanation: "A copy of data or files that can be used to restore the original data if it is lost or damaged.",
-      example: "We restored the database from a recent backup.",
-      pronunciation: "/ˈbækˌʌp/"
-    },
-    {
-      item: "patch",
-      explanation: "A piece of software that updates or fixes another program.",
-      example: "Apply the security patch immediately to all servers.",
-      pronunciation: "/pætʃ/"
-    },
-    {
-      item: "hotfix",
-      explanation: "An urgent software fix that is implemented quickly without following the full release process.",
-      example: "We deployed a hotfix to resolve the critical security vulnerability.",
-      pronunciation: "/ˈhɑtˌfɪks/"
-    }
-  ],
-  phrasalVerbs:[],
-  compoundWords:[],
-  functionalChunks: {
-    title: "Problem Solving Communication Patterns",
-    chunks: [
-      {
-        chunk: "The issue occurred because ___",
-        usage: "Explaining root causes when analyzing problems"
-      },
-      {
-        chunk: "We implemented ___ so that ___",
-        usage: "Describing solutions and their purposes"
-      },
-      {
-        chunk: "Can you replicate ___? / I can't reproduce ___",
-        usage: "Discussing steps to reproduce issues"
-      },
-      {
-        chunk: "The root cause was ___",
-        usage: "Reporting findings from investigation"
-      },
-      {
-        chunk: "As a workaround, ___",
-        usage: "Offering temporary solutions"
-      }
-    ]
-  },
   scenario: "Investigating and resolving a critical production issue using systematic problem-solving approaches and proper issue tracking communication.",
   speaking: "The application crashed because the database connection timed out. We implemented connection pooling so that we can handle more concurrent users. I've documented the steps to reproduce the issue in the ticket.",
   speakingPracticeMode: "conversation",
 
-  readingActivity: {
-    title: "Reading: Systematic Problem Solving in Software Development",
+  readingActivity: {title: "Reading: Systematic Problem Solving in Software Development",
     text: "Effective problem solving requires methodical approaches. **Replicate** the issue first to understand conditions. **Isolate** variables to identify the **root cause**, then develop a solution. Document findings **so that** team members can learn from the experience. Implement fixes with appropriate **priority** based on **impact**. Create **workarounds** for critical issues requiring immediate attention while permanent solutions are developed.",
     comprehensionQuestions: [
       {
@@ -202,7 +36,6 @@ export const lesson04: Lesson = {
       }
     ],
   },
-
   listeningActivity: {
     title: "Listening: Incident Response Meeting",
     transcript: "Let's review this production outage. The server crashed because the memory usage spiked to 95%. We implemented monitoring so that we can detect these issues earlier. The root cause was an infinite loop in the image processing function. I've isolated the problematic code and developed a hotfix. As a workaround for now, we've increased the server capacity. Can you reproduce these conditions in the test environment?",
@@ -222,7 +55,6 @@ export const lesson04: Lesson = {
     ],
     audioSrc: "",
   },
-
   pronunciationClinic: {
     title: "Pronunciation Clinic: Troubleshooting and Issue Terms",
     explanation: "Master the pronunciation of key terms used in software problem-solving, debugging, and issue tracking conversations.",
@@ -254,8 +86,7 @@ export const lesson04: Lesson = {
       }
     ]
   },
-
-  globalAccentLab: [
+  globalAccentLab: [[
     {
       accent: "Irish English (Dublin)",
       speakerBio: "Shane, DevOps Engineer from Dublin",
@@ -268,8 +99,7 @@ export const lesson04: Lesson = {
       audioSrc: "",
       transcript: "Okay team, this regression is concerning. The login page broke because we deployed the new CSS without testing. We need to implement better test coverage so that this doesn't happen again. As a workaround, I've rolled back the deployment. Priority should be critical for the fix."
     }
-  ],
-
+  ]],
   rolePlay: {
     title: "Critical Bug Investigation",
     objective: "Investigate a reported bug, determine root cause using systematic troubleshooting methods, and communicate findings to the development team.",

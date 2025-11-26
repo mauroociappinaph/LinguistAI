@@ -87,6 +87,11 @@ import {
 } from './lessons/B1/tech-ecosystem-trends/index';
 
 import {
+  careerDevelopmentLesson01,
+  careerDevelopmentLesson02
+} from './lessons/B1/career-development/index';
+
+import {
   professionalHabitsLesson01,
   professionalHabitsLesson02,
   professionalHabitsLesson03,
@@ -99,13 +104,15 @@ import {
 
 // B2 Imports
 import {
-  lesson01 as projectManagementLesson01
+  lesson01 as projectManagementLesson01,
+  technicalPresentationsLesson01
 } from './lessons/B2/index';
 
 // C1 Imports
 import {
   lesson01 as advancedTechnicalWritingLesson01,
-  lesson02 as advancedTechnicalWritingLesson02
+  lesson02 as advancedTechnicalWritingLesson02,
+  advancedTechnicalWritingLesson03
 } from './lessons/C1/index';
 
 
@@ -277,6 +284,16 @@ export const CURRICULUM: Module[] = [
     ]
   },
   {
+    id: 'career-development',
+    title: 'Career & Professional Development',
+    description: 'Master the essential skills for advancing your tech career, from crafting professional profiles and emails to networking effectively.',
+    level: Difficulty.B1,
+    lessons: [
+      careerDevelopmentLesson01,
+      careerDevelopmentLesson02
+    ]
+  },
+  {
     id: 'project-management',
     title: 'Project Management & Milestones',
     description: 'Master advanced tenses for reporting project milestones, sprint goals, and future deliverables in professional project management contexts.',
@@ -286,13 +303,23 @@ export const CURRICULUM: Module[] = [
     ]
   },
   {
+    id: 'technical-presentations',
+    title: 'Technical Presentations',
+    description: 'Master the art of delivering clear, structured, and engaging technical presentations using signposting and logical transitions.',
+    level: Difficulty.B2,
+    lessons: [
+      technicalPresentationsLesson01
+    ]
+  },
+  {
     id: 'advanced-technical-writing',
     title: 'Advanced Technical Writing',
     description: 'Master sophisticated writing techniques including nominalization, inversion, and advanced grammatical structures for formal technical documentation and academic papers.',
     level: Difficulty.C1,
     lessons: [
       advancedTechnicalWritingLesson01,
-      advancedTechnicalWritingLesson02
+      advancedTechnicalWritingLesson02,
+      advancedTechnicalWritingLesson03
     ]
   }
   // Future modules can be added here as the curriculum expands

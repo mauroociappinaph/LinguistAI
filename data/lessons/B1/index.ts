@@ -11,4 +11,6 @@ export {
 
 export * from './explaining-your-code';
 export * from './feedback-collaboration';
+export * from './professional-habits';
 export * from './tech-ecosystem-trends';
+export * from './career-development';

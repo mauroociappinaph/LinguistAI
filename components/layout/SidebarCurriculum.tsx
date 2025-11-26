@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStore } from '../../store/useStore';
-import { CURRICULUM } from '../../data/curriculum';
+import { CURRICULUM } from '../../data/curriculumMetadata';
+
 
 interface SidebarCurriculumProps {
   isCollapsed: boolean;

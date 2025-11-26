@@ -1,5 +1,6 @@
 import React from 'react';
-import { CURRICULUM } from '../../data/curriculum';
+import { CURRICULUM } from '../../data/curriculumMetadata';
+
 import ModuleCard from './components/ModuleCard';
 import { SEOHead } from '../../components/SEO';
 import { getSEOForRoute } from '../../utils/seoConfig';

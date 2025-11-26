@@ -76,6 +76,7 @@ app.get('/health', (req: Request, res: Response) => {
 // API Routes
 // ==========================================
 
+// Aplicar autenticación a todas las rutas de Gemini
 app.use('/api/gemini', geminiRoutes);
 
 // ==========================================

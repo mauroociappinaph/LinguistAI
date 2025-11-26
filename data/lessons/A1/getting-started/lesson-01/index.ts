@@ -2,18 +2,18 @@
 import { Lesson, Difficulty } from '../../../../../types';
 import { grammar } from './grammar';
 import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
-import { 
-  readingActivity, 
-  listeningActivity, 
-  pronunciationClinic, 
-  globalAccentLab, 
-  scenario, 
-  speaking, 
+import {
+  readingActivity,
+  listeningActivity,
+  pronunciationClinic,
+  globalAccentLab,
+  scenario,
+  speaking,
   speakingPracticeMode,
-  rolePlay 
+  rolePlay
 } from './activities';
 
-export const lesson01: Lesson = {
+const lesson01: Lesson = {
   id: "l1",
   title: "Personal Introduction in IT",
   level: Difficulty.A1,
@@ -33,3 +33,5 @@ export const lesson01: Lesson = {
   globalAccentLab,
   rolePlay
 };
+
+export default lesson01;

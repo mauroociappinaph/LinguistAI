@@ -1,4 +1,6 @@
 import { Lesson, Difficulty } from '../../../../../types';
+import { grammar } from './grammar';
+import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
 
 export const lesson01: Lesson = {
   id: "pc1",
@@ -7,215 +9,12 @@ export const lesson01: Lesson = {
   description: "Learn to plan projects and manage sprints using future tenses and project management vocabulary in agile development environments.",
   didYouKnow: "Agile methodologies, which popularized sprint planning, were originally developed for software development but are now used across industries. The average sprint duration is 2 weeks, allowing teams to adapt quickly to changes while maintaining steady progress. Sprint planning meetings typically last 1-2 hours per week of sprint duration.",
 
-  grammar: {
-    title: "Future Tenses: Will/Shall/Going to + Present/Future Continuous for Planning",
-    explanation:
-      "**'Will'** expresses spontaneous decisions and future plans, while **'Shall'** is more formal for suggestions and offers in planning contexts. Use **'going to'** for scheduled plans.\n\nIn project planning: '**We will finish** the user stories by Friday', '**Shall we schedule** a planning meeting?', '**We're going to start** the sprint tomorrow'.\n\n**Additional Planning Forms:**\n\n📋 **Present Continuous for scheduled future**: When plans are firmly scheduled with a specific time\n   Example: '*We **are deploying** the feature tomorrow at 3 PM*'\n\n🔄 **Future Continuous**: For actions that will be in progress at a future time\n   Example: '*This time next week, we **will be testing** the new release*'\n\nFuture tenses help teams discuss timelines, deadlines, and commitments in development cycles.",
-    usage:
-      "In sprint planning and project management conversations:\n\n📅 **Planning**: 'The team **will deliver** the feature next sprint'\n🤝 **Agreements**: '**Shall we review** the backlog today?'\n🎯 **Goals**: 'We **are going to implement** agile practices'\n📋 **Scheduled Plans**: '**We're deploying** tomorrow at 10 AM'\n⏱️ **Future Progress**: 'Next week we **will be working** on the API'\n\nUse different tenses for different planning contexts.",
-    rules: [
-      {
-        from: "Spontaneous future",
-        to: "will + infinitive (We'll assign tasks tomorrow)"
-      },
-      {
-        from: "Formal suggestions",
-        to: "shall + subject (Shall we start the sprint?)"
-      },
-      {
-        from: "Scheduled plans",
-        to: "going to + infinitive (We're going to demo next week)"
-      },
-      {
-        from: "Present Continuous for scheduled future",
-        to: "am/is/are + verb-ing (We're deploying tomorrow at 3 PM)"
-      },
-      {
-        from: "Future Continuous for in-progress actions",
-        to: "will be + verb-ing (We'll be testing next week)"
-      }
-    ],
-    examples: [
-      "**We will complete** the user stories by Friday.",
-      "**Shall I create** the sprint backlog?",
-      "**Our team is going to** implement the new design.",
-      "**The product owner will** review the acceptance criteria.",
-      "**Shall we schedule** the planning meeting for Monday?",
-      "**We're deploying** the feature tomorrow at 3 PM.",
-      "**The team is meeting** with the client on Friday.",
-      "This time next week, **we'll be testing** the new release.",
-      "At 10 AM tomorrow, **we'll be conducting** the stand-up."
-    ],
-    commonMistakes: [
-      {
-        incorrect: "We shall deliver the sprint.",
-        correct: "We will deliver the sprint.",
-        explanation:
-          "Use 'will' for simple future actions, 'shall' is more formal for suggestions or questions."
-      },
-      {
-        incorrect: "Shall I will assign the tasks?",
-        correct: "Shall I assign the tasks?",
-        explanation:
-          "Don't combine modal verbs. Choose either 'will', 'shall', or 'going to'."
-      },
-      {
-        incorrect: "We're going to will start tomorrow.",
-        correct: "We're going to start tomorrow.",
-        explanation:
-          "Don't use 'will' with 'going to'. 'Going to' already indicates future."
-      }
-    ],
-    interactiveExercise: {
-      type: "fill-in-the-blank",
-      question: "The development team ___ deploy the application next week.",
-      options: ["will", "shall", "going to"],
-      answer: "will"
-    }
-  },
-  vocabulary: [
-    {
-      item: "sprint",
-      explanation: "A set period of time during which specific work has to be completed and made ready for review.",
-      example: "Our development sprints are two weeks long.",
-      pronunciation: "/sprɪnt/"
-    },
-    {
-      item: "backlog",
-      explanation: "A list of tasks or features that need to be completed.",
-      example: "We need to prioritize items in the product backlog.",
-      pronunciation: "/ˈbækˌlɔg/"
-    },
-    {
-      item: "user story",
-      explanation: "A description of a feature from the end-user's perspective.",
-      example: "Each user story includes acceptance criteria.",
-      pronunciation: "/ˈyuzər ˈstɔri/"
-    },
-    {
-      item: "scrum",
-      explanation: "An agile framework for managing complex projects.",
-      example: "Our team uses scrum methodology for project management.",
-      pronunciation: "/skrʌm/"
-    },
-    {
-      item: "milestone",
-      explanation: "A significant point in a project timeline.",
-      example: "Completing the MVP is our next milestone.",
-      pronunciation: "/ˈmaɪlˌstəʊn/"
-    },
-    {
-      item: "burndown",
-      explanation: "A chart showing the amount of work remaining over time.",
-      example: "The burndown chart helps track sprint progress.",
-      pronunciation: "/ˈbɜrndəʊn/"
-    },
-    {
-      item: "iteration",
-      explanation: "A single development cycle in an agile process.",
-      example: "Each iteration ends with a working product increment.",
-      pronunciation: "/ˌɪtəˈreɪʃən/"
-    },
-    {
-      item: "capacity planning",
-      explanation: "The process of determining the team's available work capacity.",
-      example: "Capacity planning helps us estimate sprint goals accurately.",
-      pronunciation: "/kəˈpæsəti ˈplænɪŋ/"
-    },
-    {
-      item: "grooming session",
-      explanation: "A meeting to prepare backlog items for future sprints.",
-      example: "We hold backlog grooming sessions every week.",
-      pronunciation: "/ˈgrumɪŋ ˈsɛʃən/"
-    },
-    {
-      item: "definition of done",
-      explanation: "A set of criteria that must be met for a task to be considered complete.",
-      example: "Code review, testing, and documentation are part of our definition of done.",
-      pronunciation: "/ˌdɛfəˈnɪʃən əv dʌn/"
-    },
-    {
-      item: "commit to sprint",
-      explanation: "To agree to complete certain work items within a sprint.",
-      example: "The team should only commit to work they can realistically complete.",
-      pronunciation: "/kəˈmɪt tə sprɪnt/"
-    },
-    {
-      item: "velocity",
-      explanation: "A measure of how much work a team can complete in a sprint.",
-      example: "Our team velocity has improved over the last three sprints.",
-      pronunciation: "/vəˈlɑsəti/"
-    },
-    {
-      item: "increment",
-      explanation: "A working piece of product that adds value to previous increments.",
-      example: "Each sprint delivers a valuable product increment.",
-      pronunciation: "/ˈɪŋkrəmənt/"
-    },
-    {
-      item: "retrospective",
-      explanation: "A meeting held at the end of a sprint to discuss what went well and what could be improved.",
-      example: "The sprint retrospective helps us improve our processes.",
-      pronunciation: "/ˌrɛtrəˈspɛktɪv/"
-    },
-    {
-      item: "Kanban board",
-      explanation: "A visual workflow management tool showing work items in columns representing different stages.",
-      example: "We track all tasks on the Kanban board.",
-      pronunciation: "/ˈkænbæn bɔrd/"
-    },
-    {
-      item: "WIP (Work In Progress)",
-      explanation: "Tasks currently being worked on; often limited to improve focus and flow.",
-      example: "Our WIP limit is 3 tasks per developer.",
-      pronunciation: "/ˌdʌbəlju aɪ ˈpi/"
-    },
-    {
-      item: "swim lane",
-      explanation: "A horizontal row on a Kanban board used to categorize different types of work or teams.",
-      example: "Each team has their own swim lane on the board.",
-      pronunciation: "/swɪm leɪn/"
-    },
-    {
-      item: "throughput",
-      explanation: "The number of work items completed in a given time period.",
-      example: "Our team's throughput is about 15 tasks per week.",
-      pronunciation: "/ˈθruːpʊt/"
-    },
-    {
-      item: "cycle time",
-      explanation: "The time it takes for a task to move from start to completion.",
-      example: "We're working to reduce our average cycle time.",
-      pronunciation: "/ˈsaɪkəl taɪm/"
-    }
-  ],
-  phrasalVerbs: [],
-  compoundWords: [],
-  functionalChunks: {
-    title: "Sprint Planning Communication Patterns",
-    chunks: [
-      {
-        chunk: "We ___ deliver [feature] by the end of the sprint.",
-        usage: "Making sprint commitments"
-      },
-      {
-        chunk: "___ we move this to the next sprint?",
-        usage: "Discussing backlog prioritization"
-      },
-      {
-        chunk: "Our capacity ___ allow us to take [number] story points.",
-        usage: "Capacity planning discussions"
-      },
-      {
-        chunk: "The definition of ___ includes [criteria].",
-        usage: "Defining completion criteria"
-      },
-      {
-        chunk: "We ___ review the burndown chart tomorrow.",
-        usage: "Tracking progress commitments"
-      }
-    ]
-  },
+  grammar,
+  vocabulary,
+  phrasalVerbs,
+  compoundWords,
+  functionalChunks,
+
   scenario: "Participating in sprint planning meeting and discussing team capacity and sprint goals.",
   speaking: "In our next sprint, we will develop the login feature with the acceptance criteria. We are going to estimate the user stories and commit to what we can realistically complete.",
   speakingPracticeMode: "conversation",
@@ -238,7 +37,6 @@ export const lesson01: Lesson = {
       }
     ],
   },
-
   listeningActivity: {
     title: "Listening: Sprint Planning Meeting",
     transcript: "Right team, let's start our sprint planning. We've got 8 story points capacity for this sprint. The product owner will present the backlog items. This login feature looks ready - we will implement it with proper validation. Shall we add automated tests to the definition of done? Our velocity last sprint was 7 points, so we are going to be conservative with commitments. Each developer should commit to tasks they feel confident about completing.",
@@ -258,7 +56,6 @@ export const lesson01: Lesson = {
     ],
     audioSrc: "",
   },
-
   pronunciationClinic: {
     title: "Pronunciation Clinic: Agile Methodology Terms",
     explanation: "Master the pronunciation of key sprint planning and agile methodology vocabulary used in professional software development environments.",
@@ -290,7 +87,6 @@ export const lesson01: Lesson = {
       }
     ]
   },
-
   globalAccentLab: [
     {
       accent: "American English (Silicon Valley)",
@@ -305,7 +101,6 @@ export const lesson01: Lesson = {
       transcript: "Right, let's get this sprint planned properly. The team will need to review the backlog items first. I think we can probably commit to 10 points this time. We are going to include the testing criteria in our definition of done. Shall we schedule the grooming session for tomorrow morning?"
     }
   ],
-
   rolePlay: {
     title: "Sprint Planning Meeting",
     objective: "Participate in a sprint planning meeting, estimate user stories, and commit to sprint goals using appropriate planning language and future tenses.",

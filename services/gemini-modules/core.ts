@@ -3,6 +3,8 @@
  * Las API keys están protegidas en el servidor backend
  */
 
+import { supabase } from '../supabase/client';
+
 /**
  * Proxy fetch: Llama al backend proxy en lugar de usar el SDK directamente
  * Las API keys están protegidas en el servidor backend
@@ -28,6 +30,20 @@ interface FetchOptions {
   retries?: number;
 }
 
+/**
+ * Obtiene el token de autenticación de Supabase
+ * @returns Token JWT o null si no hay sesión
+ */
+const getAuthToken = async (): Promise<string | null> => {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    return session?.access_token || null;
+  } catch (error) {
+    console.error('Error getting auth token:', error);
+    return null;
+  }
+};
+
 // Fix BUG-008: Retry logic, timeout y error handling robusto
 export const proxyFetch = async <T = unknown>(
   endpoint: string,
@@ -43,6 +59,9 @@ export const proxyFetch = async <T = unknown>(
     throw new Error('Request body is not serializable');
   }
 
+  // Obtener token de autenticación
+  const authToken = await getAuthToken();
+
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt < retries; attempt++) {
@@ -50,9 +69,18 @@ export const proxyFetch = async <T = unknown>(
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), timeout);
 
+      // Construir headers con autenticación
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json'
+      };
+
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
       const response = await fetch(`${BACKEND_PROXY_URL}${endpoint}`, {
         method: options.method || 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(body),
         signal: controller.signal
       });
