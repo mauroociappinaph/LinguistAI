@@ -8,7 +8,7 @@ import {
   rolePlay
 } from './activities';
 
-const lesson06: Lesson = {
+export const lesson06: Lesson = {
   id: "l6",
   title: "Thinking in Systems: Top-Down & Bottom-Up",
   level: Difficulty.A1,

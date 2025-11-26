@@ -13,7 +13,7 @@ import {
   rolePlay 
 } from './activities';
 
-const lesson03: Lesson = {
+export const lesson03: Lesson = {
   id: "l3",
   title: "Numbers, Dates, and Schedules",
   level: Difficulty.A1,

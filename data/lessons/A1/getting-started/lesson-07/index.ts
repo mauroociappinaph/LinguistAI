@@ -3,7 +3,7 @@ import { grammar } from './grammar';
 import { vocabulary, phrasalVerbs, compoundWords, functionalChunks } from './vocabulary';
 import { commonMistakes } from './commonMistakes';
 
-const lesson07: Lesson = {
+export const lesson07: Lesson = {
   id: "gs7",
   title: "Skills & Abilities",
   level: Difficulty.A1,

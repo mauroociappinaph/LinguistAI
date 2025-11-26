@@ -32,13 +32,13 @@ export const CURRICULUM_METADATA: ModuleMetadata[] = [
     description: 'Begin your English learning journey with basic introductions and essential communication skills for the tech industry.',
     level: Difficulty.A1,
     lessons: [
-      { id: 'gs1', title: 'Introduction to Tech English', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs2', title: 'Introducing Yourself Professionally', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs3', title: 'Describing Your Tech Role', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs4', title: 'Talking About Your Projects', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs5', title: 'Gerunds vs Infinitives in Tech', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs6', title: 'Comparatives and Superlatives', level: 'A1', moduleId: 'getting-started' },
-      { id: 'gs7', title: 'Asking Questions in Tech Contexts', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l1', title: 'Introduction to Tech English', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l2', title: 'Introducing Yourself Professionally', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l3', title: 'Describing Your Tech Role', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l4', title: 'Talking About Your Projects', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l5', title: 'Gerunds vs Infinitives in Tech', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l6', title: 'Comparatives and Superlatives', level: 'A1', moduleId: 'getting-started' },
+      { id: 'l7', title: 'Asking Questions in Tech Contexts', level: 'A1', moduleId: 'getting-started' },
     ]
   },
   {

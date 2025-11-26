@@ -8,7 +8,7 @@ import {
   rolePlay
 } from './activities';
 
-const lesson05: Lesson = {
+export const lesson05: Lesson = {
   id: "l5",
   title: "Learning in Context: How Your Brain Works",
   level: Difficulty.A1,
